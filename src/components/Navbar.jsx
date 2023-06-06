@@ -1,5 +1,5 @@
 function Navbar() {
-    
+    const a_style="no-underline text-white transition ease-in-out duration-500 hover:text-[#FFE600]"
     return (
         <div className=" grid grid-col-4  gap-4 fixed top-0  pt-3 " style={{width:"100%"}}>
             
@@ -9,16 +9,16 @@ function Navbar() {
                     
                     <ul className="flex justify-evenly ">
                                         <li>
-                                            <a href='https://tailwindcss.com/docs/text-color' className="no-underline text-white ">Home</a>
+                                            <a href='https://tailwindcss.com/docs/text-color' className={a_style}>Home</a>
                                         </li>
                                         <li>
-                                            <a href='https://tailwindcss.com/docs/text-color' className="no-underline text-white">Search</a>
+                                            <a href='https://tailwindcss.com/docs/text-color' className={a_style}>Search</a>
                                         </li>
                                         <li>
-                                            <a  href='https://tailwindcss.com/docs/text-color'className="no-underline text-white">Attractions</a>
+                                            <a  href='https://tailwindcss.com/docs/text-color'className={a_style}>Attractions</a>
                                         </li>
                                         <li>
-                                            <a href='https://tailwindcss.com/docs/text-color' className="no-underline text-white">Rewards</a>
+                                            <a href='https://tailwindcss.com/docs/text-color' className={a_style}>Rewards</a>
                                             </li>
                     </ul>
                 </div>
