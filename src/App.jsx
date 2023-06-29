@@ -3,6 +3,7 @@ import { useState } from 'react'
 import './App.css'
 import Navbar from './components/Navbar'
 import MainCover from './components/MainCover';
+import Card from './components/Card';
 function App() {
   
 
@@ -11,6 +12,7 @@ function App() {
       
       <Navbar></Navbar>
       <MainCover></MainCover>
+      <Card/>
       <p>
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis facilis ea odit, eligendi repellat delectus error ipsa tempora aspernatur atque optio veniam vitae est deserunt. Aliquam, impedit a. Natus, beatae.
         Vitae odio consequatur nam accusamus aliquam doloribus eveniet recusandae commodi, quam est eos et voluptas nobis mollitia? Neque porro architecto error, eos doloremque odio obcaecati commodi minima eum debitis in.

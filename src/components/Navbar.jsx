@@ -27,7 +27,7 @@ function Navbar() {
                 <div className="text-white" >
                     <ul className=" flex justify-evenly">
                             <li >
-                                <a href='https://tailwindcss.com/docs/text-color' className=" rounded-md border-yellow-400 text-white">Sign Up</a>
+                                <a href='https://tailwindcss.com/docs/text-color' className="rounded-md border-yellow-400 text-white">Sign Up</a>
                             </li>
                             <li>
                                 <a href='https://tailwindcss.com/docs/text-color' className=" rounded-md border-yellow-400 text-white">Login</a>
