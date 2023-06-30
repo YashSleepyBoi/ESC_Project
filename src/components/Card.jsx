@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 
 import '/src/Card.css';
 
-import { EffectCoverflow, Pagination, Navigation } from 'swiper';
+import { EffectCoverflow, Pagination, Navigation, Autoplay } from 'swiper';
 
 import slider_image_1 from "/src/components/Assets/slider-image-1.png"
 import slider_image_2 from "/src/components/Assets/slider-image-2.png"
@@ -21,11 +21,15 @@ function Card() {
     <div className="card">
       <Swiper
         effect={'coverflow'}
-        grabCursor={true}
+        allowTouchMove={false}
         centeredSlides={true}
         loop={true}
         slidesPerView={'auto'}
-        initialSlide={2}
+        autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+        }}
+        spaceBetween={-300}
         coverflowEffect={{
           rotate: 0,
           stretch: 0,
@@ -38,7 +42,7 @@ function Card() {
           prevEl: '.swiper-button-prev',
           clickable: true,
         }}
-        modules={[EffectCoverflow, Pagination, Navigation]}
+        modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
         className="swiper_container"
       >
         <SwiperSlide>

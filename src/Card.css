@@ -1,14 +1,4 @@
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style-type: none;
-}
-:root {
-    --primary: #6a59ff;
-}
+
 
 @media (min-width: 1440px) {
   html {
@@ -29,27 +19,11 @@
 }
 .card {
     max-width: 124rem;
-    padding: 4rem 1rem;
-    margin: 40px auto;
+    padding: 2rem 1rem;
+    margin-left: 40px auto;
+    margin-right: 40px auto;
   }
-::-webkit-scrollbar {
-  width: 0.7rem;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 1rem;
-  background: #797979;
-  transition: all 0.5s ease-in-out;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #222224;
-}
-
-::-webkit-scrollbar-track {
-  background: #f9f9f9;
-}
-
+  
 .swiper_container {
   height: 27rem;
   padding: 2rem 0;

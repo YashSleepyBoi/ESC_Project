@@ -1,4 +1,5 @@
 #root {
+  --primary: #6a59ff;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -33,7 +34,7 @@
   }
 }
 
-.card {
+.container {
   padding: 2em;
 }
 
