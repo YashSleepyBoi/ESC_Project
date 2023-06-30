@@ -20,7 +20,7 @@ function Card() {
   return (
     <div className="card">
       <Swiper
-        effect='coverflow'
+        effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
         loop={true}
@@ -57,7 +57,7 @@ function Card() {
           <img src={slider_image_5} alt="slide_image" />
         </SwiperSlide>
 
-        <div className="slider-controller">
+        <div className="slider-controler">
           <div className="swiper-button-prev slider-arrow">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </div>

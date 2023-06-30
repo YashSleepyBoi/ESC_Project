@@ -28,12 +28,12 @@
   }
 }
 .card {
-    max-width: 100%;
+    max-width: 124rem;
     padding: 4rem 1rem;
-    margin: 40px;
+    margin: 40px auto;
   }
 ::-webkit-scrollbar {
-  width: 1.3rem;
+  width: 0.7rem;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -88,7 +88,7 @@
   display: none;
 }
 
-.slider-controller {
+.slider-controler {
   position: relative;
   bottom: 2rem;
   display: flex;
@@ -140,7 +140,7 @@
 }
 
 .slider-controler .slider-arrow ion-icon {
-  color: #222224;
+  color: #999999;
 }
 
 .slider-controler .slider-arrow::after {
@@ -148,9 +148,9 @@
 }
 
 .swiper-pagination {
-  position: relative;
+    position: sticky;
   width: 10rem !important;
-  bottom: 1rem;
+  bottom: 0rem;
 }
 
 .swiper-pagination .swiper-pagination-bullet {
