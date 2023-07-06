@@ -1,9 +1,19 @@
+import { useNavigate } from "react-router-dom";
+import React from 'react';
+import {
+    Nav,
+    NavLink,
+    Bars,
+    NavMenu,
+    NavBtn,
+    NavBtnLink,
+  } from './Navbarelements';
+
 function Navbar() {
     const a_style="no-underline text-white transition ease-in-out duration-500 hover:text-[#FFE600]"
     return (
         <div className=" grid grid-col-4  gap-4 fixed top-0  pt-3 " style={{width:"100%"}}>
             
-                
             <div class="grid grid-cols-4 gap-4 text-white w-max" style={{width:"100%"}}>
                 <div class="col-span-3 text-white" >
                     
@@ -12,7 +22,7 @@ function Navbar() {
                                             <a href='https://tailwindcss.com/docs/text-color' className={a_style}>Home</a>
                                         </li>
                                         <li>
-                                            <a href='https://tailwindcss.com/docs/text-color' className={a_style}>Search</a>
+                                            <a href='https://tailwindcss.com/docs/text-color' className={a_style}>Find & Reserve</a>
                                         </li>
                                         <li>
                                             <a  href='https://tailwindcss.com/docs/text-color'className={a_style}>Attractions</a>
@@ -22,8 +32,7 @@ function Navbar() {
                                             </li>
                     </ul>
                 </div>
-                
-                
+                               
                 <div className="text-white" >
                     <ul className=" flex justify-evenly">
                             <li >

@@ -1,0 +1,56 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\Lynette Chia\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-router-dom
+
+PATH: 
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files\Git\cmd;C:\Program Files\MATLAB\R2019b\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\ProgramData\chocolatey\bin;%HOME%\pip\pip.ini.;C:\Users\Lynette Chia\50005\programming-assignment-1-lynette;C:\Program Files\nodejs\;C:\Users\Lynette Chia\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\Lynette Chia\AppData\Local\Programs\Python\Python310\;C:\Users\Lynette Chia\AppData\Local\Programs\Python\Python37\Site-Packages\;C:\Users\Lynette Chia\AppData\Local\Programs\Python\Python37\Scripts\;C:\Users\Lynette Chia\AppData\Local\Programs\Python\Python37\;C:\Users\Lynette Chia\AppData\Local\Microsoft\WindowsApps;C:\Users\Lynette Chia\AppData\Local\GitHubDesktop\bin;C:\Users\Lynette Chia\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Java\jdk1.8.0_291\bin;C:\Users\Lynette Chia\AppData\Local\Android\android-sdk\platforms;C:\Users\Lynette Chia\AppData\Local\Android\android-sdk\tools;C:\Users\Lynette Chia\AppData\Roaming\Pub\Cache\bin;C:\Program Files\Git\usr\bin;C:\Program Files\JetBrains\IntelliJ IDEA 2022.3.3\bin;;C:\Users\Lynette Chia\50005\programming-assignment-1-lynette\;C:\Users\Lynette Chia\AppData\Roaming\npm
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  18.16.1
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: EPERM: operation not permitted, unlink 'C:\Users\Lynette Chia\50003\ESC_Project\node_modules\@esbuild\win32-x64\esbuild.exe'
+
+npm manifest: 
+  {
+    "name": "esc-project",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+      "dev": "vite",
+      "build": "vite build",
+      "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+      "preview": "vite preview"
+    },
+    "dependencies": {
+      "@ionic/react": "^7.1.1",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "swiper": "^9.4.1"
+    },
+    "devDependencies": {
+      "@types/react": "^18.0.37",
+      "@types/react-dom": "^18.0.11",
+      "@vitejs/plugin-react": "^4.0.0",
+      "autoprefixer": "^10.4.14",
+      "eslint": "^8.38.0",
+      "eslint-plugin-react": "^7.32.2",
+      "eslint-plugin-react-hooks": "^4.6.0",
+      "eslint-plugin-react-refresh": "^0.3.4",
+      "postcss": "^8.4.24",
+      "tailwindcss": "^3.3.2",
+      "vite": "^4.3.9"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

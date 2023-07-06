@@ -1,16 +1,32 @@
 import { useState } from 'react'
 
 import './App.css'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar1'
 import MainCover from './components/MainCover';
 import Card from './components/Card';
+import FindReserve from './components/pages/findreserve';
+import Rewards from './components/pages/rewards';
+import Hotels from './components/pages/hotels';
+import Contact from './components/pages/contact';
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   
 
   return (
     <>
+      <Router>
+        <Navbar />
+        <Routes>
+          {/* <Route path='/' exact component={Home} /> */}
+          <Route path='/findreserve' component={FindReserve} />
+          <Route path='/hotels' component={Hotels} />
+          <Route path='/rewards' component={Rewards} />
+          <Route path='/contact' component={Contact} />
+        </Routes>
+      </Router>
       
-      <Navbar></Navbar>
+      {/* <Navbar></Navbar> */}
       <MainCover></MainCover>
       <Card/>
       <p>
