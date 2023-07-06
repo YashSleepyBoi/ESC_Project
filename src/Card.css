@@ -16,7 +16,8 @@
   height: 27rem;
   padding: 2rem 0;
   position: relative;
-  transform: translate(25%);
+  align-items: center;
+  justify-content: center;
 }
 
 .swiper-slide {
@@ -28,7 +29,8 @@
 @media (max-width: 500px) {
   .swiper_container {
     height: 47rem;
-    transform: translate(25%);
+    align-items: center;
+    justify-content: center;
   }
   .swiper-slide {
     width: 28rem !important;
