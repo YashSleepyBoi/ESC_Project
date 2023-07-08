@@ -1,0 +1,99 @@
+
+
+.arrow-wrapper {
+    position: relative;
+    top: -4rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: fit-content;
+    margin: 0%;
+  }
+.arrow-wrapper:hover h1 {
+    opacity: 1;
+  }
+  #arrow_2 .arrow {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    align-items: flex-start;
+    text-transform: uppercase;
+    position: relative;
+    transition: transform 0.3s;
+}
+#arrow_2 .arrow button {
+    display: block;
+    width: 3em;
+    opacity: 0;
+    transition: opacity 0.3s 0s;
+    padding: 0em;
+}
+#arrow_2 .arrow:hover button {
+    opacity: 1;
+    transition: opacity 0.3s 0.1s ;
+
+}
+#arrow_2 .arrow:before {
+    content: '';
+    display: block;
+    border: solid #fff;
+    border-width: 2px 2px 0 0;
+    position: absolute;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+}
+#arrow_2 .arrow.arrow--left:before {
+    transform: rotate(-135deg);
+    right: 0;
+    transition: right 0.3s 0.2s;
+}
+#arrow_2 .arrow.arrow--left:hover:before {
+    right: 100%;
+    transition: right 0.3s;
+}
+#arrow_2 .arrow.arrow--right {
+    text-align: right;
+}
+#arrow_2 .arrow.arrow--right:before {
+    left: 0;
+    transform: rotate(45deg);
+    transition: left 0.3s 0.2s;
+}
+#arrow_2 .arrow.arrow--right:hover:before {
+    left: 100%;
+    transition: left 0.3s;
+}
+
+.hotel_descript{
+
+    background-color:rgba(255, 117, 0, 0.3);
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    top: -1.5rem;
+    padding: 2rem;
+}
+
+.hotel_descript p{
+    text-align: center;
+}
+.hotel_descript button{
+    text-decoration:  underline black;
+    transition: .5s;
+}
+
+.hotel_descript button:hover{
+    /* TODO 1.4: NEED TO CHANGE THE COLOR */
+    color:white;
+    text-decoration-color: white ;
+}
+
+.hotel_descript h3{
+    font-size : large ;
+    font-weight: bold;
+    padding-bottom: .5rem;
+}
+
+#more {display: none;}
