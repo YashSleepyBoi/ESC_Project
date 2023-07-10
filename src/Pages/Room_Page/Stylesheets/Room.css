@@ -134,6 +134,7 @@
     align-items: center;
     width: 100%;
     display: flex;
+    padding: 5%;
 }
 
 .map_holder{
@@ -153,4 +154,106 @@
 .getting_here h1{
     font-size: 4rem;
     margin-bottom: 5%;
+}
+.map{
+    height: 40rem;
+}
+.map div{
+    height: 100%;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .map_holder{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 20rem;
+    }
+    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .map_holder{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 30rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .map_holder{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 35rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .map_holder{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 40rem;
+    }
+   
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .map_holder{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 40rem;
+    }
 }
