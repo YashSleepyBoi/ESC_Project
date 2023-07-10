@@ -14,9 +14,13 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import classes from "./Stylesheets/Room.module.css"
 
 import "./Stylesheets/Room.css"
+import Card_Slider from './Components/Card_Slider';
+import Ammenities from './Components/Ammenities';
+import H_Information from './Components/H_Information';
+import Map from './Components/Map';
 
 function Room() {
-
+    const hotel_name="SHERATON KAGOSHIMA"
     function myFunction() {
         var dots = document.getElementById("dots");
         var moreText = document.getElementById("more");
@@ -33,6 +37,16 @@ function Room() {
         }
     }
     
+
+    const temp_data = [
+        { id:0, room: "Delux Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
+        { id:1,room: "Delux Kind", image: "https://images.unsplash.com/flagged/photo-1556438758-8d49568ce18e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2674&q=80" },
+        { id: 2, room: "Delux Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
+        { id:0, room: "Delux Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
+        { id:1,room: "Delux Kind", image: "https://images.unsplash.com/flagged/photo-1556438758-8d49568ce18e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2674&q=80" },
+        { id:2,room: "Delux Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
+        
+    ]
 
     
     return (
@@ -103,6 +117,26 @@ function Room() {
             <p>All 228 spacious guest rooms offer spectacular views of Sakurajima and Kagoshima city. For guests staying in Club Rooms and Suites located on the upper floors, the Club Lounge offers an at-home atmosphere<span id="dots">...<button onClick={myFunction} id="myBtn">See More</button></span><span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
             </div>
 
+
+            {/* TODO 1.4 : ROOMS AND SUITS SLIDER */}
+            <div style={{ background: "#fbfbfb" }} className="rooms">
+            <Card_Slider data={temp_data}></Card_Slider>
+            </div>
+
+            {/* TODO 1.5 AMMENITIES */}
+            <div className='holder'>
+            <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Ammenities</h1>
+            <Ammenities h_name={hotel_name}></Ammenities>
+            </div>
+           
+            {/* TODO 1.8 HOTEL INFORMATION */}
+            <div className='holder'>
+            <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Hotel Information</h1>
+            <H_Information h_name={hotel_name}></H_Information>
+            </div>
+            
+            {/* TODO 2.0: MAP  */}
+            <Map></Map>
 
 
 

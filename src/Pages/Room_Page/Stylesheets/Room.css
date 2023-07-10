@@ -97,3 +97,60 @@
 }
 
 #more {display: none;}
+
+.slider{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+   
+    
+    
+}
+
+.rooms{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 2rem;
+}
+.ammenities{
+    width: 80%;
+    display: grid ;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+.information{
+    width: 80%;
+    display: grid ;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+
+.holder{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    display: flex;
+}
+
+.map_holder{
+    background-color: black;
+    color: #fff;
+    padding: 5%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.getting_here{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.getting_here h1{
+    font-size: 4rem;
+    margin-bottom: 5%;
+}
