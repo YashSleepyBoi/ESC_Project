@@ -1,0 +1,259 @@
+
+
+.arrow-wrapper {
+    position: relative;
+    top: -4rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: fit-content;
+    margin: 0%;
+  }
+.arrow-wrapper:hover h1 {
+    opacity: 1;
+  }
+  #arrow_2 .arrow {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    align-items: flex-start;
+    text-transform: uppercase;
+    position: relative;
+    transition: transform 0.3s;
+}
+#arrow_2 .arrow button {
+    display: block;
+    width: 3em;
+    opacity: 0;
+    transition: opacity 0.3s 0s;
+    padding: 0em;
+}
+#arrow_2 .arrow:hover button {
+    opacity: 1;
+    transition: opacity 0.3s 0.1s ;
+
+}
+#arrow_2 .arrow:before {
+    content: '';
+    display: block;
+    border: solid #fff;
+    border-width: 2px 2px 0 0;
+    position: absolute;
+    top: 4px;
+    width: 10px;
+    height: 10px;
+}
+#arrow_2 .arrow.arrow--left:before {
+    transform: rotate(-135deg);
+    right: 0;
+    transition: right 0.3s 0.2s;
+}
+#arrow_2 .arrow.arrow--left:hover:before {
+    right: 100%;
+    transition: right 0.3s;
+}
+#arrow_2 .arrow.arrow--right {
+    text-align: right;
+}
+#arrow_2 .arrow.arrow--right:before {
+    left: 0;
+    transform: rotate(45deg);
+    transition: left 0.3s 0.2s;
+}
+#arrow_2 .arrow.arrow--right:hover:before {
+    left: 100%;
+    transition: left 0.3s;
+}
+
+.hotel_descript{
+
+    background-color:rgba(255, 117, 0, 0.3);
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    top: -1.5rem;
+    padding: 2rem;
+}
+
+.hotel_descript p{
+    text-align: center;
+}
+.hotel_descript button{
+    text-decoration:  underline black;
+    transition: .5s;
+}
+
+.hotel_descript button:hover{
+    /* TODO 1.4: NEED TO CHANGE THE COLOR */
+    color:white;
+    text-decoration-color: white ;
+}
+
+.hotel_descript h3{
+    font-size : large ;
+    font-weight: bold;
+    padding-bottom: .5rem;
+}
+
+#more {display: none;}
+
+.slider{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+   
+    
+    
+}
+
+.rooms{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 2rem;
+}
+.ammenities{
+    width: 80%;
+    display: grid ;
+    grid-template-columns: repeat(3, 1fr);
+    
+}
+.information{
+    width: 80%;
+    display: grid ;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+
+.holder{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    padding: 5%;
+}
+
+.map_holder{
+    background-color: black;
+    color: #fff;
+    padding: 5%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+.getting_here{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.getting_here h1{
+    font-size: 4rem;
+    margin-bottom: 5%;
+}
+.map{
+    height: 40rem;
+}
+.map div{
+    height: 100%;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .map_holder{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 20rem;
+    }
+    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .map_holder{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 30rem;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .map_holder{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 35rem;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .map_holder{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 40rem;
+    }
+   
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .map_holder{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .ammenities{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .information{
+        grid-template-columns: repeat(2,1fr);
+    }
+    .getting_here{
+        margin-bottom: 2%;
+    }
+    .map{
+        height: 40rem;
+    }
+}

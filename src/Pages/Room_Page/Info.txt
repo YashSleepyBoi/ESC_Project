@@ -1,0 +1,1 @@
+Just Place Your Components in the Selected Pages and Adjust ur components in the provided assets and stylesheet in the main src file or just make a folder in ur directory to hold the asets

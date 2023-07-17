@@ -10,11 +10,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "@ionic/react": "^7.1.1",
+    "@mui/icons-material": "^5.14.0",
+    "@mui/material": "^5.14.0",
+    "bootstrap": "^5.3.0",
+    "nuka-carousel": "^6.0.3",
+    "pure-react-carousel": "^1.30.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.1",
+    "react-spring-3d-carousel": "^1.3.4",
     "styled-components": "^6.0.2",
     "swiper": "^9.4.1"
   },
@@ -30,5 +39,17 @@
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.9"
-  }
+  },
+  "description": "This repository contains the source code for a hotel booking website.  <br>The website allows users to search for hotels, view details and amenities, and make bookings for their desired dates.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashSleepyBoi/ESC_Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YashSleepyBoi/ESC_Project/issues"
+  },
+  "homepage": "https://github.com/YashSleepyBoi/ESC_Project#readme"
 }
