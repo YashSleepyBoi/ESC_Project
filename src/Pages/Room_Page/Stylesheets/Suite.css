@@ -5,6 +5,7 @@
     max-width: 50%;
     top: 50%;
     bottom: 50%;
+    
     transform: translateY(-50%);
 }
 

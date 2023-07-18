@@ -9,6 +9,6 @@ import Room from './Pages/Room_Page/Room.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Room/>
+    <Hotel/>
   </React.StrictMode>,
 )
