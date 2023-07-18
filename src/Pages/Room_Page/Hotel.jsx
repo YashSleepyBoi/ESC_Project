@@ -149,6 +149,7 @@ function Room() {
             {/* TODO 2.0: MAP  */}
             <Map></Map>
 
+            
 
             <Footer />
         </>
