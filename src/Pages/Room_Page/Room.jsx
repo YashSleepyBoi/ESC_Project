@@ -65,7 +65,6 @@ export default function Room() {
     <>
       <Router>
         <NavBar />
-
         <Routes>
           {/* <Route path='/' exact component={Home} />  */}
           <Route path="/findreserve" component={FindReserve} />

@@ -12,6 +12,7 @@
     overflow: hidden;
 }
 .navbar{
+    position: relative;
     background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -20,12 +21,14 @@
 }
 
 .navbar-scroll{
+    position: relative;
     background: white;
     color: black;
     transition: .3s ease-in;
 }
 
 .navbar-top{
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

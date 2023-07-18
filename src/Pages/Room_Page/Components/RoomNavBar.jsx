@@ -3,7 +3,7 @@ import CallIcon from '@mui/icons-material/Call';
 import "../Stylesheets/Room_NavBar.css";
 import { Button, Divider } from "@mui/material";
 import { reserveButtonStyle } from "../Content";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function NavBar() {
   const logoScroll =
@@ -11,6 +11,8 @@ export default function NavBar() {
   const logo =
     "https://careers.recruiteecdn.com/image/upload/production/images/AQcM/m-UAX0dt_4Qa.png";
   const [color, setColor] = useState(false);
+  const [show, setShow] = useState(false);
+  const [prevScroll, setPrevScroll] = useState(0);
   const changeColor = () => {
     if (window.scrollY >= 100) {
       setColor(true);
@@ -18,13 +20,31 @@ export default function NavBar() {
       setColor(false);
     }
   };
+  
+  const showNavBar = () => {
+    if(window !== undefined) {
+      if(window.scrollY <= prevScroll) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+      setPrevScroll(window.scrollY);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", showNavBar);
+    return () => {
+      window.removeEventListener("scroll", showNavBar);
+    }
+  }, [prevScroll]);
 
   window.addEventListener("scroll", changeColor);
   return (
     <>
       <div className="header">
-        <div className={color ? "navbar-scroll" : "navbar"}>
-          <div className="navbar-top">
+        <div className={color ? "navbar-scroll" : "navbar"} style={{top:show ? '0' : '-81px'}}>
+          <div className="navbar-top" >
             <div className="navbar-logo">
               <Link to="/home">
                 <img src={color ? logoScroll : logo} alt="Ascenda Logo" />
