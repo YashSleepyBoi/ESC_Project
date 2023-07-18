@@ -20,7 +20,7 @@ import Card_Slider from './Components/Card_Slider';
 import Ammenities from './Components/Ammenities';
 import H_Information from './Components/H_Information';
 import Map from './Components/Map';
-import Footer from "./Components/footer"
+
 import { useEffect } from 'react';
 import Banner from './Components/Banner';
 
