@@ -1,0 +1,37 @@
+.panel{
+    width: 100%;
+    background-color: pink;
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+}
+.datePicker {
+    width: 100%;
+  }
+.resultholder{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+.dates div:last-of-type{
+    
+    height:3rem
+}
+.dates{
+padding-top: 3rem;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.room_guest{
+    padding-left: 3rem;
+
+}
+
+.room_card_holder{
+   width: 100%;
+   display: flex;
+   justify-content: center;
+}

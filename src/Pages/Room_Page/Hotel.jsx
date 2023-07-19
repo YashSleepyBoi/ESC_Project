@@ -66,17 +66,7 @@ function Room() {
     return (
         <>
             {/* TODO 1.1 : FIX THE ROUTER USING A PROPER REACT ROUTER */}
-            <Router>
-        <NavBar />
-
-        <Routes>
-          {/* <Route path='/' exact component={Home} />  */}
-          <Route path="/findreserve" component={FindReserve} />
-          <Route path="/hotels" component={Hotels} />
-          <Route path="/rewards" component={Rewards} />
-          <Route path="/contact" component={Contact} />
-        </Routes>
-      </Router>
+            
             {/* TODO 1.2 : FIX THE BUTTONS :: DONE*/}
             <CarouselProvider
                 naturalSlideWidth={100}
@@ -139,7 +129,7 @@ function Room() {
 
             <CarouselProvider
                 naturalSlideWidth={100}
-                naturalSlideHeight={40}
+                naturalSlideHeight={50}
                 totalSlides={4}
                 isPlaying={true}
                 interval={6000}
