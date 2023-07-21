@@ -63,17 +63,7 @@ function Room() {
     return (
         <>
             {/* TODO 1.1 : FIX THE ROUTER USING A PROPER REACT ROUTER */}
-            <Router>
-                <Navbar />
-                    <Routes>
-                    {/* <Route path='/' exact component={Home} /> */}
-                    <Route path='/findreserve' component={FindReserve} />
-                    <Route path='/hotels' component={Hotels} />
-                    <Route path='/rewards' component={Rewards} />
-                    <Route path='/contact' component={Contact} />
-                    </Routes>
-            </Router>
-
+            
             {/* TODO 1.2 : FIX THE BUTTONS :: DONE*/}
             <CarouselProvider
                 naturalSlideWidth={100}
@@ -133,6 +123,72 @@ function Room() {
             <div style={{ background: "#fbfbfb" }} className="rooms">
             <Card_Slider data={temp_data}></Card_Slider>
             </div>
+
+            <CarouselProvider
+                naturalSlideWidth={100}
+                naturalSlideHeight={50}
+                totalSlides={4}
+                isPlaying={true}
+                interval={6000}
+                infinite={true}
+                lockOnWindowScroll={true}
+                
+            >
+                <Slider >
+                    <Slide index={0}>
+                    <div className='holder view_holder'>
+                    <HotelRating name="Lake House"></HotelRating>
+           </div>
+                   
+                    </Slide>
+                    
+                    <Slide index={1}>
+                    <div className='holder view_holder'>
+                    <HotelRating name="home"></HotelRating>
+           </div>
+                        </Slide>
+                        <Slide index={2}>
+                        <div className='holder view_holder'>
+                    <HotelRating name="Buisness House"></HotelRating>
+           </div>
+                    </Slide>
+
+                    <Slide index={3}>
+                    <div className='holder view_holder'>
+                    <HotelRating name="Lake House 2"></HotelRating>
+           </div>
+                    </Slide>
+
+                </Slider>
+                
+
+                    
+                        
+                    <div id="arrow_2" class="arrow-wrapper"  >
+                        <div class="arrow arrow--left" >
+                            
+                            <ButtonBack >BACK</ButtonBack>
+                            </div>
+
+                            
+
+                            <div class="arrow arrow--right">
+                                
+                                 <ButtonNext>NEXT</ButtonNext>
+                        
+                            </div>
+                    </div>
+                 
+                    
+                    
+                    
+              
+                
+            </CarouselProvider>
+               
+            
+            <Suite></Suite>
+            
 
             {/* TODO 1.5 AMMENITIES */}
             <div className='holder'>

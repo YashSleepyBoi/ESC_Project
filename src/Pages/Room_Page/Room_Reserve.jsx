@@ -23,6 +23,8 @@ import Map from './Components/Map';
 
 import { useEffect } from 'react';
 import Banner from './Components/Banner';
+import Panel from "./Components/Panels"
+import 'react-datepicker/dist/react-datepicker.css'
 
 
 function Room_Reserve() {
@@ -36,11 +38,12 @@ function Room_Reserve() {
           
         
             <Banner></Banner>
+            <Panel></Panel>
+  
 
-            
-        
-        
-        
+
+
+     
         
         
         </>
