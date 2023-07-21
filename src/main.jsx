@@ -4,11 +4,12 @@ import App from './App.jsx'
 import Hotel from './Pages/Room_Page/Hotel.jsx'
 import './index.css'
 import Room from './Pages/Room_Page/Room.jsx'
+import TemporaryDrawer from './Pages/Room_Page/Components/Drawer.jsx'
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Hotel/>
+    <Room/>
   </React.StrictMode>,
 )

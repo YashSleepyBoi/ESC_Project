@@ -1,10 +1,8 @@
 // this is the room page
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "../../components/Navbar1";
 import FindReserve from "../../components/pages/findreserve";
 import Rewards from "../../components/pages/rewards";
 import Hotels from "../../components/pages/hotels";
@@ -12,21 +10,10 @@ import Contact from "../../components/pages/contact";
 import Accordion from "./Components/Accordion";
 import "./Stylesheets/Rooms.css";
 import {
-  Button,
-  Divider,
-  ImageList,
-  ImageListItem,
-  ImageListItemBar,
-} from "@mui/material";
-import {
   accordionData,
   accomodationDesc,
   roomHeader,
-  coverImage,
   roomDesc,
-  gridImages,
-  footerData,
-  actionButtonStyle,
 } from "./Content";
 import {
   CarouselProvider,
@@ -36,30 +23,35 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import { Grid } from "@mui/material";
-import Modal from "./Components/Modal";
 import Suite from "./Components/suite";
 import NavBar from "./Components/RoomNavBar";
+import ImageGrid from "./Components/ImageGrid";
+import Footer from "./Components/Footer";
 
-// const response = await fetch('https://hotelapi.loyalty.dev/api/hotels');
-// console.log(response);
 export default function Room() {
   // retrieving the params of the item in modal
-  const [params, setParams] = useState({}); //params for modal
-  const [active, isActive] = useState(false); //active for modal
-  const [scroll, setScroll] = useState(0);
 
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
+
+  const fetchUserData = () => {
+    const apiUrl = 'https://hotelapi.loyalty.dev/api/hotels?destination_id=WD0M';
+    
+    fetch(apiUrl, {mode: 'no-cors'})
+      .then(response => {
+        console.log(response.json());
+      })
+      .then(data => {
+        console.log(data)
+      })
+      .catch(error => {
+        console.error('Error fetching data:', error);
+      });
+  }
+
   useEffect(() => {
-    const handleScroll = () => {
-      setScroll(window.scrollY);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    fetchUserData();
+  }, [])
 
   return (
     <>
@@ -132,78 +124,10 @@ export default function Room() {
           ))}
         </div>
         <div className="room-grid">
-          <ImageList cols={isSmall ? 1 : 2} gap={35} rowHeight={310}>
-            {gridImages.map((item) => (
-              <ImageListItem key={item.img}>
-                <img
-                  src={`${item.img}?w=552&h=310&fit=crop&auto=format`}
-                  srcSet={`${item.img}?w=552&h=310&fit=crop&auto=format&dpr=2 0.5x`}
-                  alt={item.title}
-                  style={{
-                    borderRadius: "14px",
-                    boxShadow:
-                      "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-                  }}
-                  loading="lazy"
-                  width={552} // Set the width attribute to 552
-                  height={310} // Set the height attribute to 310
-                />
-                <div className="transparent-overlay" />
-                <ImageListItemBar
-                  position="bottom"
-                  sx={{ background: "none" }}
-                  title={item.title}
-                  actionIcon={
-                    <div className="action-button">
-                      <Button
-                        variant="contained"
-                        disableElevation="true"
-                        sx={actionButtonStyle}
-                        onClick={() => {
-                          isActive(true);
-                          setParams(item);
-                        }}
-                      >
-                        View More
-                      </Button>
-                    </div>
-                  }
-                  actionPosition="left"
-                />
-                {active && (
-                  <Modal
-                    closeModal={isActive}
-                    title={params.title}
-                    content={params.content}
-                  />
-                )}{" "}
-                // spawning the modal
-              </ImageListItem>
-            ))}
-          </ImageList>
+          <ImageGrid isSmall={isSmall} />
         </div>
         <div className="footer">
-          <div className="footer-content">
-            <h2
-              style={{
-                textAlign: "left",
-                fontStyle: "revert",
-                marginBottom: "1rem",
-              }}
-            >
-              Ascenda Loyalty
-            </h2>
-            <Divider sx={{ bgcolor: "black", marginBottom: "1rem" }} />
-            <Grid container spacing={2}>
-              {footerData.map((item) => {
-                return (
-                  <Grid item xs={12} sm={6} md={4}>
-                    <p className="footer-text">{item}</p>
-                  </Grid>
-                );
-              })}
-            </Grid>
-          </div>
+          <Footer />
         </div>
       </div>
     </>

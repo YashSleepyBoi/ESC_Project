@@ -9,7 +9,7 @@ function Card_Slider(props) {
     
     return (
         <>
-        <h1 className='text-left  pt-10 mb-5 font-bold text-2xl '>Rooms and Suites</h1>
+        <h1 className='text-left  pt-10 font-bold text-2xl '>Rooms and Suites</h1>
         <div style={{ width: "80%"}} className="slider">
             
             {props.data.map(i => {

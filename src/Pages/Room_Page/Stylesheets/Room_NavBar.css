@@ -34,10 +34,8 @@
     justify-content: space-between;
     padding: 1.5rem;
     align-items: center;
-    gap: 2rem;
     overflow: hidden;
 }
-
 
 .navbar-links{
     padding: 0;
@@ -52,12 +50,53 @@
     max-width: 150px;
 }
 
+.navbar-hamburger{
+    display: none;
+}
+
+
+@media only screen and (max-width: 700px){
+    .navbar-top{
+        padding: 1rem;
+    }
+
+    .navbar-links{
+        gap: 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .navbar-logo{
+        max-width: 100px;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    .navbar-links{
+        display:none;
+    }
+
+    .reserve-button{
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 999;
+    }
+    
+    .navbar-hamburger{
+        display: block;
+    }
+}
+
+
 .navbar-bottom{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+}
+
+.navbar-bottom.links{
     gap: 2rem;
 }
 
@@ -65,6 +104,29 @@
     font-size: 1rem;
     font-weight: none !important;
 }
+
+@media only screen and (max-width: 700px){
+    .navbar-bottom{
+        padding: 0.5rem;
+    }
+    .title{
+        font-size: 0.75rem;
+    }
+    .navbar-bottom.links{
+        gap: 0.75rem;
+        font-size: 0.75rem;
+    }
+}
+
+@media only screen and (max-width: 400px){
+    .title{
+        font-size: 0.6rem;
+    }
+    .navbar-bottom.links{
+        gap: 0.5rem;
+    }
+}
+
 
 
 

@@ -1,0 +1,8 @@
+.drawer-bottom{
+    display: flex;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    margin-bottom: 2rem;
+    justify-content: center;
+}

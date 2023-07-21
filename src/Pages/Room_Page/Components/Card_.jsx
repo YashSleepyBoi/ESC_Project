@@ -15,7 +15,7 @@ export default function ActionAreaCard(props) {
   }
   
   return (
-    <Card sx={{ width: 420, maxHeight: 350, margin: 2, display: 'inline-block' }} onClick={roomClickHandler} >
+    <Card sx={{ width: 590, maxHeight: 480, margin: 10, display: 'inline-block' }} onClick={roomClickHandler} >
       <CardActionArea>
         <CardMedia
           component="img"
@@ -24,7 +24,7 @@ export default function ActionAreaCard(props) {
           alt="green iguana"
         />
         <CardContent>
-          <Typography gutterBottom variant="body1" component="div" className='text-left text-lg font-normal'>
+          <Typography gutterBottom variant="h5" component="div" className='text-left text-lg font-normal'>
             {props.name}
           </Typography>
           <Typography variant="body2" color="text.secondary"  className='text-left text-lg font-normal'>
