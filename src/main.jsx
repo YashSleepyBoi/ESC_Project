@@ -4,12 +4,14 @@ import App from './App.jsx'
 import Hotel from './Pages/Room_Page/Hotel.jsx'
 import './index.css'
 import Room from './Pages/Room_Page/Room.jsx'
-import TemporaryDrawer from './Pages/Room_Page/Components/Drawer.jsx'
+import { BrowserRouter } from 'react-router-dom'
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Room/>
+    <BrowserRouter>
+    <App/>
+    </BrowserRouter>
   </React.StrictMode>,
 )

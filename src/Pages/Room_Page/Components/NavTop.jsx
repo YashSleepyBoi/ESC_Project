@@ -22,7 +22,7 @@ export default function NavTop({color, setColor}) {
     <>
       <div className="navbar-top">
         <div className="navbar-logo">
-          <Link to="/home">
+          <Link to="/">
             <img src={color ? logoScroll : logo} alt="Ascenda Logo" />
           </Link>
         </div>

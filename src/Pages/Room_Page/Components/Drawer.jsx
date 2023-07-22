@@ -1,6 +1,6 @@
-import Box from "@mui/material/Box";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
+import Box from "@mui/material/Box";
 import HotelIcon from "@mui/icons-material/Hotel";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import Drawer from "@mui/material/Drawer";

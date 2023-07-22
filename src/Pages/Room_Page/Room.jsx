@@ -2,11 +2,6 @@
 import React, { useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import FindReserve from "../../components/pages/findreserve";
-import Rewards from "../../components/pages/rewards";
-import Hotels from "../../components/pages/hotels";
-import Contact from "../../components/pages/contact";
 import Accordion from "./Components/Accordion";
 import "./Stylesheets/Rooms.css";
 import {
@@ -24,9 +19,8 @@ import {
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import Suite from "./Components/suite";
-import NavBar from "./Components/RoomNavBar";
 import ImageGrid from "./Components/ImageGrid";
-import Footer from "./Components/Footer";
+import Footer from "./Components/RoomFooter";
 
 export default function Room() {
   // retrieving the params of the item in modal
@@ -34,37 +28,27 @@ export default function Room() {
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
 
-  const fetchUserData = () => {
-    const apiUrl = 'https://hotelapi.loyalty.dev/api/hotels?destination_id=WD0M';
-    
-    fetch(apiUrl, {mode: 'no-cors'})
-      .then(response => {
-        console.log(response.json());
-      })
-      .then(data => {
-        console.log(data)
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
-  }
+  // const fetchUserData = () => {
+  //   const apiUrl = 'https://hotelapi.loyalty.dev/api/hotels?destination_id=WD0M';
 
-  useEffect(() => {
-    fetchUserData();
-  }, [])
+  //   fetch(apiUrl, {mode: 'no-cors'})
+  //     .then(response => {
+  //       console.log(response.json());
+  //     })
+  //     .then(data => {
+  //       console.log(data)
+  //     })
+  //     .catch(error => {
+  //       console.error('Error fetching data:', error);
+  //     });
+  // }
+
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, [])
 
   return (
     <>
-      <Router>
-        <NavBar />
-        <Routes>
-          {/* <Route path='/' exact component={Home} />  */}
-          <Route path="/findreserve" component={FindReserve} />
-          <Route path="/hotels" component={Hotels} />
-          <Route path="/rewards" component={Rewards} />
-          <Route path="/contact" component={Contact} />
-        </Routes>
-      </Router>
       <div
         style={{
           width: "100%",
