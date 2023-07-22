@@ -8,7 +8,7 @@ export default function NavBot() {
   return (
     <>
       <div className="navbar-bottom">
-        <div className="title">ASCENDA LOYALTY HOTEL SINGAPORE SOUTH BEACH</div>
+        <div className="hotel-title">ASCENDA LOYALTY HOTEL SINGAPORE SOUTH BEACH</div>
         <div className="navbar-bottom links">
           <a href="tel:+65 -68181888">
             <CallIcon />
