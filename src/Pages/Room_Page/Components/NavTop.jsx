@@ -66,7 +66,7 @@ export default function NavTop({color, setColor}) {
           </Link>
 
           <Link to="/login">
-            <li>{isLoggedIn ? useruid : 'SIGN IN'}</li>
+            <li>{isLoggedIn ? useruid : 'Sign in'}</li>
           </Link>
           
           

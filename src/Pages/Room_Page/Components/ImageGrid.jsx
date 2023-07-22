@@ -53,8 +53,7 @@ export default function ImageGrid({isSmall}) {
                 title={params.title}
                 content={params.content}
               />
-            )}{" "}
-            // spawning the modal
+            )}
           </ImageListItem>
         ))}
       </ImageList>
