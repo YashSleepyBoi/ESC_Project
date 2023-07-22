@@ -16,6 +16,7 @@ import { useState, Fragment } from "react";
 import { Button } from "@mui/material";
 import "../Stylesheets/Drawer.css";
 import { drawerButtonStyle } from "../Content";
+import { Link } from "react-router-dom";
 
 export default function TemporaryDrawer() {
   const anchor = "right";
@@ -55,14 +56,16 @@ export default function TemporaryDrawer() {
     >
       <List>
         {drawerItems.map((item) => (
-          <ListItem key={item.name} disablePadding>
-            <ListItemButton key={item.name}>
-              <ListItemIcon sx={{color:'#fff'}}>
-                <item.icon/>
-              </ListItemIcon>
-              <ListItemText primary={item.name} />
-            </ListItemButton>
-          </ListItem>
+          <Link to={item.route} key={item.name}>
+            <ListItem key={item.name} disablePadding>
+              <ListItemButton key={item.name}>
+                <ListItemIcon sx={{ color: "#fff" }}>
+                  <item.icon />
+                </ListItemIcon>
+                <ListItemText primary={item.name} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
         <Divider />
       </List>
