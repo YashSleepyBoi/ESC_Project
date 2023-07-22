@@ -56,18 +56,20 @@ input{
     border: 1px solid black;
 
 }
-
-
-.RegisterBtn{
-    background-color: rgb(236, 169, 37);
-    padding:0.2rem;
-    margin-top: 1rem;
+button{
+    background-color: rgb(255, 186, 47);
     width: 50%;
     align-self: center;
     color: black;
     border-radius: 6px;
     border: 1px solid black;
     cursor:pointer;
+}
+
+.RegisterBtn{
+    padding:0.2rem;
+    background-color: rgb(255, 186, 47) !important;
+    margin-top: 1rem;
 }
 
 .changePageTxt{

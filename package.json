@@ -17,6 +17,7 @@
     "@mui/icons-material": "^5.14.0",
     "@mui/material": "^5.14.0",
     "cors-anywhere": "^0.4.4",
+    "firebase": "^10.1.0",
     "nuka-carousel": "^6.0.3",
     "proxy-middleware": "^0.15.0",
     "pure-react-carousel": "^1.30.1",
