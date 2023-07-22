@@ -3,7 +3,7 @@
   max-width: 1024px;
   display: flex;
   justify-content: space-between;
-  margin: auto;
+  margin: 150px;
   gap: 20px;
   z-index: 1;
 }
@@ -68,5 +68,5 @@
   background-color: #7C9D96; /* Button background */
   color: white; /* Button Text */
   font-size: 16px; /* Button Text Font Size*/
-  padding: 16px 32px;
+  padding: auto;
 }
