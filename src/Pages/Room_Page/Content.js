@@ -184,7 +184,7 @@ const gridImages = [{
 
 const footerData = ['Overview', 'Gallery', 'Accommodations', 'Dining', 'Experiences', 'Meetings & Weddings', 'Tracking Preferences', 'Your Privacy Rights', '30 BEACH ROAD, ACCESS VIA NICOLL HIGHWAY, SINGAPORE, 189763', 'TOLL FREE:+65-68181881'];
 // exporting all the data
-const actionButtonStyle = { bgcolor: '#e4beb6', textTransform: 'capitalize', borderRadius: '1rem', color: 'black', fontSize: 'small', '&:hover': { filter: 'brightness(1.1)', bgcolor: '#e4beb6' } }
+const actionButtonStyle = { width:"100%", bgcolor: '#e4beb6', textTransform: 'capitalize', borderRadius: '1rem', color: 'black', fontSize: 'small', '&:hover': { filter: 'brightness(1.1)', bgcolor: '#e4beb6' } }
 const iconButtonStyle = { bgcolor: "#dbd8cf", width: '2rem', marginLeft: 'auto', marginBottom: '1.5rem', borderRadius: '4px', '&:hover': { filter: 'brightness(1.05)', bgcolor: '#dbd8cf' } }
 const footerButtonStyle = { color: 'black', textDecoration: 'underline', '&:hover': { fontWeight: 'bold', textDecoration: 'underline' } }
 const reserveButtonStyle = { width:"100%", bgcolor: '#fa7502', color: 'black', borderRadius: '1rem', fontWeight: 'bold', '&:hover': { filter: 'brightness(1.15)', bgcolor: '#fa7502' } }
