@@ -15,11 +15,6 @@ body {
     /* -webkit-filter: blur(10px) */
 }
 
-.navbar{
-    z-index: 100;
-    border: 1px solid;
-}
-
 
 
 .RegForm{
