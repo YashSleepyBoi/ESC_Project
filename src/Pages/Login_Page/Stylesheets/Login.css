@@ -19,12 +19,14 @@
     flex-direction: column;
     justify-content: center;
 
+    margin-top:50px;
+
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding-bottom:100px;
-    padding-top: 200px;
+    padding-top: 150px;
     padding-left: 200px;
     padding-right: 200px;
 
@@ -36,12 +38,12 @@
 label{
     text-align: left;
     padding: 0.25rem0;
-}
+}   
 
 input{
-    margin: 0.5rem 0;
+    margin: 2rem 0;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 6px;
     border: 1px solid black;
 
 }

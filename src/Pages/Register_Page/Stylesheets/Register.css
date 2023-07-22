@@ -62,11 +62,6 @@ input{
     background-color: rgb(236, 169, 37);
     padding:0.2rem;
     margin-top: 1rem;
-}
-
-
-button{
-    background-color: rgb(215, 159, 46);
     width: 50%;
     align-self: center;
     color: black;

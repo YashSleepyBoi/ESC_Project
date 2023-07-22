@@ -4,9 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from '../../firebase';
 import { collection, addDoc } from "firebase/firestore";
 
-// import {Link} from "react-router-dom";
-import Navbar from "./Components/Navbar";
-//TODO Change the Navbar route when it is done
+import {Link} from "react-router-dom";
 
 
 
@@ -14,7 +12,6 @@ import Navbar from "./Components/Navbar";
 function Register(){
 //declare hooks
 const [nameID, setName] = useState("");
-const [phoneNo,setPhone]= useState("");
 const [email,setEmail] = useState(""); // use state to set the email as an empty field
 const [password,setPassword] = useState(""); // use state to set the email as an empty field
 const [confirmPass,setConfirmPass] = useState(""); // use state to set the email as an empty field
@@ -38,7 +35,6 @@ const handleSubmit = async(e) =>{
                 name: nameID,
                 email: email,
                 bookings: null,
-
             })
 
 
@@ -66,7 +62,6 @@ const handleSubmit = async(e) =>{
         <div className="Wrapper">   
             
             <div className="bgImage"></div>
-            <Navbar className="navBar"/>
             <form className="RegForm" onSubmit={handleSubmit}>
 
                 {/* Enter the Name */}
@@ -122,7 +117,9 @@ const handleSubmit = async(e) =>{
                 {/* route to login page */}
                 <label className="changePageTxt" htmlFor="changePage">Already have an account?
                 {/* TODO 3: FIX THE ROUTER */}
+                    <Link to="/login">
                         <button className="transitionLogin"> Sign in! </button>
+                    </Link>
                 </label>
 
             </form>
