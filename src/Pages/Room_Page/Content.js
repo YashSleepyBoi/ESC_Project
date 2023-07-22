@@ -187,7 +187,7 @@ const footerData = ['Overview', 'Gallery', 'Accommodations', 'Dining', 'Experien
 const actionButtonStyle = { bgcolor: '#e4beb6', textTransform: 'capitalize', borderRadius: '1rem', color: 'black', fontSize: 'small', '&:hover': { filter: 'brightness(1.1)', bgcolor: '#e4beb6' } }
 const iconButtonStyle = { bgcolor: "#dbd8cf", width: '2rem', marginLeft: 'auto', marginBottom: '1.5rem', borderRadius: '4px', '&:hover': { filter: 'brightness(1.05)', bgcolor: '#dbd8cf' } }
 const footerButtonStyle = { color: 'black', textDecoration: 'underline', '&:hover': { fontWeight: 'bold', textDecoration: 'underline' } }
-const reserveButtonStyle = { bgcolor: '#fa7502', color: 'black', borderRadius: '1rem', fontWeight: 'bold', '&:hover': { filter: 'brightness(1.15)', bgcolor: '#fa7502' } }
+const reserveButtonStyle = { width:"100%", bgcolor: '#fa7502', color: 'black', borderRadius: '1rem', fontWeight: 'bold', '&:hover': { filter: 'brightness(1.15)', bgcolor: '#fa7502' } }
 const drawerButtonStyle = {
   width: "70%",
   borderRadius: '1rem',
