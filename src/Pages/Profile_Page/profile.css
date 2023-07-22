@@ -1,0 +1,63 @@
+.profileContainer{
+    width: 80%;
+    border: 15px solid;
+    border-radius: 20px;
+    padding: 50px;
+    margin: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 40px;
+}
+
+.background-image{
+    background-color:#f7d9b6 ;
+    /* background-image */
+}
+
+/* Edit Profile (TITLE) */
+.profileTitle{
+    width: 1024px;
+    font-size: 30px;
+    font: bold;
+    text-align:left;
+}
+
+.sectionContainer{
+    width: 100%;
+    /* margin: auto; */
+    display:inline-flex;
+    align-items:center;
+    border: 5px solid;
+}
+
+/* Name,email,ect */
+.profileText{
+    font-size: 20px;
+    font: bold;
+    width: auto;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+/* Edit Button */
+.editButton {
+    border: none;
+    background-color: inherit;
+    padding: 8px 12px;
+    font-size: 18px;
+    cursor: pointer;
+    display: inline-block;
+  }
+.editButton:hover {
+    background: #eee;
+}
+
+/* User Input (name,email,ect.) */
+.userInputContainer{
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    padding-right: 70px;
+    margin-right:auto;
+}    
