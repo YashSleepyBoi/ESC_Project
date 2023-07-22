@@ -7,6 +7,7 @@ import Contact from "./components/pages/contact";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home_Page/Home";
 import Room from "./Pages/Room_Page/Room";
+import Login from "./Pages/Login_Page/Login";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/findreserve" element={<Room/>} />
-        <Route path="/hotels" component={Hotels} />
-        <Route path="/rewards" component={Rewards} />
-        <Route path="/contact" component={Contact} />
+        <Route path="/hotels" element={<Contact/>} />
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/signup" component={Contact} />
+
       </Routes>
     </>
   );
