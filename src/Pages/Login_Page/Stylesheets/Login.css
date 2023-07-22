@@ -10,9 +10,6 @@
     /* -webkit-filter: blur(10px) */
 }
 
-
-
-
 .LoginForm{
     text-align: center;
     display: flex;
@@ -37,12 +34,12 @@
 
 label{
     text-align: left;
-    padding: 0.25rem0;
+    padding: 0.25rem0 !important;
 }   
 
 input{
-    margin: 2rem 0;
-    padding: 1rem;
+    margin: 0.5rem 0 !important;
+    padding: 0.5rem !important;
     border-radius: 6px;
     border: 1px solid black;
 

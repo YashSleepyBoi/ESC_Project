@@ -3,7 +3,7 @@ import "./Stylesheets/Register.css";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from '../../firebase';
 import { collection, addDoc } from "firebase/firestore";
-
+import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
 
 
@@ -16,10 +16,7 @@ const [email,setEmail] = useState(""); // use state to set the email as an empty
 const [password,setPassword] = useState(""); // use state to set the email as an empty field
 const [confirmPass,setConfirmPass] = useState(""); // use state to set the email as an empty field
 const [errorMsg, setErrorMsg] = useState("");
-
-// const toggleForm = (forName) => {
-//     setCurrentForm(forname);
-// }
+const navigate = useNavigate();
 
 const handleSubmit = async(e) =>{
     e.preventDefault();
@@ -39,6 +36,7 @@ const handleSubmit = async(e) =>{
 
 
             console.log(user);
+            navigate("/");
             // ...
         })
         .catch((error) => {
