@@ -17,15 +17,10 @@ import { Button } from "@mui/material";
 import "../Stylesheets/Drawer.css";
 import { drawerButtonStyle } from "../Content";
 import { Link } from "react-router-dom";
+import { links } from "../../../Constants";
 
 export default function TemporaryDrawer() {
   const anchor = "right";
-  const drawerItems = [
-    { name: "Find & Reserve", route: "/findreserve", icon: EventAvailableIcon },
-    { name: "Rewards", route: "/rewards", icon: EmojiEventsIcon },
-    { name: "Hotels", route: "/hotels", icon: HotelIcon },
-    { name: "Contact", route: "/contact", icon: AlternateEmailIcon },
-  ];
   const [state, setState] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -55,7 +50,7 @@ export default function TemporaryDrawer() {
       onKeyDown={toggleDrawer(false)}
     >
       <List>
-        {drawerItems.map((item) => (
+        {links.map((item) => (
           <Link to={item.route} key={item.name}>
             <ListItem key={item.name} disablePadding>
               <ListItemButton key={item.name}>

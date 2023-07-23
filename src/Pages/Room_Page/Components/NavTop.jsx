@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TemporaryDrawer from "./Drawer";
 import { Divider } from "@mui/material";
-import { getAuth,onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { links } from "../../../Constants";
 
-export default function NavTop({color, setColor}) {
-
-  const [isLoggedIn,setLoggedIn] = useState(false);
-  const [useruid,setUseruid] = useState("");
+export default function NavTop({ color, setColor }) {
+  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [useruid, setUseruid] = useState("");
   // Get the user logged in info
   // const auth = getAuth();
   // useEffect(()=>{
@@ -52,24 +52,16 @@ export default function NavTop({color, setColor}) {
           </Link>
         </div>
         <ul className="navbar-links">
-          <Link to="/findreserve">
-            <li>Find & Reserve</li>
-          </Link>
-          <Link to="/hotels">
-            <li>Hotels</li>
-          </Link>
-          <Link to="/rewards">
-            <li>Rewards</li>
-          </Link>
-          <Link to="/contact">
-            <li>Contact</li>
-          </Link>
-
+          {links.map((item) => {
+            return (
+              <Link to={item.route} key={item.name}>
+                <li>{item.name}</li>
+              </Link>
+            );
+          })}
           <Link to="/login">
-            <li>{isLoggedIn ? useruid : 'Sign in'}</li>
+            <li>{isLoggedIn ? useruid : "Sign in"}</li>
           </Link>
-          
-          
         </ul>
         <div className="navbar-hamburger">
           <TemporaryDrawer />

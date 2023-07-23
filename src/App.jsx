@@ -1,8 +1,6 @@
 import "./App.css";
 import NavBar from "./Pages/Room_Page/Components/RoomNavBar";
-import FindReserve from "./components/pages/findreserve";
-import Rewards from "./components/pages/rewards";
-import Hotels from "./components/pages/hotels";
+import Hotel from "./Pages/Room_Page/Hotel"
 import Contact from "./components/pages/contact";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home_Page/Home";
@@ -19,8 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/findreserve" element={<Room/>} />
         <Route path="/editprofile" element={<Profile/>}/>
-        <Route path="/hotels" component={Hotels} />
-        <Route path="/rewards" component={Rewards} />
+        <Route path="/hotels" element={<Hotel/>} />
         <Route path="/contact" component={Contact} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
