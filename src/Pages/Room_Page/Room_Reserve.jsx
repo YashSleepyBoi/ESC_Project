@@ -25,11 +25,6 @@ import { useEffect } from 'react';
 import Banner from './Components/Banner';
 import Panel from "./Components/Panels"
 import 'react-datepicker/dist/react-datepicker.css'
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
 
 
 function Room_Reserve() {
@@ -48,21 +43,7 @@ function Room_Reserve() {
 
 
 
-<<<<<<< Updated upstream
      
-=======
-    
-            <div className='room_card_holder'>
-                <CCard className="w-75">
-                    <CCardBody>
-                    <CCardTitle>Card title</CCardTitle>
-                    <CCardText>With supporting text below as a natural lead-in to additional content.</CCardText>
-                    <CButton href="#">Go somewhere</CButton>
-                    </CCardBody>
-                </CCard>
-            </div>
-        
->>>>>>> Stashed changes
         
         
         </>
