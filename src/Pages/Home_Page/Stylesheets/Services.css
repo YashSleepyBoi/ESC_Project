@@ -1,0 +1,35 @@
+.bg {
+    background-color: #f2e2c9;
+
+  }
+
+.services{
+    width: 100%;
+    /* max-width: 870px; */
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 0px;
+    gap: 45px;
+    z-index: 1;
+}
+
+.service-item{
+    position: relative;
+    font-weight: bold;
+    font-size: 50px;
+    margin-top: 60px;
+    max-width: 300px;
+    color: rgb(40, 16, 6);
+    border-radius: 20px;
+    border-color: black;
+    overflow: hidden;
+    height: 260px;
+    flex:1
+  }
+
+  .text-p{
+    margin-top: 15px;
+    font-size: 18px;
+    color: rgb(40, 16, 6);
+  }

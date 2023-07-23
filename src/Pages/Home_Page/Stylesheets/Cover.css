@@ -1,0 +1,22 @@
+.main-cover {
+    height: rem;
+    padding: 0;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+  }
+
+.heading {
+    font-size: 180px;
+    color: white;
+    text-align: right;
+    position: absolute;
+    top: 0px;
+    bottom: 400px;
+    left: 0;
+    right: 100px;
+    height: fit-content;
+    margin: auto;
+    text-shadow: 0 0 25px gray;
+}
+

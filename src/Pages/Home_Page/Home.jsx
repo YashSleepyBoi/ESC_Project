@@ -1,29 +1,26 @@
-import "./home.css";
-import Featured from "./Components/Featured";
-import FeaturedProperties from "./Components/FeaturedProperties";
-// import Header from "./Components/header/Header";
-// import Navbar from "./Components/navbar/Navbar";
-import MailList from "./Components/mailList/MailList";
+import React from "react";
+import "./Home.css";
+import Card from "/src/components/Card.jsx";
+import Cover from "/src/Pages/Home_Page/Components/Cover.jsx";
+import Features from "/src/Pages/Home_Page/Components/Features.jsx";
+import Services from "/src/Pages/Home_Page/Components/Services.jsx";
+import VerticalCardSwiper from "/src/Pages/Home_Page/Components/Reviews.jsx";
+import MailList from "/src/Pages/Home_Page/Components/MailList.jsx";
+import { Link } from "react-router-dom";
 
-// import HeaderEdit from "./Components/header/HeaderEdit";
-
-const Home = () => {
-  return (
-    <div>
-      {/* <Navbar/> */}
-      {/* <Header/> */}
-      <div className="homeContainer">
-        <h1 className="homeTitle">Browse by property type</h1>
-        <Featured/>
-        <h1 className="homeTitle">Hotels guests love</h1>
-        <FeaturedProperties/>
-        <MailList/>
-        {/* <Footer/> */}
-      </div>
-    </div>
-  );
+const Home = () =>{
+    return (
+        <div className="home-container">
+            <Cover />
+            <div className="services"><Services /></div>
+            <div className="hotel-cont"><p className="hotel-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '40px', fontWeight: 'bold' }}>Our Top Hotels</p>
+            <Features /></div>
+            {/* <div className="maillist-cont"><p className="mail-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '0px', fontWeight: 'bold' }}><br/>What People Say</p>
+            <MailList/></div> */}
+            <div className="reviews-cont"><p className="reviews-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '0px', fontWeight: 'bold' }}><br/>What People Say</p>
+            <VerticalCardSwiper/></div>
+        </div>
+    );
 };
 
 export default Home;
-
-
