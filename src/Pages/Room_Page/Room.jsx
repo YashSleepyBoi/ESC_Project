@@ -110,9 +110,7 @@ export default function Room() {
         <div className="room-grid">
           <ImageGrid isSmall={isSmall} />
         </div>
-        <div className="footer">
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </>
   );
