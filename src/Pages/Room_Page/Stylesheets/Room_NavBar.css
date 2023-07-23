@@ -100,13 +100,13 @@
     gap: 2rem;
 }
 
-.hotel-title{
+.hotel-name{
     font-size: 1rem;
     font-weight: bold;
 }
 
 @media only screen and (max-width: 700px){
-    .hotel-title{
+    .hotel-name{
         font-size: 0.75rem;
     }
     .navbar-bottom.links{
@@ -116,7 +116,7 @@
 }
 
 @media only screen and (max-width: 400px){
-    .hotel-title{
+    .hotel-name{
         font-size: 0.6rem;
     }
     .navbar-bottom.links{

@@ -10,7 +10,7 @@ h2{
 }
 
 p{
-    font-size: 0.75rem !important;
+    font-size: 0.75rem;
 }
 
 .banner-container {
@@ -236,36 +236,6 @@ p{
 
 .action-button{
     margin: 1rem;
-}
-
-.footer{
-    display: flex;
-    flex-direction: column;
-    background-color: #dbd8ce;
-    padding: 2.5rem;
-}
-
-.footer-content{
-    text-align: left;
-    margin: 0 16.5rem;
-    max-width: 50vw;
-    cursor: pointer;
-}
-
-.footer-text{
-    font-size: small;
-    text-decoration: underline;
-}
-
-.footer-text:hover{
-    font-weight: 500;
-}
-
-@media only screen and (max-width: 600px){
-    .footer-content{
-        margin: 0;
-        padding: 0.5rem;
-    }
 }
 
 .transparent-overlay {
