@@ -1,4 +1,3 @@
-
 // Import Statements
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -20,6 +19,9 @@ import H_Information from './Components/H_Information';
 import Map from './Components/Map';
 import Footer from "./Components/footer"
 import { useEffect } from 'react';
+import HotelRating from './Components/HotelsRating';
+import Suite from './Components/suite';
+import NavBar from "./Components/RoomNavBar";
 
 function Room() {
     const hotel_name="SHERATON KAGOSHIMA"
@@ -61,7 +63,7 @@ function Room() {
 
     
     return (
-        <>
+        <div data-testid="hotel_main">
             {/* TODO 1.1 : FIX THE ROUTER USING A PROPER REACT ROUTER */}
             
             {/* TODO 1.2 : FIX THE BUTTONS :: DONE*/}
@@ -88,7 +90,7 @@ function Room() {
 
                     
                         
-                    <div id="arrow_2" class="arrow-wrapper" >
+                    <div id="arrow_2" class="arrow-wrapper-2" >
                         <div class="arrow arrow--left">
                             
                             <ButtonBack >BACK</ButtonBack>
@@ -115,10 +117,8 @@ function Room() {
             <div className='hotel_descript'>
             <h3>WELCOME TO SHERATON KAGOSHIMA</h3>
 
-            <p>All 228 spacious guest rooms offer spectacular views of Sakurajima and Kagoshima city. For guests staying in Club Rooms and Suites located on the upper floors, the Club Lounge offers an at-home atmosphere<span id="dots">...<button onClick={myFunction} id="myBtn">See More</button></span><span id="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
+            <p>All 228 spacious guest rooms offer spectacular views of Sakurajima and Kagoshima city. For guests staying in Club Rooms and Suites located on the upper floors, the Club Lounge offers an at-home atmosphere<span id="dots">...<button onClick={myFunction} id="myBtn"data-testid="myBtn">See More</button></span><span id="more" data-testid="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
             </div>
-
-
             {/* TODO 1.4 : ROOMS AND SUITS SLIDER */}
             <div style={{ background: "#fbfbfb" }} className="rooms">
             <Card_Slider data={temp_data}></Card_Slider>
@@ -126,12 +126,13 @@ function Room() {
 
             <CarouselProvider
                 naturalSlideWidth={100}
-                naturalSlideHeight={50}
+                naturalSlideHeight={40}
                 totalSlides={4}
                 isPlaying={true}
                 interval={6000}
                 infinite={true}
                 lockOnWindowScroll={true}
+                className="car_2"
                 
             >
                 <Slider >
@@ -208,7 +209,7 @@ function Room() {
             
 
             <Footer />
-        </>
+        </div>
         
     )
 }
