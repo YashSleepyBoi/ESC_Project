@@ -18,9 +18,11 @@ export default function Footer() {
         <Grid container spacing={2}>
           {footerData.map((item) => {
             return (
-              <Grid item xs={12} sm={6} md={4}>
+              <div className="grid-test" role="gridcell">
+                <Grid item xs={12} sm={6} md={4}>
                 <p className="footer-text">{item}</p>
               </Grid>
+              </div>
             );
           })}
         </Grid>

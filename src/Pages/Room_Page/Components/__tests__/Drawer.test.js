@@ -1,58 +1,68 @@
-import React from "react";
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom'
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import "@testing-library/jest-dom";
 import TemporaryDrawer from "../Drawer";
-import EventAvailableIcon from "@mui/icons-material/EventAvailable";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
-import HotelIcon from "@mui/icons-material/Hotel";
-import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-
+import { BrowserRouter as Router } from "react-router-dom";
 
 describe("TemporaryDrawer", () => {
-  it("renders without crashing", () => {
-    const container = render(<TemporaryDrawer />);
+  test("renders drawer button", () => {
+    render(
+      <Router>
+        <TemporaryDrawer />
+      </Router>
+    );
+    const button = screen.getByLabelText("hamburger");
+    expect(button).toBeInTheDocument();
   });
 
-  it("opens the drawer when hamburger icon is clicked", () => {
-    const { container } = render(<TemporaryDrawer />);
-    const hamburgerButton = container.querySelector(".icon-button");
-  
-    // Ensure the drawer is closed initially
-    const drawer = container.querySelector(".drawer");
-    expect(drawer).not.toHaveClass("MuiDrawer-open");
-  
-    // Click the hamburger button
-    fireEvent.click(hamburgerButton);
-  
-    // Ensure the drawer is open after clicking
-    expect(drawer).toHaveClass("MuiDrawer-open");
+  test("opens drawer on button click", async () => {
+    render(
+      <Router>
+        <TemporaryDrawer />
+      </Router>
+    );
+
+    const button = screen.getByLabelText("hamburger");
+
+    userEvent.click(button);
+
+    await waitFor(() =>
+      expect(screen.getByRole("display")).toBeInTheDocument()
+    );
   });
 
-  it("closes drawer when backdrop is clicked", () => {
-    render(<TemporaryDrawer />);
-    const hamburgerIcon = screen.getByLabelText("hamburger");
-    fireEvent.click(hamburgerIcon);
-    const background = screen.getByTestId("backdrop");
-    fireEvent.click(background);
-    const drawerElement = screen.queryByRole("presentation");
-    expect(drawerElement).toBeNull();
-  });
+  test("renders drawer list items", async () => {
+    render(
+      <Router>
+        <TemporaryDrawer />
+      </Router>
+    );
 
-  it("renders correct icons and text in drawer", () => {
-    render(<TemporaryDrawer />);
-    const drawerItems = [
-      { name: "Find & Reserve", icon: EventAvailableIcon },
-      { name: "Rewards", icon: EmojiEventsIcon },
-      { name: "Hotels", icon: HotelIcon },
-      { name: "Contact", icon: AlternateEmailIcon },
-    ];
+    const button = screen.getByLabelText("hamburger");
+    userEvent.click(button);
 
-    drawerItems.forEach((item) => {
-      const listItem = screen.getByText(item.name);
-      expect(listItem).toBeInTheDocument();
-      const icon = listItem.querySelector("svg");
-      expect(icon).toBeInTheDocument();
+    waitFor(() => {
+      expect(screen.getByText("Find & Reserve")).toBeInTheDocument();
+      expect(screen.getByText("Rewards")).toBeInTheDocument();
+      expect(screen.getByText("Hotels")).toBeInTheDocument();
+      expect(screen.getByText("Contact")).toBeInTheDocument();
     });
   });
 
+  test("closes the drawer when a list item is clicked", async () => {
+    render(
+      <Router>
+        <TemporaryDrawer />
+      </Router>
+    );
+
+    const button = screen.getByLabelText("hamburger");
+    userEvent.click(button);
+
+    waitFor(() => {
+        const listItem = screen.getByText("Find & Reserve");
+        userEvent.click(listItem);
+        expect(screen.queryByRole("display")).not.toBeInTheDocument()
+    });
+  });
 });

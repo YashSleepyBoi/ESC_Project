@@ -33,8 +33,9 @@ export default function ImageGrid({isSmall}) {
               actionIcon={
                 <div className="action-button">
                   <Button
+                    role="Button"
                     variant="contained"
-                    disableElevation="true"
+                    disableElevation={false}
                     sx={actionButtonStyle}
                     onClick={() => {
                       isActive(true);
@@ -47,6 +48,7 @@ export default function ImageGrid({isSmall}) {
               }
               actionPosition="left"
             />
+            <div className="Modal" data-testid="Modal Test">
             {active && (
               <Modal
                 closeModal={isActive}
@@ -54,6 +56,7 @@ export default function ImageGrid({isSmall}) {
                 content={params.content}
               />
             )}
+            </div>
           </ImageListItem>
         ))}
       </ImageList>
