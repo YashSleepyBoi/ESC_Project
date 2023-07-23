@@ -1,5 +1,10 @@
 
-
+.arrow-wrapper:last-of-type{
+    justify-content: space-between;
+    left:12rem;
+    width: 20%;
+    top:-5rem;
+}
 .arrow-wrapper {
     position: relative;
     top: -4rem;
@@ -10,9 +15,21 @@
     height: fit-content;
     margin: 0%;
   }
+.arrow-wrapper-2{
+    position: relative;
+    top: -4rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    height: fit-content;
+    margin: 0%;
+}
 .arrow-wrapper:hover h1 {
     opacity: 1;
   }
+
+
   #arrow_2 .arrow {
     color: #fff;
     cursor: pointer;
@@ -127,7 +144,34 @@
     grid-template-columns: repeat(2, 1fr);
     
 }
-
+.fade {
+    transition: fade-in 3s ease-in 0;
+    opacity: 1;
+    animation: fade-in 3s ease-in forwards;
+    -webkit-animation: fade-in 3s ease-in forwards;
+    -webkit-transition: fade-in 3s ease-in 0;
+    -moz-transition: fade-in 3s ease-in 0;
+    -ms-transition: fade-in 3s ease-in 0;
+    -o-transition: fade-in 3s ease-in 0;
+}
+  
+  @keyframes fade-in {
+    0% {
+        opacity: 0;
+      }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes fade-out {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
 .holder{
     justify-content: center;
     flex-direction: column;
@@ -136,7 +180,12 @@
     display: flex;
     padding: 5%;
 }
-
+.view_holder{
+    margin-top: 3%;
+    background-color: black;
+    height: 100%;
+    padding: 0%;
+}
 .map_holder{
     background-color: black;
     color: #fff;
@@ -178,7 +227,13 @@
     .map{
         height: 20rem;
     }
-    
+    .arrow-wrapper{
+        visibility: hidden;
+    }
+    .car_2{
+       font-size: 5px;
+    }
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -197,6 +252,9 @@
     }
     .map{
         height: 30rem;
+    }
+    .arrow-wrapper{
+        visibility: hidden;
     }
 }
 
@@ -217,6 +275,9 @@
     .map{
         height: 35rem;
     }
+    .arrow-wrapper{
+        visibility:hidden;
+    }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -236,6 +297,10 @@
     .map{
         height: 40rem;
     }
+    .arrow-wrapper{
+        visibility: visible;
+    }
+    
    
 }
 
@@ -256,4 +321,10 @@
     .map{
         height: 40rem;
     }
-}
+    .arrow-wrapper{
+        visibility: visible;
+        
+    }
+
+   
+}   
