@@ -69,8 +69,9 @@
   /* Hover text button */
   .buttontext {
     background-color: #7C9D96; /* Button background */
+    width:160px;
     color: white; /* Button Text */
-    font-size: 10px; /* Button Text Font Size*/
+    font-size: 15px; /* Button Text Font Size*/
     padding: 16px 32px;
   }
 
