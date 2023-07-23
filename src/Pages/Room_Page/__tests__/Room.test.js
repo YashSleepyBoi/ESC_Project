@@ -3,9 +3,6 @@ import { render } from "@testing-library/react";
 import '@testing-library/jest-dom'
 import Room from "../Room";
 
-// Mock any dependencies or modules used in the Room component if needed
-// jest.mock('module-name');
-
 describe("Room Component", () => {
   test("renders the component without errors", () => {
     const { container } = render(<Room />);

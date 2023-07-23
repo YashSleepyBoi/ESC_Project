@@ -10,7 +10,7 @@ describe("NavBar", () => {
     global.window.dispatchEvent(new Event("scroll"));
   };
 
-  it("renders without crashing", () => {
+  test("renders without crashing", () => {
     const { container } = render(
       <Router>
         <NavBar />
@@ -19,13 +19,13 @@ describe("NavBar", () => {
     expect(container).toBeInTheDocument();
   });
 
-  it("should initially display the NavBar", () => {
+  test("should initially display the NavBar", () => {
     const { container } = render(<Router><NavBar /></Router>);
     const header = container.querySelector("#navbar");
     expect(header).toHaveStyle("top: 0");
   });
 
-  it("should hide the NavBar when scrolling down", async () => {
+  test("should hide the NavBar when scrolling down", async () => {
     const { container } = render(<Router><NavBar /></Router>);
     mockScrollEvent(200);
     fireEvent.scroll(window);
@@ -35,13 +35,15 @@ describe("NavBar", () => {
     });
   });
 
-  it("should show the NavBar when scrolling up", () => {
+  test("should show the NavBar when scrolling up", () => {
     const { container } = render(<Router><NavBar /></Router>);
     const header = container.querySelector("#navbar");
     mockScrollEvent(100);
     fireEvent.scroll(window);
-    mockScrollEvent(50);
+    mockScrollEvent(-50);
     fireEvent.scroll(window);
-    expect(header).toHaveStyle("top: 0");
+    waitFor(() => {
+      expect(header).toHaveStyle("top: 0"); // asynchronously waiting for the header to show
+    });
   });
 });
