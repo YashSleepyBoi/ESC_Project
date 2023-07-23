@@ -1,0 +1,27 @@
+/* VerticalCardSwiper.css */
+
+
+.container {
+    margin: 0 auto;
+    padding: 20px;
+    
+  }
+  
+.card{
+  max-width: 600px;
+  font-size: 35px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.p-header{
+  font-size: 25px; 
+  color:rgb(40, 16, 6);
+  font-weight: bold;
+}
+
+.p-content{
+  color:rgb(40, 16, 6);
+  font-size: 18px;
+}
+ 
