@@ -5,7 +5,7 @@ const secretKey = 'sk_test_51NVr6zGQefOqlens4VR9ldLaxLaDM2xNpnnVNbHIT7tj3wNYaBo2
 const stripe = Stripe(secretKey);
 
 
-// NOTE STRIPE DOES NOT ALLOW DELETION OF PRODUCT AFTER A PRICE HAS BEEN ASSOCIATED WITH IT SO THE WORKAROUND IS TO SET IT TO INACTIVE
+// NOTE STRIPE DOES NOT ALLOW DELETION OF PRODUCT AFTER A PRICE HAS BEEN ASSOCIATED WITH IT SO THE WORKAROUND IS TO SET PRICES TO INACTIVE
 
 export default async function  deactivateProduct(productID){
     //Delete a product based on the given id
