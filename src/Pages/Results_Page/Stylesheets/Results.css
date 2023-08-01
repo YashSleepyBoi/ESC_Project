@@ -1,0 +1,120 @@
+.hotel-container {
+    border: 1px solid gray;
+    background-color: whitesmoke;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 70px;
+    margin: 10px;
+  }
+  
+  .hotel-image {
+    margin-left: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  
+  .hotel-features{
+    font-size: 15px;
+    padding-top: 7px;
+    font-weight: 350;
+    color: gray;
+  }
+  
+  .siDesc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 2;
+  }
+  
+  .hotel-title {
+    font-size: 23px;
+    color: black;
+    font-weight: 400;
+  }
+  
+  .siDistance {
+    font-size: 12px;
+  }
+  
+  .siTaxiOp {
+    font-size: 12px;
+    background-color: #008009;
+    color: white;
+    width: max-content;
+    padding: 3px;
+    border-radius: 5px;
+  }
+  
+  .siSubtitle{
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .siCancelOp{
+    font-size: 12px;
+    color: #008009;
+    font-weight: bold;
+  }
+  
+  .siCancelOpSubtitle{
+    font-size: 12px;
+    color: #008009;
+  }
+  
+  .hotel-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between
+  }
+  
+  .siRating{
+    display: flex;
+    justify-content: space-between
+  }
+  
+  .siRating>span{
+    font-weight: 500;
+  }
+  .siRating>button{
+   background-color: #003580;
+   color: white;
+   font-size: 15px;
+   padding: 10px;
+   font-weight: bold;
+   border: none;
+  }
+  
+  .siDetailTexts{
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .siPrice{
+    font-size: 24px;
+  }
+  
+  .siTaxOp{
+    font-size: 12px;
+    color: gray;
+  }
+  
+  .siCheckButton{
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 10px;
+    border: black;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
