@@ -123,7 +123,15 @@
     
     
 }
+.hotel_rooms_holder{
+    
+    width: 100%;
+    display: flex;
+        
+    background-color:#fbfbfb ;
+    justify-content: center;
 
+}
 .rooms{
     display: flex;
     flex-direction: column;

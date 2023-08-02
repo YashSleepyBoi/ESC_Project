@@ -6,13 +6,15 @@ import './index.css'
 import Room from './Pages/Room_Page/Room.jsx'
 import Home from "/src/Pages/Home_Page/Home.jsx"
 import { BrowserRouter } from 'react-router-dom'
+import Room_Reserve from './Pages/Room_Page/Room_Reserve.jsx'
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* <BrowserRouter>
     <App/>
-    </BrowserRouter>
+    </BrowserRouter> */}
+    <Room_Reserve></Room_Reserve>
   </React.StrictMode>,
 )
