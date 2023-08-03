@@ -1,12 +1,11 @@
 import React from "react";
 import "./Home.css";
-import Card from "/src/components/Card.jsx";
-import Cover from "/src/Pages/Home_Page/Components/Cover.jsx";
-import Features from "/src/Pages/Home_Page/Components/Features.jsx";
-import Services from "/src/Pages/Home_Page/Components/Services.jsx";
-import VerticalCardSwiper from "/src/Pages/Home_Page/Components/Reviews.jsx";
-import Footer from "/src/Pages/Room_Page/Components/RoomFooter.jsx";
-import MailList from "/src/Pages/Home_Page/Components/MailList.jsx";
+import Cover from "./Components/Cover.jsx";
+import Features from "./Components/Features.jsx";
+import Services from "./Components/Services.jsx";
+import VerticalCardSwiper from "./Components/Reviews.jsx";
+import Footer from "../Room_Page/Components/RoomFooter.jsx";
+// import MailList from "./Components/Cover.jsx";
 import { Link } from "react-router-dom";
 
 const Home = () =>{
