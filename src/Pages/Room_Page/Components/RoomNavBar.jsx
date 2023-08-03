@@ -32,7 +32,7 @@ export default function NavBar() {
       <div className="header">
         <div
           className={color ? "navbar-scroll" : "navbar"}
-          style={{ top: show ? "0" : "-81px" }}
+          style={{top: show ? "0" : "-81px"}}
           id="navbar"
         >
           <NavTop color={color} setColor={setColor}/>

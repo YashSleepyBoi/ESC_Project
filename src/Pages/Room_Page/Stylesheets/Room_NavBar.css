@@ -55,21 +55,6 @@
 }
 
 
-@media only screen and (max-width: 700px){
-    .navbar-top{
-        padding: 1rem;
-    }
-
-    .navbar-links{
-        gap: 0.75rem;
-        font-size: 0.75rem;
-    }
-
-    .navbar-logo{
-        max-width: 100px;
-    }
-}
-
 @media only screen and (max-width: 500px){
     .navbar-links{
         display:none;
