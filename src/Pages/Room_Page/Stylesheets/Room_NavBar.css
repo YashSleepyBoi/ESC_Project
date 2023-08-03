@@ -100,6 +100,26 @@
     gap: 2rem;
 }
 
+.room-pax-container{
+    width: 50%;
+    height: 5rem;
+}
+
+.date-picker{
+    width: 20%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 10px;
+    padding: 0 15px;
+    box-shadow: 0px 0px 8px #ddd;
+    background-color: orange !important; 
+    display: flex;
+    align-items: center;
+    float: left;
+    margin: 15px 10px;
+  }
+
+
 .hotel-name{
     font-size: 1rem;
     font-weight: bold;

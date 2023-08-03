@@ -1,7 +1,7 @@
 import "../Stylesheets/Room_NavBar.css";
 import { useEffect, useState } from "react";
 import NavTop from "./NavTop";
-import NavBot from "./NavBot";
+import NavBot from "./NavBot1";
 
 export default function NavBar() {
 
@@ -37,6 +37,8 @@ export default function NavBar() {
         >
           <NavTop color={color} setColor={setColor}/>
           <NavBot />
+          
+          {/* <QuickSearch/> */}
         </div>
       </div>
     </>
