@@ -78,13 +78,13 @@ const navigate = useNavigate();
                     </Link>
                 </label>
 
-                <button onClick={ () =>{
+                {/* <button onClick={ () =>{
                             //TODO Properly handle signout
                             signOut(auth).then(() => {
                                 // Sign-out successful.
                             }).catch((error) => {
                                 // An error happened.
-                            })}}>Signout</button>
+                            })}}>Signout</button> */}
 
             </form>
 

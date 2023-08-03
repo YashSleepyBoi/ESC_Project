@@ -1,43 +1,41 @@
-
 import './profile.css'
 
-const Profile = () => {
+const EditProfile = () => {
   return (
     <div>
         <div className='bgImage'></div>
         <div className='profileContainer'>
-            <div className='sectionContainer'>
-                <div className='profileTitle'>Personal Particulars</div>
-                <button className='editButton'>Edit Particulars</button>
-            </div>
+            <div className='profileTitle'>Edit Profile</div>
 {/* *************************************************************************** */}
             <div className='sectionContainer'>
                 <div className='profileText'>Name</div>
-                {/* Input Name from database */}
-                <div className='userInfoText'><b>Alex</b></div>
+                {/* <div className='userInputContainer'>
+                    <input type='text' placeholder='Alex Berry'/>
+                </div> */}
+                {/* <button className='editButton'>Edit</button> */}
             </div>
 {/* *************************************************************************** */}
             <div className='sectionContainer'>
                 <div className='profileText'>Email</div>
-                {/* Input email from database */}
-                <div className='userInfoText'><b>alex@email.com</b></div>
+                {/* <div className='userInputContainer'>
+                    <input type='text' placeholder='alexberry@mail.com'/>
+                </div> */}
+                {/* <button className='editButton'>Edit</button> */}
             </div>
 {/* *************************************************************************** */}
             <div className='sectionContainer'>
                 <div className='profileText'>Password</div>
-                {/* Input password from database */}
-                <div className='userInfoText'><b>Password123</b></div>
+                {/* <div className='userInputContainer'>
+                    <input type='text' placeholder='**********'/>
+                </div> */}
+                {/* <button className='editButton'>Edit</button> */}
             </div>
 {/* *************************************************************************** */}
-            <div className='profileTitle'>Booking History</div>
-                <div className='bookingContainer'>
-                    No History
-                    {/* Input booking history from database */}
-                </div>
+
 {/* *************************************************************************** */}
         </div>
     </div>
   )
 }
 
-export default Profile;
+export default EditProfile;

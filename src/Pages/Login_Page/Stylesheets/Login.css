@@ -1,6 +1,6 @@
 
 .bgImage{
-    background-image: url("https://images.pexels.com/photos/2649403/pexels-photo-2649403.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-image: url("https://i.pinimg.com/564x/7e/be/e1/7ebee115934ba6aed7ae9514288f177a.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size:cover;
@@ -22,13 +22,14 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding-bottom:100px;
-    padding-top: 150px;
+    padding-bottom:20px;
+    padding-top: 50px;
     padding-left: 200px;
     padding-right: 200px;
 
-    border:1px solid black;
-    background-color: #A1CCD1;
+    border: none;
+    background-color: #f2e2c9;
+    border-radius: 20pt;
     box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
 }
 
@@ -50,6 +51,7 @@ input{
     padding:0.2rem;
     margin-top: 1rem;
     background-color: rgb(255, 186, 47);
+    border: none;
 }
 
 
@@ -69,7 +71,7 @@ button{
 }
 
 .transitionReg{
-    color:blue;
+    color:darkorange;
     background: none;
     text-decoration: underline;
     border: none;
