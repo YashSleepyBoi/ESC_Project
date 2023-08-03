@@ -77,8 +77,8 @@ const navigate = useNavigate();
                         <button className="transitionReg"> Create account </button>
                     </Link>
                 </label>
-
-                {/* <button onClick={ () =>{
+{/* 
+                <button onClick={ () =>{
                             //TODO Properly handle signout
                             signOut(auth).then(() => {
                                 // Sign-out successful.

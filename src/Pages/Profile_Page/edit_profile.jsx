@@ -3,7 +3,7 @@ import './profile.css'
 const EditProfile = () => {
   return (
     <div>
-        <div className='bgImage'></div>
+        <div className='background-image'></div>
         <div className='profileContainer'>
             <div className='profileTitle'>Edit Profile</div>
 {/* *************************************************************************** */}
