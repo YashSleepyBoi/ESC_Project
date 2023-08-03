@@ -1,5 +1,5 @@
 // this is the room page
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Accordion from "./Components/Accordion";
@@ -24,7 +24,7 @@ import Footer from "./Components/RoomFooter";
 
 export default function Room() {
   // retrieving the params of the item in modal
-
+  const [scroll, setScroll] = useState(0)
   const theme = useTheme();
   const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
 
@@ -46,7 +46,18 @@ export default function Room() {
   // useEffect(() => {
   //   fetchUserData();
   // }, [])
+  // style={{transform: `translateY(-${scroll/100}%) scale(1.${scroll/100})`}}
 
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     setScroll(window.scrollY);
+  //   });
+  //   return () => {
+  //     window.removeEventListener("scroll", () => {
+  //       setScroll(window.scrollY);
+  //     });
+  //   }
+  // }, []);
   return (
     <>
       <div

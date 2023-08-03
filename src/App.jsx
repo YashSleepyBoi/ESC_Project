@@ -8,6 +8,7 @@ import Room from "./Pages/Room_Page/Room";
 import Register from "./Pages/Register_Page/Register";
 import Login from "./Pages/Login_Page/Login";
 import Profile from "./Pages/Profile_Page/profile";
+import Results from "./Pages/Results_Page/Results";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/contact" component={Contact} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/results" element={<Results/>} />
       </Routes>
     </>
   );
