@@ -79,16 +79,16 @@ function Results() {
           <div className="hotel-title">SGD {Math.round(hotel.price)}</div>
 
             {/* TODO: Linking to booking page */}
-            {/* <Link to="/findreserve">
-            <Button
-              sx={{
+            <Link to="/roomreserve">
+            <Button id={hotel.id} 
+              sx={{ 
                 ...reserveButtonStyle,
                 fontSize: isSmall ? "0.75rem" : "auto",
               }}
             >
               Book Now
             </Button>
-            </Link> */}
+            </Link>
 
             <script>
               {/* const baseUrl = "http://localhost:8383/id"

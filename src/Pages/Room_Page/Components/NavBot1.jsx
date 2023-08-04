@@ -8,15 +8,36 @@ import DatePPicker from "../../Search_Page/Components/DatePicker";
 import Collapsible from "../../Search_Page/Components/Collapsible";
 import "../../Search_Page/Stylesheets/DatePicker.css"
 
-
 export default function NavBot() {
-    const isSmall = useMediaQuery('(max-width:700px)')
-    const [startDate, setStartDate] = useState(new Date("2023/08/1"));
-    const [endDate, setEndDate] = useState(new Date("2023/08/2"));
+  const isSmall = useMediaQuery('(max-width:700px)')
+  const [startDate, setStartDate] = useState(new Date("2023/10/2"));
+  const [endDate, setEndDate] = useState(new Date("2023/10/3"));
 
-    const [dest, setDest] = useState("")
-    const [room, setRoom] =useState(1)
-    const [pax, setPax] =useState(1)
+  const [dest, setDest] = useState("")
+  const [room, setRoom] =useState(1)
+  const [pax, setPax] =useState(1)
+
+    let input_dict = {
+      "dest_id": dest, 
+      "check_in": startDate, 
+      "check_out": endDate, 
+      "rooms": room, 
+      "guests": pax
+    }
+
+  function setInputs(input) {
+    fetch("http://localhost:8000/input", {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      "Content-type": "application/json; charset=UTF-8"
+    },
+    body: JSON.stringify(input_dict)
+    }).then((response) => response.json()) // Parse the response as JSON
+    .then((data) => console.log(data)) // Do something with the data
+    .catch((error) => console.error(error));
+  }
+
     
 
   return (
@@ -38,8 +59,9 @@ export default function NavBot() {
             <CallIcon />
             +65 -68181888
           </a> */}
-          <Link to="/findreserve">
-            <Button
+          <Link to="/results">
+            <Button onClick={() => setInputs(input_dict)}
+            // <Button
               sx={{
                 ...reserveButtonStyle,
                 fontSize: isSmall ? "0.75rem" : "auto",

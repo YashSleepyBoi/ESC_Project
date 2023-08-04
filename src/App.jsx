@@ -10,6 +10,7 @@ import Login from "./Pages/Login_Page/Login";
 import Profile from "./Pages/Profile_Page/profile";
 import Results from "./Pages/Results_Page/Results";
 import EditProfile from "./Pages/Profile_Page/edit_profile";
+import Room_Reserve from "./Pages/Room_Page/Room_Reserve";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/results" element={<Results/>} />
+        <Route path="/roomreserve" element={<Room_Reserve/>} />
       </Routes>
     </>
   );
