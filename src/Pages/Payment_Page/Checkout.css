@@ -1,0 +1,35 @@
+
+
+/* Wrapper styles */
+.Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #D7C3A3;
+  }
+  
+/* Label styles */
+  label {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: rgb(40, 16, 6);
+  }
+
+/* Button styles */
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #f2e2c9; /* Set the background color */
+    color: #000; /* Set the text color */
+    border: none;
+    border-radius: 5px; /* Border-radius creates rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #f2e2c9;
+  }
+  

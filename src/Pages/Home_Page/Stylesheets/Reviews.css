@@ -17,13 +17,13 @@
 
 .p-header{
   font-size: 25px; 
-  margin-top: 5px;
+  margin-top: 20px;
   color:rgb(40, 16, 6);
   font-weight: bold;
 }
 
 .p-content{
-  margin-top: 15px;
+  margin: 20px;
   color:rgb(40, 16, 6);
   font-size: 18px;
 }

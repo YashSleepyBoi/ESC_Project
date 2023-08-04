@@ -1,7 +1,9 @@
+import React from 'react';
 import {loadStripe} from '@stripe/stripe-js';
-import "./Stylesheets/Checkout.css";
+import "./Checkout.css";
+import BookingSummary from "./Components/BookingSummary";
+import 'react-router-dom';
 
-//
 const stripePromise = await loadStripe('pk_test_51NVr6zGQefOqlensGMp4GxW6VXWQRZmch5abWVQEnUpnYoDSJinGiCaBtQdCdQScarmDZz5zATvSchFYbKfVN42000ZBlrzXGW');
 // let stripePromise;
 // const getStripe =() =>{
@@ -22,6 +24,7 @@ const Checkout = () => {
     const checkoutOptions = {
         lineItems: [item],
         mode: "payment",
+        //TODO: Make sure this works as intended
         successUrl: `${window.location.origin}/success`,
         cancelUrl: `${window.location.origin}/cancel`
     };
@@ -34,13 +37,16 @@ const Checkout = () => {
         console.log(stripe)
         const { error } = await stripe.redirectToCheckout(checkoutOptions);
         console.log("Stripe Checkout Error:", error);
+        
     };
 
     return (
-        <div className="Wrapper">
-            <label>PRICE: $0.01</label>
-            <button onClick={redirectToCheckout}>BUY</button>
-        </div>
+            <div className="Wrapper">
+                <div className='checkout-summary'><BookingSummary/></div>
+                {/* <label>Total: $0.01</label> */}
+                <button onClick={redirectToCheckout}>Confirm Booking</button>
+            </div>
+        
     );
 
 

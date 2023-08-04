@@ -25,6 +25,10 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/results" element={<Results/>} />
+        <Route path="/payment" element={<Payment/>} />
+        {/* TODO: remove success and cancel routes since they shouldn't be accessible via router */}
+        <Route path="/success" element={<Success/>} />
+        <Route path="/cancel" element={<Cancel/>} />
       </Routes>
     </>
   );

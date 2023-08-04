@@ -143,10 +143,25 @@ async function fetchDataAsync2(func) {
         });
 }
 
+async function fetchDataAsyncDisplay(func) {
+    func.then(data => {
+        // post to localhost:8383/display
+        app.get("/display", (req, res) => {
+            //res.json(test_output)
+            // res.set("Access-Control-Allow-Origin","*")
+            res.json(data)
+        })
+        return data;
+    })
+        .catch(error => {
+            console.log("Error fetching data:", error);
+        });
+}
+
 // WHEN 'BOOK NOW" IS CLICKED: replace "0vcz" with hotel id
 fetchDataAsync2(collateHotelInfo("0vcz",dest_id,check_in,check_out,curr,guests));
 
-
+fetchDataAsyncDisplay(searchResults("RsBU",dest_id,check_in,check_out,curr,guests));
 
 
 
