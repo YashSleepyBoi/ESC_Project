@@ -10,7 +10,7 @@ import { useState } from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import { convert } from 'html-to-text';
-
+import Footer from "./Components/RoomFooter";
 import classes from "./Stylesheets/Room.module.css"
 import "react-image-gallery/styles/css/image-gallery.css";
 import "./Stylesheets/Room.css"
@@ -18,7 +18,7 @@ import Card_Slider from './Components/Card_Slider';
 import Ammenities from './Components/Ammenities';
 import H_Information from './Components/H_Information';
 import Map from './Components/Map';
-import Footer from "./Components/footer"
+
 import { useEffect } from 'react';
 import HotelRating from './Components/HotelsRating';
 import Suite from './Components/suite';
@@ -26,8 +26,9 @@ import NavBar from "./Components/RoomNavBar";
 import ImageGallery from "react-image-gallery";
 
 
-function Room() {
-
+function Room({setBottom}) {
+    const host="diH7"
+    setBottom(false);
     const images = [
         {
           original: "https://picsum.photos/id/1018/1000/600/",
@@ -81,7 +82,7 @@ function Room() {
     
   function getHotels() {
     // needs access control
-    return fetch('http://localhost:8000/hotel/diH7')
+    return fetch(`http://localhost:8000/hotel/${host}`)
         .then(data => 
           
             data.json()
@@ -139,7 +140,7 @@ function Room() {
                 arr2.push(item.coverted_max_cash_payment)
                 arr3.push(item.images[0].url)
             })
-            console.log(arr3)
+          
             setroom_dets({arr,arr2,arr3})
         })
     },[])
@@ -222,7 +223,7 @@ function Room() {
             {/* TODO 1.4 : ROOMS AND SUITS SLIDER */}
             <div style={{ background: "#fbfbfb" }} className="rooms">
                 {room_dets.arr ?
-                    <Card_Slider data={ room_dets.arr } data2={room_dets.arr2} data3={room_dets.arr3}></Card_Slider>:<></>
+                    <Card_Slider data={ room_dets.arr } data2={room_dets.arr2} data3={room_dets.arr3} id={host}></Card_Slider>:<></>
                 }
                 
             </div>
@@ -327,7 +328,7 @@ function Room() {
 
             
 
-            <Footer />
+            <Footer/>
         </div>
         
     )

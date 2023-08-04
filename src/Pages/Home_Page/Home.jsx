@@ -8,7 +8,8 @@ import Footer from "../Room_Page/Components/RoomFooter.jsx";
 // import MailList from "./Components/Cover.jsx";
 import { Link } from "react-router-dom";
 
-const Home = () =>{
+const Home = ({setBottom}) =>{
+    setBottom(true);
     return (
         <div className="home-container">
             <Cover />
@@ -19,7 +20,7 @@ const Home = () =>{
             <MailList/></div> */}
             <div className="reviews-cont"><p className="reviews-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '0px', fontWeight: 'bold' }}><br/>What People Say</p><div className='cards-autoplay'>
             <VerticalCardSwiper/></div></div>
-            <div className='homepage-footer'><Footer/></div>
+           <Footer/>
         </div>
     );
 };

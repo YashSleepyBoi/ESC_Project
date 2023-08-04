@@ -6,13 +6,14 @@ import useAuth from './useAuth'; // Import the custom hook
 import { getAuth, signOut } from "firebase/auth";
 
 
-const Profile = () => {
+const Profile = ({setBottom}) => {
     const user = useAuth();
     // use states for updating the information
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [bookings, setBookings] = useState([]);
     const auth = getAuth();
+    setBottom(false);
 
     // On page load, get the user information
     useEffect(() => {

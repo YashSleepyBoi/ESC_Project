@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import NavTop from "./NavTop";
 import NavBot from "./NavBot1";
 
-export default function NavBar() {
+export default function NavBar({ bottom }) {
 
   const [color, setColor] = useState(false);
   const [show, setShow] = useState(true);
@@ -36,7 +36,7 @@ export default function NavBar() {
           id="navbar"
         >
           <NavTop color={color} setColor={setColor}/>
-          <NavBot />
+          {bottom &&<NavBot  />}
           
           {/* <QuickSearch/> */}
         </div>

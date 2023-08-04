@@ -18,13 +18,18 @@ import Typography from '@mui/material/Typography';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
+import { Link } from "@mui/material";
 
 
+
+import { useNavigate } from "react-router-dom";
 
 function Hotel_Rooms(props) {
+    const navigate = useNavigate();
     const onClickHandler =async () => {
         console.log(props)
-        // const test=await setDoc(doc(db, "Users", "Of73cDsD51T1JwxXXweI"), {
+        
+        // const test=await setDoc(doc(db, "Users", "1pMbIMFKQ24xAL8PLr8G"), {
         //     email: "userNew@gmail.com",
         //     name: "userNew",
         //     booking:rooms+[props.r_name]
@@ -33,10 +38,11 @@ function Hotel_Rooms(props) {
         await updateDoc(doc(db, "Users","Of73cDsD51T1JwxXXweI"), {
                booking: arrayUnion(props.r_name)
              });
-
+        
+        window.alert("Room Selected")
+        navigate("/")
         
 
-        console.log("done")
         
         
           

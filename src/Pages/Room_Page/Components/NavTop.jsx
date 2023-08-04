@@ -59,8 +59,11 @@ export default function NavTop({ color, setColor }) {
               </Link>
             );
           })}
-          <Link to="/login">
-            <li>{isLoggedIn ? useruid : "Sign in"}</li>
+          <Link to={isLoggedIn ? "/profile" : "/login"}>
+            <li>{isLoggedIn ? useruid : "Login"}</li>
+          </Link>
+          <Link to="/register">
+            <li>{isLoggedIn ? "" : "Sign Up"}</li>
           </Link>
         </ul>
         <div className="navbar-hamburger">

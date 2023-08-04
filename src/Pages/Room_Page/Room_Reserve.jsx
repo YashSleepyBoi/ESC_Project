@@ -12,9 +12,8 @@ import "./Stylesheets/Room.css"
 
 import Hotel_Rooms from './Components/Hotel_Rooms';
 
-function Room_Reserve() {
-
-    
+function Room_Reserve({setBottom}) {
+    setBottom(false);
 
     return (
         

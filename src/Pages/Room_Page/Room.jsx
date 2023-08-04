@@ -18,17 +18,21 @@ import {
 import "pure-react-carousel/dist/react-carousel.es.css";
 import ImageGrid from "./Components/ImageGrid";
 import Footer from "./Components/RoomFooter";
+import RoomSearch from "./Components/Room_Search";
 
-export default function Room() {
+export default function Room({setBottom ,route}) {
+  // const { id } = route.params?? id=null
+  
   // retrieving the params of the item in modal
   const [scroll, setScroll] = useState(0);
   const [images, setImages] = useState([]);
   const theme = useTheme();
   const numCarouselImages = 3;
   const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
+  setBottom(false);
 
   const fetchRoomData = () =>
-    fetch("http://localhost:8000/rooms/diH7")
+    fetch("http://localhost:8000/room/diH7")
       .then((response) => {
         return response.json();
       })
@@ -50,6 +54,7 @@ export default function Room() {
         <div className="banner-container">
           <div className="banner-image" />
         </div>
+        <RoomSearch/>
         <div className="accomodation">
           <h2 style={{ marginTop: "2rem" }}>Accomodations</h2>
           <p style={{ color: "#CD7F32" }}>_________</p>

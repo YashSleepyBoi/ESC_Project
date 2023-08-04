@@ -6,7 +6,7 @@ import updateProfile from './components/updateProfile';
 import { useNavigate } from "react-router-dom";
 
 
-const EditProfile = () => {
+const EditProfile = ({setBottom}) => {
     const [nameID, setName] = useState("");
     const [email,setEmail] = useState(""); // use state to set the email as an empty field
     const [oldPassword,setOldPassword] = useState(""); // use state to set the email as an empty field
@@ -14,7 +14,7 @@ const EditProfile = () => {
     const [confirmPass,setConfirmPass] = useState(""); // use state to set the email as an empty field
     const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
-
+    setBottom(false);
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
