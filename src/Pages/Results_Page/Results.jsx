@@ -2,61 +2,39 @@ import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import "./Stylesheets/Results.css";
-import { data } from 'autoprefixer';
+
+
+
 
 function Results() {
 
-  const [hotelsDataList, setHotelsData] = useState([])
-  
-  // Ensure hotel data is fetched before displaying
-  const [isLoading, setLoading] = useState(true);
+    /* Fetch data from router */
+    const [hotelsData, setBackendData] = useState([])
 
-  function getHotels() {
-    // needs access control
-    return fetch('http://localhost:8000/api')
-      .then(data => 
-        data.json()
-        )
-  }
-
-  useEffect(() => {
-      getHotels().then(hotels => {
-        setHotelsData(hotels);
-        setLoading(false);
-    })
-  },[])
-
-  if (isLoading) {
-    return (
-      <div>
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-      <p>Loading results...</p>
-      </div>
-    )
-  
-    } else {
-
-  let hotelsData = hotelsDataList.hotels;
-  console.log(hotelsData.length);
-
-  if ((hotelsData.length)===0) {
-    <div>
-    <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-    <p>No hotels found</p>
-    </div>
-  } else {
+    useEffect(() => {
+      // backend API route
+        fetch("/api").then(
+            response => response.json()
+        ).then(
+            hotelsData => {
+            setBackendData(hotelsData.hotels) // Hotel objects
+            }
+        )}, [])
+    
+    
+    console.log(hotelsData);
 
   // Display
   return (
     <div className="results">
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      <p>Showing results...</p>
       <p>{hotelsData.length} hotels found</p>
       <br></br>
       {hotelsData.map((hotel, index) => (
         // RETURNS 
         <div key={index} className="hotel-container">
           <div>
-            <img alt="cat" className="hotel-image" img src="https://media.cnn.com/api/v1/images/stellar/prod/180222154237-soboutique-sobed-hotel-bedding-set-so-1210-s-xlrg.jpg?q=w_1599,h_900,x_0,y_0,c_fill/w_1280"/>
+            <img alt="cat" className="hotel-image" img src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"/>
             {/* TODO: images don't show! */}
             {/* <img src={hotel.image_details.prefix+hotel.image_details.count+hotel.image_details.suffix}/> */}
           </div>
@@ -103,15 +81,6 @@ function Results() {
       ))}
     </div>
   );
-
-    <div className="results">
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-      <p>Showing results...</p>
-      <p>{hotelsData.length} hotels found</p>
-    </div>
-
-  }
-}
 }
 
 export default Results;

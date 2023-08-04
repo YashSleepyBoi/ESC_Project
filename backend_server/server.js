@@ -1,7 +1,7 @@
 // Setup for backend server
 const express = require('express')
-const cors = require('cors')
 const app = express()
+const port = 8383
 
 // const port = 8787
 
@@ -88,9 +88,9 @@ app.listen(8000, function () {
 // First async function to fetch the data
 async function fetchDataAsync(func) {
     func.then(data => {
-        // post to localhost:8000/api
+        // post to localhost:8383/api
         app.get("/api", (req, res) => {
-            res.set('Access-Control-Allow-Origin', '*') // Any link
+            //res.json(test_output)
             res.json(data)
         })
         return data;
