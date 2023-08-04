@@ -1,5 +1,5 @@
-
 import './profile.css'
+import {Link} from "react-router-dom";
 
 const Profile = () => {
   return (
@@ -8,7 +8,10 @@ const Profile = () => {
         <div className='profileContainer'>
             <div className='sectionContainer'>
                 <div className='profileTitle'>Personal Particulars</div>
-                <button className='editButton'>Edit Particulars</button>
+                {/* Route to /editprofile page */}
+                <Link to='/editprofile'>
+                    <button className='editButton'>Edit Particulars</button>
+                </Link>
             </div>
 {/* *************************************************************************** */}
             <div className='sectionContainer'>
