@@ -22,17 +22,22 @@ export default function NavBot() {
   return (
     <>
       <div className="navbar-bottom">
+        {/* *********************************************** */}
+        {/* SEARCH BAR : Destination */}
         <div className = "search-bar-container">
           <div> Destination</div>
           <SearchDest setDest={setDest}></SearchDest>
         </div>
+        {/* *********************************************** */}
         <div className="stay-duration-container">
         <div> Stay Duration </div>
           <DatePPicker className="date-picker" startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}></DatePPicker>
         </div>
+        {/* *********************************************** */}
         <div className="room-pax-container">
         <Collapsible room={room} pax={pax} setRoom={setRoom} setPax={setPax}></Collapsible>
       </div>
+      {/* *********************************************** */}
         <div className="navbar-bottom links">
           {/* <a href="tel:+65 -68181888">
             <CallIcon />
@@ -42,13 +47,14 @@ export default function NavBot() {
             <Button
               sx={{
                 ...reserveButtonStyle,
-                fontSize: isSmall ? "0.75rem" : "auto",
+                fontSize: isSmall ? "0.5rem" : "auto",
               }}
             >
               Find room
             </Button>
           </Link>
         </div>
+        {/* *********************************************** */}
       </div>
       
       <Divider sx={{ bgcolor: "white" }} />

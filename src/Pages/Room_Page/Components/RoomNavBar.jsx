@@ -27,20 +27,39 @@ export default function NavBar() {
     };
   }, [prevScroll]);
 
-  return (
-    <>
-      <div className="header">
-        <div
-          className={color ? "navbar-scroll" : "navbar"}
-          style={{top: show ? "0" : "-81px"}}
-          id="navbar"
-        >
-          <NavTop color={color} setColor={setColor}/>
-          <NavBot />
+//   return (
+//     <>
+//       <div className="header">
+//         <div
+//           className={color ? "navbar-scroll" : "navbar"}
+//           style={{top: show ? "0" : "-81px"}}
+//           id="navbar"
+//         >
+//           <NavTop color={color} setColor={setColor}/>
+//           <NavBot />
           
-          {/* <QuickSearch/> */}
-        </div>
+//           {/* <QuickSearch/> */}
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+return (
+  <>
+    <div className="header">
+    
+      <div
+        className={color ? "navbar-scroll" : "navbar"}
+        style={{top: show ? "0" : "-81px"}}
+        id="navbar"
+      >
+        <NavTop />
+        <NavBot color={color} setColor={setColor}/>
+        
+        {/* <QuickSearch/> */}
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 }
