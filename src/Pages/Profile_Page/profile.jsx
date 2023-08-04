@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import getProfile from './components/getProfile';
 import useAuth from './useAuth'; // Import the custom hook
+import { getAuth, signOut } from "firebase/auth";
 
 
 const Profile = () => {
@@ -11,6 +12,7 @@ const Profile = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [bookings, setBookings] = useState([]);
+    const auth = getAuth();
 
     // On page load, get the user information
     useEffect(() => {
@@ -77,6 +79,16 @@ const Profile = () => {
                     ))}
                     </div>
     {/* *************************************************************************** */}
+                <Link to ="/">
+                    <button onClick={ () =>{
+                            //TODO Properly handle signout
+                            signOut(auth).then(() => {
+                                // Sign-out successful.
+                            }).catch((error) => {
+                                // An error happened.
+                            })}}>Signout
+                    </button>
+                </Link>
             </div>
         </div>
     )
