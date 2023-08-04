@@ -29,61 +29,59 @@ app.get('/cors', (req, res) => {
 app.get('/input', (req, res) => {
     // Handle the GET request here and send a response
     const responseData = { message: 'This is the GET route for /input' };
+    console.log("DATA IS",responseData);
     res.json(responseData);
   });
+
 
 app.post('/input', (req, res) => {
-    // Handle the incoming POST request here and send a response
-    const inputData = req.body; // Access the data directly from req.body
-    console.log('Received data:', inputData);
-    // const curr = "SGD"
+    try {
+        // Handle the incoming POST request here and send a response
+        const inputData = req.body; // Access the data directly from req.body
+        console.log('DATA RECEIVED ON SERVER:', inputData);
 
-    // const dest_id = inputData["dest_id"];
-    // // TODO: BOTH RETURN ONE DAY LATE
-    // const check_in = inputData["check_in"].substring(0,10);
-    // const check_out = inputData["check_in"].substring(0,10);
-
-    // Calculate guests per room
-    // const rooms = inputData["rooms"];
-    // const eachguest = inputData["guests"];
-    // let guests = eachguest;
-    // function findguests() {
-    //     for (let i=1; i<rooms; i++) {
-    //         eachguest = parseInt(eachguest)
-    //         guests=guests+(('|')+eachguest);
-    //     }
+        const curr = "SGD"
+        const dest_id = inputData["dest_id"];
+        // TODO: timings are one day early
+        const check_in = inputData["check_in"].substring(0,10);
+        const check_out = inputData["check_out"].substring(0,10);
+        // // Calculate guests per room
+        const rooms = inputData["rooms"];
+        const eachguest = inputData["guests"];
         
-    //     console.log( dest_id, check_in, check_out, guests);
-    //     console.log(typeof dest_id, typeof check_in, typeof check_out, typeof guests);
-    //     return guests;
-    // }
-    // guests = findguests()
-
-    const dest_id = "RsBU";
-    const check_in = "2023-10-01";
-    const check_out = "2023-10-02";
-    const guests = 1|1;
-
-    // Assumed to be fixed
-    const curr = "SGD";
-    console.log(typeof dest_id, typeof check_in, typeof check_out, typeof guests);
+        function findguests() {
+            guests = eachguest;
+            for (let i=1; i<rooms; i++) {
+                each = parseInt(eachguest)
+                guests=guests+('|')+each;
+            }
+            return parseInt(guests);
+        }
+        guests = findguests()
     
-    // Run search algorithm.
-    fetchDataAsync(searchResults(dest_id,check_in,check_out,curr,guests));
-    // console.log(results.id_list);
-    // TODO: FETCH STATIC DATA 
-    // fetchDataAsync2()
-  
-    // Process the data and send a response
-    const responseData = { message: 'Data received successfully!' };
-    res.json(responseData);
-  });
+        const tes_destid = "RsBU";
+        const tes_check_in = "2023-09-30";
+        const tes_check_out = "2023-10-02";
+        const tes_guests = 1|1;
+    
+        console.log( dest_id, check_in, check_out, guests);
+        console.log( "TESTING", dest_id, tes_check_in, tes_check_out, tes_guests);
+        // console.log(typeof dest_id, typeof check_in, typeof check_out, typeof guests);
+        
+        // Call the searchResults function
+        fetchDataAsync(searchResults(dest_id, tes_check_in, tes_check_out, curr, guests));
+        // console.log("AWAIT:",data);
+        // // Send the response back to the frontend
+        // res.json(data);
+        // // hotelData = data;
+        // // return data;
+        // fetchDataAsync(data);
 
-
-app.listen(8000, function () {
-    console.log('CORS-enabled web server listening on port 8000');
-  });
-
+    } catch (error) {
+        console.error('Error processing search:', error);
+        res.status(500).json({error: 'Error processing search'});
+    }
+});
 
 // First async function to fetch the data
 async function fetchDataAsync(func) {
@@ -105,6 +103,7 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
     const url = dest_prices
     const response = await fetch(url, {
         method: 'GET',
+        mode: 'cors',
         credentials: 'same-origin'
     });
     let data = await response.json(); 
@@ -121,7 +120,7 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
 
     hotelslist = [];
     idlist = [];
-    const mapping = {"hotels": hotelslist, "id_list":idlist};
+    const mapping = {"hotels": hotelslist};
     for (let i = 0; i < all_data.length; i++) {
         let hotel1 = all_data[i];
         //console.log(hotel1);
@@ -130,13 +129,23 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
             
             if (hotel1.id == hotel2.id) {
                 const obj = Object.assign(hotel1, hotel2)
+                // idlist.push(obj.id);
                 hotelslist.push(obj);
                 //mapping[obj.id] = obj;
             }
         }
     }
-    console.log("SHOW IDS",id_list);
     return mapping;
+}
+
+function sendDataToLink(input, endpoint) {
+    app.get(`/${endpoint}`, (req, res) => {
+        res.send(input)
+      })
+    app.post(`/${endpoint}`, (req, res) => {
+        let data = req.body;
+        res.send(data)
+      })
 }
 
 // Collate results
@@ -180,6 +189,10 @@ async function fetchDataAsync2(func) {
         });
 }
 
+// Start the server at the end
+app.listen(8000, function () {
+    console.log('CORS-enabled web server listening on port 8000');
+});
 
 
 
@@ -187,15 +200,6 @@ async function fetchDataAsync2(func) {
 //   app.options('/input', cors(issue2options)); // enable preflight OPTIONS
 //   router.post('/input', cors(issue2options), controller.sendContactForm);
 
-// function sendDataToLink(input, endpoint) {
-//     app.get(`/${endpoint}`, (req, res) => {
-//         res.send(input)
-//       })
-//     app.post(`/${endpoint}`, (req, res) => {
-//         let data = req.body;
-//         res.send(data)
-//       })
-// }
 // sendDataToLink("FUCK THIS SHIT", "input")
 
 
