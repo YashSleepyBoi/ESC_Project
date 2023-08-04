@@ -1,5 +1,5 @@
 import {db} from "../../../firebase";
-import { getAuth, reauthenticateWithCredential, updateEmail, EmailAuthProvider } from "firebase/auth";
+import { getAuth, reauthenticateWithCredential, updateEmail,updatePassword, EmailAuthProvider } from "firebase/auth";
 
 import { doc, updateDoc } from "firebase/firestore";
 
@@ -49,12 +49,15 @@ export default function updateProfile(name,email,oldPassword, password,confirmPa
         async function changePassword(oldPassword,password,confirmPassword){
             const auth = getAuth();
             // When the page is loaded
+            
             const userCredential = auth.currentUser;
             const userUID = userCredential.uid;
             const currentDateTime = new Date();
 
             if (password == confirmPassword){
                 try {
+                    const credential = EmailAuthProvider.credential(userCredential.email, oldPassword);
+                    await reauthenticateWithCredential(userCredential,credential);
                     await updatePassword(userCredential, password);
                     await updateDoc(doc(db, "Users", userUID), {
                     updated_date: currentDateTime
@@ -64,6 +67,7 @@ export default function updateProfile(name,email,oldPassword, password,confirmPa
                     const errorCode = error.code;
                     const errorMessage = error.message;
                     console.log(errorCode, errorMessage);
+                    alert("Password was not changed!");
                 }
 
             }
