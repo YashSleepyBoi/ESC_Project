@@ -44,7 +44,7 @@ const navigate = useNavigate();
                 
                 {/* Enter the email */}
                 <label htmlFor="email">Email:</label>
-                    <input
+                    <input 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
@@ -77,14 +77,14 @@ const navigate = useNavigate();
                         <button className="transitionReg"> Create account </button>
                     </Link>
                 </label>
-
+{/* 
                 <button onClick={ () =>{
                             //TODO Properly handle signout
                             signOut(auth).then(() => {
                                 // Sign-out successful.
                             }).catch((error) => {
                                 // An error happened.
-                            })}}>Signout</button>
+                            })}}>Signout</button> */}
 
             </form>
 

@@ -9,9 +9,7 @@ import Register from "./Pages/Register_Page/Register";
 import Login from "./Pages/Login_Page/Login";
 import Profile from "./Pages/Profile_Page/profile";
 import Results from "./Pages/Results_Page/Results";
-import Payment from "./Pages/Payment_Page/Checkout";
-import Success from "./Pages/Payment_Page/Components/Success";
-import Cancel from "./Pages/Payment_Page/Components/Cancel";
+import EditProfile from "./Pages/Profile_Page/edit_profile";
 
 function App() {
   return (
@@ -20,7 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/findreserve" element={<Room/>} />
-        <Route path="/editprofile" element={<Profile/>}/>
+        <Route path="/profile" element={<Profile/>}/>
+        <Route path="/editprofile" element={<EditProfile/>}/>
         <Route path="/hotels" element={<Hotel/>} />
         <Route path="/contact" component={Contact} />
         <Route path="/login" element={<Login/>} />

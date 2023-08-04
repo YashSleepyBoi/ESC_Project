@@ -1,7 +1,7 @@
 import "../Stylesheets/Room_NavBar.css";
 import { useEffect, useState } from "react";
 import NavTop from "./NavTop";
-import NavBot from "./NavBot";
+import NavBot from "./NavBot1";
 
 export default function NavBar() {
 
@@ -27,18 +27,39 @@ export default function NavBar() {
     };
   }, [prevScroll]);
 
-  return (
-    <>
-      <div className="header">
-        <div
-          className={color ? "navbar-scroll" : "navbar"}
-          style={{ top: show ? "0" : "-81px" }}
-          id="navbar"
-        >
-          <NavTop color={color} setColor={setColor}/>
-          <NavBot />
-        </div>
+//   return (
+//     <>
+//       <div className="header">
+//         <div
+//           className={color ? "navbar-scroll" : "navbar"}
+//           style={{top: show ? "0" : "-81px"}}
+//           id="navbar"
+//         >
+//           <NavTop color={color} setColor={setColor}/>
+//           <NavBot />
+          
+//           {/* <QuickSearch/> */}
+//         </div>
+//       </div>
+//     </>
+//   );
+// }
+
+return (
+  <>
+    <div className="header">
+    
+      <div
+        className={color ? "navbar-scroll" : "navbar"}
+        style={{top: show ? "0" : "-81px"}}
+        id="navbar"
+      >
+        <NavTop />
+        <NavBot color={color} setColor={setColor}/>
+        
+        {/* <QuickSearch/> */}
       </div>
-    </>
-  );
+    </div>
+  </>
+);
 }

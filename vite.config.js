@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
+    port: 1111,
     proxy: {
       '/api': {
         target: "https://hotelapi.loyalty.dev/api/hotels",

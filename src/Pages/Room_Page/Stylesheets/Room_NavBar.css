@@ -9,7 +9,7 @@
     position: fixed;
     z-index: 100;
     font-size: 0.9rem;
-    overflow: hidden;
+    overflow:visible;
 }
 .navbar{
     position: relative;
@@ -55,21 +55,6 @@
 }
 
 
-@media only screen and (max-width: 700px){
-    .navbar-top{
-        padding: 1rem;
-    }
-
-    .navbar-links{
-        gap: 0.75rem;
-        font-size: 0.75rem;
-    }
-
-    .navbar-logo{
-        max-width: 100px;
-    }
-}
-
 @media only screen and (max-width: 500px){
     .navbar-links{
         display:none;
@@ -90,6 +75,8 @@
 
 .navbar-bottom{
     display: flex;
+    margin-left:3%;
+    margin-right: 3%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -98,7 +85,29 @@
 
 .navbar-bottom.links{
     gap: 2rem;
+    width:20%;
 }
+
+.room-pax-container{
+    width: 50%;
+    height: 5rem;
+}
+
+.date-picker{
+    width: 20%;
+    height: 2.5rem;
+    border: none;
+    border-radius: 10px;
+    padding: 0 15px;
+    box-shadow: 0px 0px 8px #ddd;
+    background-color: orange !important; 
+    display: flex;
+    align-items: center;
+    float: left;
+    text-align: center;
+    margin: 15px 10px;
+  }
+
 
 .hotel-name{
     font-size: 1rem;
@@ -125,6 +134,7 @@
     }
 }
 
-
-
-
+.stay-duration-container{
+    width: 50%;
+    /* height: 5rem; */
+}

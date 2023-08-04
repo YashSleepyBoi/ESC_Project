@@ -116,7 +116,7 @@ const handleSubmit = async(e) =>{
                 <label className="changePageTxt" htmlFor="changePage">Already have an account?
                 {/* TODO 3: FIX THE ROUTER */}
                     <Link to="/login">
-                        <button className="transitionLogin"> Sign in! </button>
+                        <button className="transitionLogin"> Sign in here </button>
                     </Link>
                 </label>
 
