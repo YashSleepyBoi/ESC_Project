@@ -38,14 +38,13 @@ label{
     padding: 0.25rem0 !important;
 }   
 
-input{
+input{ 
+    /* width:100%;  */
     margin: 0.5rem 0 !important;
     padding: 0.5rem !important;
     border-radius: 6px;
     border: 1px solid black;
-
 }
-
 
 .LoginBtn{
     padding:0.2rem;

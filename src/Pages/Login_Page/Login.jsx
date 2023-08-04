@@ -44,7 +44,7 @@ const navigate = useNavigate();
                 
                 {/* Enter the email */}
                 <label htmlFor="email">Email:</label>
-                    <input
+                    <input 
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     type="email"
