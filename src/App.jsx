@@ -9,6 +9,9 @@ import Register from "./Pages/Register_Page/Register";
 import Login from "./Pages/Login_Page/Login";
 import Profile from "./Pages/Profile_Page/profile";
 import Results from "./Pages/Results_Page/Results";
+import Payment from "./Pages/Payment_Page/Checkout";
+import Success from "./Pages/Payment_Page/Components/Success";
+import Cancel from "./Pages/Payment_Page/Components/Cancel";
 
 function App() {
   return (
@@ -23,6 +26,10 @@ function App() {
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/results" element={<Results/>} />
+        <Route path="/payment" element={<Payment/>} />
+        {/* TODO: remove success and cancel routes since they shouldn't be accessible via router */}
+        <Route path="/success" element={<Success/>} />
+        <Route path="/cancel" element={<Cancel/>} />
       </Routes>
     </>
   );

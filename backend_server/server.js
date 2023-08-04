@@ -1,12 +1,14 @@
 // Setup for backend server
 const express = require('express')
+const cors = require('cors');
 const app = express()
-const port = 8383
+const port = 8000
 
-app.use(express.static('public'))
+app.use(cors({origin:'*'}));
 
 // Backtick ``
-app.listen(port, () => {console.log(`Server has started on port ${port}`)})
+app.listen(port, function () {console.log(`Server has started on port ${port}`);
+});
 
 // TODO: Migrate input
 // TEST PARAMETERS: 
@@ -14,7 +16,7 @@ const dest_id = "RsBU";
 const check_in = "2023-10-01";
 const check_out = "2023-10-02";
 const curr = "SGD";
-const guests = 10
+const guests = 1
 
 /* Fetching data from API endpoints */
 
@@ -112,10 +114,25 @@ async function fetchDataAsync2(func) {
         });
 }
 
+async function fetchDataAsyncDisplay(func) {
+    func.then(data => {
+        // post to localhost:8383/display
+        app.get("/display", (req, res) => {
+            //res.json(test_output)
+            // res.set("Access-Control-Allow-Origin","*")
+            res.json(data)
+        })
+        return data;
+    })
+        .catch(error => {
+            console.log("Error fetching data:", error);
+        });
+}
+
 // WHEN 'BOOK NOW" IS CLICKED: replace "0vcz" with hotel id
 fetchDataAsync2(collateHotelInfo("0vcz",dest_id,check_in,check_out,curr,guests));
 
-
+fetchDataAsyncDisplay(searchResults("RsBU",dest_id,check_in,check_out,curr,guests));
 
 
 
