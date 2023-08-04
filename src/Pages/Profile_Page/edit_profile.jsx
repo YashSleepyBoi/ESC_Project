@@ -5,7 +5,7 @@ const EditProfile = () => {
   return (
     <div>
         <div className='bgImage'></div>
-        <div className='profileContainer'>
+        <div className='editprofileContainer'>
             <div className='sectionContainer'>
                 <div className='profileTitle'>Edit Personal Particulars</div>
                 {/* Route to /editprofile page */}
@@ -38,7 +38,13 @@ const EditProfile = () => {
                 {/* <button className='editButton'>Edit</button> */}
             </div>
 {/* *************************************************************************** */}
-
+<div className='sectionContainer'>
+                <div className='profileText'>Confirm Password</div>
+                <div className='userInputContainer'>
+                    <input type='text' placeholder='**********'/>
+                </div>
+                {/* <button className='editButton'>Edit</button> */}
+            </div>
 {/* *************************************************************************** */}
         </div>
     </div>
