@@ -15,12 +15,12 @@ function Counter({quantity, setQuantity}) {
         }
       }
   return (
-    <div>
-        <button className="minus-button" onClick={() => {handleDecrement()}}>-</button>
+    <div className="counter">
+        <button className="plus-button" onClick={() => {handleIncrement()}}>+</button>
         <div className='count-container'>
             <div>{quantity}</div>
-        </div>  
-        <button className="plus-button" onClick={() => {handleIncrement()}}>+</button>
+        </div>
+        <button className="minus-button" onClick={() => {handleDecrement()}}>-</button>
     </div>
   )
 }

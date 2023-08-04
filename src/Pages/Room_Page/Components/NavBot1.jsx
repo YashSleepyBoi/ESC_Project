@@ -7,6 +7,7 @@ import SearchDest from "../../Search_Page/Components/SearchDest"
 import DatePPicker from "../../Search_Page/Components/DatePicker";
 import Collapsible from "../../Search_Page/Components/Collapsible";
 import "../../Search_Page/Stylesheets/DatePicker.css"
+import "../Stylesheets/NavBot.css"
 
 
 export default function NavBot() {
@@ -23,11 +24,15 @@ export default function NavBot() {
     <>
       <div className="navbar-bottom">
         <div className = "search-bar-container">
-          <div> Destination</div>
+          <div className="dest-header">
+            Destination
+            </div>
           <SearchDest setDest={setDest}></SearchDest>
         </div>
         <div className="stay-duration-container">
-        <div> Stay Duration </div>
+        <div className="date-header">
+          Stay Duration
+        </div>
           <DatePPicker className="date-picker" startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}></DatePPicker>
         </div>
         <div className="room-pax-container">

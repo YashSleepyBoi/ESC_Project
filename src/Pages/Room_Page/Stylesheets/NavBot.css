@@ -1,0 +1,151 @@
+/* Extra small devices (phones, 600px and down) */
+/* @media only screen and (max-width: 600px) {
+    .search-bar-container{
+        min-height:10vh;
+        width:300px;
+        justify-content:space-between;
+    }
+    
+    .stay-duration-container{
+        max-height:10vh;
+        width:300px;
+        justify-content:space-between;
+    }
+
+    .room-pax-container{
+        min-height:10vh;
+        width:300px;
+        justify-content:space-between;
+
+    }
+    
+    .dest-header{
+        height:50px;
+    }
+    
+    .date-header{
+        height:50px;
+    }
+
+    .room-pax{
+        width:150px;
+    }
+
+    .toggle{
+        align-items: center;
+        margin-left: 150px;
+    }
+    
+    .counter{
+        height:50px
+
+    }
+
+
+} */
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {...} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+/* @media only screen and (min-width: 768px) {...} */
+
+/* Large devices (laptops/desktops, 992px and up) */
+/* @media only screen and (min-width: 992px) {
+    .search-bar-container{
+        min-height:15vh;
+        width:200px;
+        justify-content:space-between;
+    }
+    
+    .stay-duration-container{
+        max-height:15vh;
+        width:250px;
+        justify-content:space-between;
+    }
+
+    .room-pax-container{
+        min-height:15vh;
+        width:400px;
+        justify-content:space-between;
+
+    }
+    
+    .dest-header{
+        height:3vh;
+    }
+
+    .input-wrapper{
+        margin-top:30px;
+    }
+    
+    .date-header{
+        height:3vh;
+    }
+
+    .room-pax{
+        margin-top:40px;
+        width:130px;
+    }
+
+    .toggle{
+        align-items: center;
+        margin-left: 150px;
+        justify-content: space-between;
+    }
+    .counter{
+        display: inline-flex;
+    }
+
+} */
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .search-bar-container{
+        min-height:15vh;
+        width:25%;
+        justify-content:space-between;
+    }
+    
+    .stay-duration-container{
+        max-height:15vh;
+        width:15%;
+        justify-content:space-between;
+    }
+
+    .room-pax-container{
+        min-height:15vh;
+        width:33%;
+        justify-content:space-between;
+
+    }
+    
+    .dest-header{
+        height:3vh;
+    }
+
+    .input-wrapper{
+        margin-top:30px;
+    }
+    
+    .date-header{
+        height:3vh;
+    }
+
+    .room-pax{
+        margin-top:40px;
+        width:130px;
+    }
+
+    .toggle{
+        align-items: center;
+        margin-left: 150px;
+        justify-content: space-between;
+    }
+    .counter{
+        display: inline-flex;
+    }
+
+}
+
+
