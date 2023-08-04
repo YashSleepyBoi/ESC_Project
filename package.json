@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "http://localhost:8000",
+  "proxy": "https://hotelapi.loyalty.dev/api/hotels",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -18,10 +18,11 @@
     "@mui/icons-material": "^5.14.0",
     "@mui/material": "^5.14.0",
     "array-union": "^3.0.1",
-    "cors": "^2.8.5",
     "cors-anywhere": "^0.4.4",
     "enzyme": "^3.11.0",
     "firebase": "^10.1.0",
+    "html-react-parser": "^4.2.0",
+    "html-to-text": "^9.0.5",
     "nuka-carousel": "^6.0.3",
     "proxy-middleware": "^0.15.0",
     "pure-react-carousel": "^1.30.1",
@@ -29,7 +30,12 @@
     "react-datepicker": "^4.16.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+<<<<<<< HEAD
     "react-router-dom": "^6.14.2",
+=======
+    "react-image-gallery": "^1.3.0",
+    "react-router-dom": "^6.14.1",
+>>>>>>> 2e7cdbd47e529a0d7df5268eaa12c44edb2d2187
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
     "react-spring-3d-carousel": "^1.3.4",
@@ -53,7 +59,6 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
     "jest": "^29.6.1",
-    "nodemon": "^3.0.1",
     "postcss": "^8.4.24",
     "tailwindcss": "^3.3.2",
     "vite": "^4.3.9"

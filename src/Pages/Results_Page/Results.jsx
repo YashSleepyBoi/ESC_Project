@@ -2,13 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom";
 import ReactDOM from "react-dom";
 import "./Stylesheets/Results.css";
+<<<<<<< HEAD
 import { data } from 'autoprefixer';
 import { Button, Divider, useMediaQuery } from "@mui/material";
 import { reserveButtonStyle } from '../Room_Page/Content';
+=======
+
+
+>>>>>>> 2e7cdbd47e529a0d7df5268eaa12c44edb2d2187
 
 
 function Results() {
 
+<<<<<<< HEAD
   const [hotelsDataList, setHotelsData] = useState({hotels:[]})
   // Ensure hotel data is fetched before displaying
   const [isLoading, setLoading] = useState(true);
@@ -55,21 +61,47 @@ function Results() {
       </div>
       );
     } else {
+=======
+    /* Fetch data from router */
+    const [hotelsData, setBackendData] = useState([])
+
+    useEffect(() => {
+      // backend API route
+        fetch("/api").then(
+            response => response.json()
+        ).then(
+            hotelsData => {
+            setBackendData(hotelsData.hotels) // Hotel objects
+            }
+        )}, [])
+    
+    
+    console.log(hotelsData);
+>>>>>>> 2e7cdbd47e529a0d7df5268eaa12c44edb2d2187
 
   // Display
   return (
     <div className="results">
+<<<<<<< HEAD
       <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
       {hotelsData.length} hotels found
       <p>prices incl. of taxes and fees</p>
+=======
+      <p>Showing results...</p>
+      <p>{hotelsData.length} hotels found</p>
+>>>>>>> 2e7cdbd47e529a0d7df5268eaa12c44edb2d2187
       <br></br>
       {hotelsData.map((hotel, index) => (
 
         // RETURNS 
         <div key={index} className="hotel-container">
           <div>
+<<<<<<< HEAD
           {/* prefix + number + suffix */}
             {/* <img alt="cat" className="hotel-image" img src="https://media.cnn.com/api/v1/images/stellar/prod/180222154237-soboutique-sobed-hotel-bedding-set-so-1210-s-xlrg.jpg?q=w_1599,h_900,x_0,y_0,c_fill/w_1280"/> */}
+=======
+            <img alt="cat" className="hotel-image" img src="https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"/>
+>>>>>>> 2e7cdbd47e529a0d7df5268eaa12c44edb2d2187
             {/* TODO: images don't show! */}
             <img src={hotel.image_details.prefix+hotel.image_details.default_image_index+hotel.image_details.suffix}/>
           </div>
@@ -111,8 +143,12 @@ function Results() {
         </div>
       ))}
     </div>
+<<<<<<< HEAD
   )
 }}
+=======
+  );
+>>>>>>> 2e7cdbd47e529a0d7df5268eaa12c44edb2d2187
 }
     
 

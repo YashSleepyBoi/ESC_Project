@@ -5,9 +5,7 @@ import { auth, db } from '../../firebase';
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
-
-
-
+import { doc, setDoc } from "firebase/firestore";
 
 function Register(){
 //declare hooks
@@ -26,16 +24,20 @@ const handleSubmit = async(e) =>{
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-
+            const currentDateTime = new Date();
+            
+            const customDocumentId = user.uid; 
             //Add to the database
-            const docRef = addDoc(collection(db, "Users"), {
+            const docRef = setDoc(doc(db, "Users", customDocumentId), {
                 name: nameID,
                 email: email,
-                bookings: null,
-            })
+                bookings: [],
+                created_date: currentDateTime,
+                updated_date: currentDateTime
+              });
 
 
-            console.log(user);
+            console.log("Successfully created:" + user);
             navigate("/");
             // ...
         })
@@ -116,7 +118,7 @@ const handleSubmit = async(e) =>{
                 <label className="changePageTxt" htmlFor="changePage">Already have an account?
                 {/* TODO 3: FIX THE ROUTER */}
                     <Link to="/login">
-                        <button className="transitionLogin"> Sign in here </button>
+                        <button className="transitionLogin"> Sign in! </button>
                     </Link>
                 </label>
 

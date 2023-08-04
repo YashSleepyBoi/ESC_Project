@@ -2,6 +2,7 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
+const port = 8383
 
 // const port = 8787
 
@@ -59,6 +60,7 @@ app.post('/input', (req, res) => {
         }
         guests = findguests()
     
+<<<<<<< HEAD
         const tes_destid = "RsBU";
         const tes_check_in = "2023-09-30";
         const tes_check_out = "2023-10-02";
@@ -83,12 +85,60 @@ app.post('/input', (req, res) => {
     }
 });
 
+=======
+    // Run search algorithm.
+    fetchDataAsync(searchResults(dest_id,check_in,check_out,curr,guests));
+    // console.log(results.id_list);
+    // TODO: FETCH STATIC DATA 
+    // fetchDataAsync2()
+  
+    // Process the data and send a response
+    const responseData = { message: 'Data received successfully!' };
+    res.json(responseData);
+  });
+
+
+app.get("/hotel/:id", async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*') // Any link
+    const {id}=req.params
+    const hotel_url = `https://hotelapi.loyalty.dev/api/hotels/${id}`;
+    console.log(hotel_url)
+    const u = hotel_url
+    const rez = await fetch(u, {
+        method: 'GET',
+        credentials: 'same-origin'
+    })
+
+    let all_data = await rez.json();
+    console.log(all_data)
+    res.json(all_data)
+})
+
+app.get("/rooms/:id", async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*') // Any link
+    const {id}=req.params
+    const hotel_url = `https://hotelapi.loyalty.dev/api/hotels/${id}/price?destination_id=WD0M&checkin=2023-10-01&checkout=2023-10-07&lang=en_US&currency=SGD&country_code=SG&guests=2&partner_id=1`;
+    const u = hotel_url
+    const rez = await fetch(u, {
+        method: 'GET',
+        credentials: 'same-origin'
+    })
+
+    let all_data = await rez.json();
+    res.json(all_data)
+})
+
+app.listen(8000, function () {
+    console.log('CORS-enabled web server listening on port 8000');
+  });
+
+>>>>>>> 2e7cdbd47e529a0d7df5268eaa12c44edb2d2187
 // First async function to fetch the data
 async function fetchDataAsync(func) {
     func.then(data => {
-        // post to localhost:8000/api
+        // post to localhost:8383/api
         app.get("/api", (req, res) => {
-            res.set('Access-Control-Allow-Origin', '*') // Any link
+            //res.json(test_output)
             res.json(data)
         })
         return data;

@@ -58,12 +58,25 @@
 }
 
 .room-details{
+    margin: 1rem 0;
+}
+
+.room.title{
     margin-bottom: 1rem;
+}
+
+.modal-amenities.title{
+    margin: 1rem 0;
+}
+
+.modal-amenities.content{
+    margin: 1rem 0;
 }
 
 .modal-footer{
     display: flex;
     flex-direction: row;
+    margin: 1rem 0;
     background-color: white;
     justify-content: space-between;
 }
