@@ -6,12 +6,13 @@ import FindReserve from '../../components/pages/findreserve';
 import Rewards from '../../components/pages/rewards';
 import Hotels from '../../components/pages/hotels';
 import Contact from '../../components/pages/contact';
-
+import { useState } from 'react';
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import { convert } from 'html-to-text';
 
 import classes from "./Stylesheets/Room.module.css"
-
+import "react-image-gallery/styles/css/image-gallery.css";
 import "./Stylesheets/Room.css"
 import Card_Slider from './Components/Card_Slider';
 import Ammenities from './Components/Ammenities';
@@ -22,9 +23,30 @@ import { useEffect } from 'react';
 import HotelRating from './Components/HotelsRating';
 import Suite from './Components/suite';
 import NavBar from "./Components/RoomNavBar";
+import ImageGallery from "react-image-gallery";
+
 
 function Room() {
-    const hotel_name="SHERATON KAGOSHIMA"
+
+    const images = [
+        {
+          original: "https://picsum.photos/id/1018/1000/600/",
+          thumbnail: "https://picsum.photos/id/1018/250/150/",
+        },
+        {
+          original: "https://picsum.photos/id/1015/1000/600/",
+          thumbnail: "https://picsum.photos/id/1015/250/150/",
+        },
+        {
+          original: "https://picsum.photos/id/1019/1000/600/",
+          thumbnail: "https://picsum.photos/id/1019/250/150/",
+        },
+      ];
+      
+    const [hotel_dets, sethotel_dets] = useState({});
+    const [room_dets, setroom_dets] = useState({});
+    const hotel_name = "SHERATON KAGOSHIMA"
+    
     function myFunction() {
         var dots = document.getElementById("dots");
         var moreText = document.getElementById("more");
@@ -42,35 +64,101 @@ function Room() {
     }
     
 
+    // console.log("Clothing Iron:", hotel_dets["amenities"]["clothingIron"]);
+    // console.log("Dry Cleaning:", hotel_dets["amenities"]["dryCleaning"]);
+
     const temp_data = [
         { id:0, room: "Deluxe Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
         { id:1,room: "Deluxe Kind", image: "https://images.unsplash.com/flagged/photo-1556438758-8d49568ce18e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2674&q=80" },
         { id: 2, room: "Deluxe Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
         { id:0, room: "Deluxe Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
         { id:1,room: "Deluxe Kind", image: "https://images.unsplash.com/flagged/photo-1556438758-8d49568ce18e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2674&q=80" },
-        { id:2,room: "Deluxe Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
+        { id:2,room: "Deluxe Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixiod=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
         
     ]
 
     
-    useEffect(() => {
-        console.log("Check 1")
-        fetch("https://hotelapi.loyalty.dev/api/hotels/diH7")
-            .then(response => { return response.json() })
-            .then(data => { console.log(data) })
-       
-    }, []);
+    
+  function getHotels() {
+    // needs access control
+    return fetch('http://localhost:8000/hotel/diH7')
+        .then(data => 
+          
+            data.json()
+            
+        )
+  }
+    
+    
+  function getRooms() {
+    // needs access control
+    return fetch('http://localhost:8000/rooms/diH7')
+        .then(data => 
+          
+            data.json()
+            
+        )
+  }
 
+    
+  useEffect(() => {
+      getHotels().then(hotels => {
+          
+          const { name, amenities,amenities_ratings, categories, description,address,original_metadata , image_details,hires_image_index} = hotels
+          let arr = []
+          let arr2=[]
+          for (const key in amenities) {
+ 
+              arr.push(key)
+          }
+          let arr3 = []
+          const prefix = image_details.prefix
+          const suffix= image_details.suffix
+          for (let i = 0; i < 10; i++){
+              const strng = `${prefix + i.toString() + suffix}`
+              
+            arr3.push(`${prefix+i.toString()+suffix}`)
+          }
+          
+          sethotel_dets({ name, arr, categories, description ,amenities_ratings,address, original_metadata,image_details,arr3})
+          
+      })
+      
+  }, [])
+    
+    
+    
+    useEffect(() => {
+        getRooms().then(roomz => {
+            const { rooms } = roomz
+            let arr = []
+            let arr2 = []
+            let arr3=[]
+            rooms.map(item => {``
+                arr.push(item.roomDescription)
+                arr2.push(item.coverted_max_cash_payment)
+                arr3.push(item.images[0].url)
+            })
+            console.log(arr3)
+            setroom_dets({arr,arr2,arr3})
+        })
+    },[])
+  
+
+    
+  
+  
     
     return (
         <div data-testid="hotel_main">
             {/* TODO 1.1 : FIX THE ROUTER USING A PROPER REACT ROUTER */}
             
             {/* TODO 1.2 : FIX THE BUTTONS :: DONE*/}
-            <CarouselProvider
+
+            {hotel_dets.arr3 ?<CarouselProvider
                 naturalSlideWidth={100}
                 naturalSlideHeight={55}
-                totalSlides={2}
+                totalSlides={10}
                 isPlaying={true}
                 interval={10000}
                 infinite={true}
@@ -78,13 +166,18 @@ function Room() {
                 
             >
                 <Slider>
-                    <Slide index={0}>
-                        <img src='https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'></img>
-                    </Slide>
+
+                    {hotel_dets.arr3.map((item, index) => {
+                        return(
+                            <Slide index={index}>
+                            <img src={item} alt="Description when image is not found" style={{ width: "100%"}}></img>
+                        </Slide>
+                        )
+                    })}
                     
-                    <Slide index={1}>
-                        <img src='https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80'></img>
-                    </Slide>
+                    
+                    
+                   
                 </Slider>
                 
 
@@ -110,57 +203,71 @@ function Room() {
                     
               
                 
-            </CarouselProvider>
+            </CarouselProvider>:<></>
+                
+            }
+            
 
             {/* TODO 1.3 : HOTEL DESCRIPTION */}
-
-            <div className='hotel_descript'>
-            <h3>WELCOME TO SHERATON KAGOSHIMA</h3>
-
-            <p>All 228 spacious guest rooms offer spectacular views of Sakurajima and Kagoshima city. For guests staying in Club Rooms and Suites located on the upper floors, the Club Lounge offers an at-home atmosphere<span id="dots">...<button onClick={myFunction} id="myBtn"data-testid="myBtn">See More</button></span><span id="more" data-testid="more">erisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta.</span></p>
+            
+            <div className='hotel_descript' id="h_desc">
+                {hotel_dets.name ?
+                     <h3 >Welcome To {hotel_dets.name }</h3>:<></>
+            }
+               
+                <p style={{text_align:"justify"}}> {convert(hotel_dets.description)}</p>
+            
+            {/* <span id="dots">...<button onClick={myFunction} id="myBtn"data-testid="myBtn">See More</button></span><span id="more" data-testid="more"></span></p> */}
             </div>
             {/* TODO 1.4 : ROOMS AND SUITS SLIDER */}
             <div style={{ background: "#fbfbfb" }} className="rooms">
-            <Card_Slider data={temp_data}></Card_Slider>
-            </div>
-
-            <CarouselProvider
-                naturalSlideWidth={100}
-                naturalSlideHeight={40}
-                totalSlides={4}
-                isPlaying={true}
-                interval={6000}
-                infinite={true}
-                lockOnWindowScroll={true}
-                className="car_2"
+                {room_dets.arr ?
+                    <Card_Slider data={ room_dets.arr } data2={room_dets.arr2} data3={room_dets.arr3}></Card_Slider>:<></>
+                }
                 
-            >
-                <Slider >
-                    <Slide index={0}>
-                    <div className='holder view_holder'>
-                    <HotelRating name="Lake House"></HotelRating>
-           </div>
+            </div>
+            {hotel_dets.arr?
+            
+                <CarouselProvider
+                    naturalSlideWidth={100}
+                    naturalSlideHeight={30}
+                    totalSlides={4}
+                    isPlaying={true}
+                    interval={6000}
+                    infinite={true}
+                    lockOnWindowScroll={true}
+                    className="car_2"
+                
+                >
+                    <Slider >
+                        <Slide index={0}>
+                            <div className='holder view_holder'>
+                                <HotelRating name={hotel_dets.categories.lake_hotel.name} score={hotel_dets.categories.lake_hotel.score} popularity={hotel_dets.categories.lake_hotel.popularity}></HotelRating>
+                            </div>
                    
-                    </Slide>
+                        </Slide>
                     
-                    <Slide index={1}>
-                    <div className='holder view_holder'>
-                    <HotelRating name="home"></HotelRating>
-           </div>
+                        <Slide index={1}>
+                            <div className='holder view_holder'>
+                                <HotelRating name={hotel_dets.categories.overall.name} score={hotel_dets.categories.overall.score} popularity={hotel_dets.categories.overall.popularity}></HotelRating>
+                            </div>
+                   
                         </Slide>
                         <Slide index={2}>
-                        <div className='holder view_holder'>
-                    <HotelRating name="Buisness House"></HotelRating>
-           </div>
-                    </Slide>
+                            <div className='holder view_holder'>
+                                <HotelRating name={hotel_dets.categories.business_hotel.name} score={hotel_dets.categories.business_hotel.score} popularity={hotel_dets.categories.lake_hotel.popularity}></HotelRating>
+                            </div>
+                   
+                        </Slide>
+  
+                        <Slide index={3}>
+                            <div className='holder view_holder'>
+                                <HotelRating name={hotel_dets.categories.city_hotel.name} score={hotel_dets.categories.city_hotel.score} popularity={hotel_dets.categories.city_hotel.popularity}></HotelRating>
+                            </div>
+                   
+                        </Slide>
 
-                    <Slide index={3}>
-                    <div className='holder view_holder'>
-                    <HotelRating name="Lake House 2"></HotelRating>
-           </div>
-                    </Slide>
-
-                </Slider>
+                    </Slider>
                 
 
                     
@@ -169,15 +276,15 @@ function Room() {
                         <div class="arrow arrow--left" >
                             
                             <ButtonBack >BACK</ButtonBack>
-                            </div>
+                        </div>
 
                             
 
-                            <div class="arrow arrow--right">
+                        <div class="arrow arrow--right">
                                 
-                                 <ButtonNext>NEXT</ButtonNext>
+                            <ButtonNext>NEXT</ButtonNext>
                         
-                            </div>
+                        </div>
                     </div>
                  
                     
@@ -185,26 +292,38 @@ function Room() {
                     
               
                 
-            </CarouselProvider>
+                </CarouselProvider> : <></>}
                
             
-            <Suite></Suite>
+            {/* <Suite></Suite> */}
+            <div className='holder'>
+                
+            {/* <ImageGallery items={images} autoPlay="true" thumbnailHeight="0" showNav="false"></ImageGallery> */}
+            </div>
             
 
             {/* TODO 1.5 AMMENITIES */}
             <div className='holder'>
-            <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Ammenities</h1>
-            <Ammenities h_name={hotel_name}></Ammenities>
+                <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Ammenities</h1>
+                {hotel_dets.arr ?<Ammenities h_name={hotel_dets.arr}></Ammenities>:<></>
+            }
+            
             </div>
            
             {/* TODO 1.8 HOTEL INFORMATION */}
             <div className='holder'>
-            <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Hotel Information</h1>
-            <H_Information h_name={hotel_name}></H_Information>
+                <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Hotel Information</h1>
+                {hotel_dets.amenities_ratings ?
+                    <H_Information h_name={hotel_dets.amenities_ratings}></H_Information>:<></>
+                }
+            
             </div>
             
             {/* TODO 2.0: MAP  */}
-            <Map></Map>
+            {hotel_dets.original_metadata?
+                <Map name={hotel_dets.name} address={hotel_dets.address} city={hotel_dets.original_metadata.city} country={hotel_dets.original_metadata.country}></Map>:<></>
+            }
+            
 
             
 

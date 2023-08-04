@@ -152,6 +152,7 @@
     grid-template-columns: repeat(2, 1fr);
     
 }
+
 .fade {
     transition: fade-in 3s ease-in 0;
     opacity: 1;
@@ -162,7 +163,7 @@
     -ms-transition: fade-in 3s ease-in 0;
     -o-transition: fade-in 3s ease-in 0;
 }
-  
+
   @keyframes fade-in {
     0% {
         opacity: 0;
@@ -184,6 +185,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+
     width: 100%;
     display: flex;
     padding: 5%;
@@ -199,8 +201,8 @@
     color: #fff;
     padding: 5%;
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+    display: flex;
+   justify-content: center;
 }
 .getting_here{
     display: flex;

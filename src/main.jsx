@@ -14,8 +14,6 @@ import Room_Reserve from './Pages/Room_Page/Room_Reserve.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-    <App/>
-    </BrowserRouter>
+  <Hotel></Hotel>
   </React.StrictMode>,
 )

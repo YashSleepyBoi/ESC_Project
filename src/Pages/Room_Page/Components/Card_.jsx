@@ -19,16 +19,17 @@ export default function ActionAreaCard(props) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="z0"
+          height="0"
           image={props.image}
           alt="green iguana"
+          sx={{height:"100%"}}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div" className='text-left text-lg font-normal'>
             {props.name}
           </Typography>
           <Typography variant="body2" color="text.secondary"  className='text-left text-lg font-normal'>
-            {cost+"$ per night"}
+            {props.cost+" S$ per night"}
           </Typography>
         </CardContent>
       </CardActionArea>

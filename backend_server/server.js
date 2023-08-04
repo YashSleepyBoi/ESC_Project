@@ -80,9 +80,42 @@ app.post('/input', (req, res) => {
   });
 
 
+app.get("/hotel/:id", async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*') // Any link
+    const {id}=req.params
+    const hotel_url = `https://hotelapi.loyalty.dev/api/hotels/${id}`;
+    console.log(hotel_url)
+    const u = hotel_url
+    const rez = await fetch(u, {
+        method: 'GET',
+        credentials: 'same-origin'
+    })
+
+    let all_data = await rez.json();
+    console.log(all_data)
+    res.json(all_data)
+})
+
+app.get("/rooms/:id", async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*') // Any link
+    const {id}=req.params
+    const hotel_url = `https://hotelapi.loyalty.dev/api/hotels/${id}/price?destination_id=WD0M&checkin=2023-10-01&checkout=2023-10-07&lang=en_US&currency=SGD&country_code=SG&guests=2&partner_id=1`;
+    const u = hotel_url
+    const rez = await fetch(u, {
+        method: 'GET',
+        credentials: 'same-origin'
+    })
+
+    let all_data = await rez.json();
+    res.json(all_data)
+})
+
 app.listen(8000, function () {
     console.log('CORS-enabled web server listening on port 8000');
   });
+
+
+
 
 
 // First async function to fetch the data

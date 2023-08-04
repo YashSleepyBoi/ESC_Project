@@ -12,8 +12,8 @@ function Card_Slider(props) {
         <h1 className='text-left  pt-10 font-bold text-2xl '>Rooms and Suites</h1>
         <div style={{ width: "80%"}} className="slider">
             
-            {props.data.map(i => {
-            return <ActionAreaCard name={i.room} image={i.image}></ActionAreaCard>
+            {props.data.map((i,index) => {
+            return <ActionAreaCard name={i} image={props.data3[index]} cost={props.data2[index]}></ActionAreaCard>
         })}
       </div></>
         
