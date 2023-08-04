@@ -1,66 +1,66 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .accordion-item{
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
-  justify-content: space-between;
+display: flex;
+flex-direction: column;
+width: 50vw;
+justify-content: space-between;
 }
 .accordion-title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .accordion-content{
-    text-align: left;
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows 0.3s ease-in-out;
+  text-align: left;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s ease-in-out;
 }
 
 .accordion-content.open{
-  grid-template-rows: 1fr;
+grid-template-rows: 1fr;
 }
 
 .accordion-text{
-  overflow: hidden;
+overflow: hidden;
 }
 
 .accordion-text > p{
-  padding: 1rem 0;
-  font-size: 14px;
+padding: 1rem 0;
+font-size: 14px;
 }
-  
+
 .accordion-title {
-  padding: 1rem 0;
+padding: 1rem 0;
 }
 
 .dropdown-icon{
-  transform: rotate(0deg);
-  transition: transform 0.3s ease-in-out;
+transform: rotate(0deg);
+transition: transform 0.3s ease-in-out;
 }
 .dropdown-icon.open{
-  transform: rotate(180deg);
+transform: rotate(180deg);
 }
 
-  
+
 @media screen and (max-width: 700px) {
-  body {
-    font-size: 12px;
-  }
-  .accordion-item{
-    width: 60vw;
-  }
+body {
+  font-size: 12px;
+}
+.accordion-item{
+  width: 60vw;
+}
 }
 
 @media screen and (max-width: 400px) {
-  .accordion-item{
-    width: 70vw;
-  }
+.accordion-item{
+  width: 70vw;
+}
 }

@@ -2,10 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Accordion from "./Components/Accordion";
 import "./Stylesheets/Rooms.css";
 import {
-  accordionData,
   accomodationDesc,
   roomHeader,
   roomDesc,
@@ -18,46 +16,29 @@ import {
   ButtonNext,
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
-import Suite from "./Components/suite";
 import ImageGrid from "./Components/ImageGrid";
 import Footer from "./Components/RoomFooter";
 
 export default function Room() {
   // retrieving the params of the item in modal
-  const [scroll, setScroll] = useState(0)
+  const [scroll, setScroll] = useState(0);
+  const [images, setImages] = useState([]);
   const theme = useTheme();
+  const numCarouselImages = 3;
   const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
 
-  // const fetchUserData = () => {
-  //   const apiUrl = 'https://hotelapi.loyalty.dev/api/hotels?destination_id=WD0M';
-
-  //   fetch(apiUrl, {mode: 'no-cors'})
-  //     .then(response => {
-  //       console.log(response.json());
-  //     })
-  //     .then(data => {
-  //       console.log(data)
-  //     })
-  //     .catch(error => {
-  //       console.error('Error fetching data:', error);
-  //     });
-  // }
-
-  // useEffect(() => {
-  //   fetchUserData();
-  // }, [])
-  // style={{transform: `translateY(-${scroll/100}%) scale(1.${scroll/100})`}}
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", () => {
-  //     setScroll(window.scrollY);
-  //   });
-  //   return () => {
-  //     window.removeEventListener("scroll", () => {
-  //       setScroll(window.scrollY);
-  //     });
-  //   }
-  // }, []);
+  const fetchRoomData = () =>
+    fetch("http://localhost:8000/rooms/diH7")
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setImages(data.rooms.slice(4,4+numCarouselImages).map((item) => item.images[0].high_resolution_url))
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  useEffect(() => fetchRoomData, []);
   return (
     <>
       <div
@@ -83,7 +64,7 @@ export default function Room() {
             <CarouselProvider
               naturalSlideWidth={100}
               naturalSlideHeight={55}
-              totalSlides={2}
+              totalSlides={images.length}
               isPlaying={true}
               interval={10000}
               infinite={true}
@@ -91,13 +72,15 @@ export default function Room() {
               sx={{ marginBottom: 0 }}
             >
               <Slider>
-                <Slide index={0}>
-                  <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"></img>
-                </Slide>
-
-                <Slide index={1}>
-                  <img src="https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1332&q=80"></img>
-                </Slide>
+                {images.map((item, index) => {
+                  return (
+                    <Slide index={index}>
+                      <img
+                        src={item}
+                        alt="room"/>
+                    </Slide>
+                  )
+                })}
               </Slider>
 
               <div id="arrow_2" class="arrow-wrapper">
@@ -111,12 +94,6 @@ export default function Room() {
               </div>
             </CarouselProvider>
           </div>
-        </div>
-        <Suite isSmall={isSmall} />
-        <div className="accordion">
-          {accordionData.map(({ title, content }) => (
-            <Accordion title={title} content={content} />
-          ))}
         </div>
         <div className="room-grid">
           <ImageGrid isSmall={isSmall} />

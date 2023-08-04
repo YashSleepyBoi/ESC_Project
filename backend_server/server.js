@@ -115,10 +115,6 @@ app.listen(8000, function () {
     console.log('CORS-enabled web server listening on port 8000');
   });
 
-
-
-
-
 // First async function to fetch the data
 async function fetchDataAsync(func) {
     func.then(data => {
