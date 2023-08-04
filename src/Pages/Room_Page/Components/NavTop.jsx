@@ -59,7 +59,7 @@ export default function NavTop({ color, setColor }) {
               </Link>
             );
           })}
-          <Link to="/login">
+          <Link to={useruid !== "" ? "/profile" : "/login"}>
             <li>{isLoggedIn ? useruid : "Sign in"}</li>
           </Link>
         </ul>
