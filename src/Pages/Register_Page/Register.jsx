@@ -6,6 +6,7 @@ import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
 
 function Register(){
 //declare hooks
@@ -38,6 +39,16 @@ const handleSubmit = async(e) =>{
 
 
             console.log("Successfully created:" + user);
+
+            //Log out of the user account
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                console.log("Successfully logged out of account")
+            }).catch((error) => {
+                // An error happened.
+                console.log(error);
+            })
+
             navigate("/");
             // ...
         })
