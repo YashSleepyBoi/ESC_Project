@@ -50,10 +50,10 @@ const Profile = ({setBottom}) => {
             <div className='bgImage'></div>
             <div className='profileContainer'>
                 <div className='sectionContainer'>
-                    <div className='profileTitle'>Personal Particulars</div>
+                    <div className='profileTitle'>Personal Details</div>
                     {/* Route to /editprofile page */}
                     <Link to='/editprofile'>
-                        <button className='editButton'>Edit Particulars</button>
+                        <button className='editButton'>Edit Details</button>
                     </Link>
                 </div>
     {/* *************************************************************************** */}
@@ -87,7 +87,7 @@ const Profile = ({setBottom}) => {
                                 // Sign-out successful.
                             }).catch((error) => {
                                 // An error happened.
-                            })}}>Signout
+                            })}}><button className='editButton'>Signout</button>
                     </button>
                 </Link>
             </div>

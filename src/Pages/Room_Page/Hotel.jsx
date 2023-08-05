@@ -12,54 +12,38 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { convert } from 'html-to-text';
 import Footer from "./Components/RoomFooter";
 import classes from "./Stylesheets/Room.module.css"
-
+ 
 import "./Stylesheets/Room.css"
 import Card_Slider from './Components/Card_Slider';
 import Ammenities from './Components/Ammenities';
 import H_Information from './Components/H_Information';
 import Map from './Components/Map';
-
+ 
 import { useEffect } from 'react';
 import HotelRating from './Components/HotelsRating';
 import Suite from './Components/suite';
 import NavBar from "./Components/RoomNavBar";
-
-
-<<<<<<< Updated upstream
-
+ 
+ 
+ 
 function Room({setBottom}) {
-    const host="050G"
-    setBottom(false);
-    const images = [
-        {
-          original: "https://picsum.photos/id/1018/1000/600/",
-          thumbnail: "https://picsum.photos/id/1018/250/150/",
-        },
-        {
-          original: "https://picsum.photos/id/1015/1000/600/",
-          thumbnail: "https://picsum.photos/id/1015/250/150/",
-        },
-        {
-          original: "https://picsum.photos/id/1019/1000/600/",
-          thumbnail: "https://picsum.photos/id/1019/250/150/",
-        },
-      ];
-      
+    
+    
     const [hotel_dets, sethotel_dets] = useState({});
     const [room_dets, setroom_dets] = useState({});
     const hotel_name = "SHERATON KAGOSHIMA"
     
-=======
 // FETCHES HOTEL_ID FROM RESULTS PAGE
 function getHotelId() {
     const {hotel_id} = useParams();
     console.log("HOTEL ID IS:",hotel_id);
     return hotel_id;
 }
-
-function Room() {
-    const hotel_name="SHERATON KAGOSHIMA"
->>>>>>> Stashed changes
+ 
+ 
+        const host="diH7"
+        setBottom(false);
+   
     function myFunction() {
         var dots = document.getElementById("dots");
         var moreText = document.getElementById("more");
@@ -76,10 +60,10 @@ function Room() {
         }
     }
     
-
+ 
     // console.log("Clothing Iron:", hotel_dets["amenities"]["clothingIron"]);
     // console.log("Dry Cleaning:", hotel_dets["amenities"]["dryCleaning"]);
-
+ 
     const temp_data = [
         { id:0, room: "Deluxe Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
         { id:1,room: "Deluxe Kind", image: "https://images.unsplash.com/flagged/photo-1556438758-8d49568ce18e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2674&q=80" },
@@ -89,13 +73,13 @@ function Room() {
         { id:2,room: "Deluxe Room", image: "https://images.unsplash.com/photo-1584132915807-fd1f5fbc078f?ixlib=rb-4.0.3&ixiod=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80" },
         
     ]
-
+ 
     
     
   function getHotels() {
     // needs access control
     return fetch(`http://localhost:8000/hotel/${host}`)
-        .then(data => 
+        .then(data =>
           
             data.json()
             
@@ -106,13 +90,13 @@ function Room() {
   function getRooms() {
     // needs access control
     return fetch('http://localhost:8000/rooms/diH7')
-        .then(data => 
+        .then(data =>
           
             data.json()
             
         )
   }
-
+ 
     
   useEffect(() => {
       getHotels().then(hotels => {
@@ -161,7 +145,7 @@ function Room() {
         })
     },[])
   
-
+ 
     
   
   
@@ -171,7 +155,7 @@ function Room() {
             {/* TODO 1.1 : FIX THE ROUTER USING A PROPER REACT ROUTER */}
             
             {/* TODO 1.2 : FIX THE BUTTONS :: DONE*/}
-
+ 
             {hotel_dets.arr3 ?<CarouselProvider
                 naturalSlideWidth={100}
                 naturalSlideHeight={55}
@@ -183,7 +167,7 @@ function Room() {
                 
             >
                 <Slider>
-
+ 
                     {hotel_dets.arr3.map((item, index) => {
                         return(
                             <Slide index={index}>
@@ -197,7 +181,7 @@ function Room() {
                    
                 </Slider>
                 
-
+ 
                     
                         
                     <div id="arrow_2" class="arrow-wrapper-2" >
@@ -205,9 +189,9 @@ function Room() {
                             
                             <ButtonBack >BACK</ButtonBack>
                             </div>
-
+ 
                             
-
+ 
                             <div class="arrow arrow--right">
                                 
                                  <ButtonNext>NEXT</ButtonNext>
@@ -224,7 +208,7 @@ function Room() {
                 
             }
             
-
+ 
             {/* TODO 1.3 : HOTEL DESCRIPTION */}
             
             <div className='hotel_descript' id="h_desc">
@@ -268,10 +252,10 @@ function Room() {
                             )
                         })}
                         
-
+ 
                     </Slider>
                 
-
+ 
                     
                         
                 <div id="arrow_2" class="arrow-wrapper"  >
@@ -279,9 +263,9 @@ function Room() {
                         
                         <ButtonBack >BACK</ButtonBack>
                     </div>
-
+ 
                         
-
+ 
                     <div class="arrow arrow--right">
                             
                         <ButtonNext>NEXT</ButtonNext>
@@ -295,7 +279,7 @@ function Room() {
                
             
   
-
+ 
             {/* TODO 1.5 AMMENITIES */}
             <div className='holder'>
                 <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Ammenities</h1>
@@ -318,13 +302,13 @@ function Room() {
                 <Map name={hotel_dets.name} address={hotel_dets.address} city={hotel_dets.original_metadata.city} country={hotel_dets.original_metadata.country}></Map>:<></>
             }
             
-
+ 
             
-
+ 
             <Footer/>
         </div>
         
     )
 }
-
+ 
 export default Room

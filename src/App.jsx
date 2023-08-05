@@ -12,7 +12,7 @@ import Profile from "./Pages/Profile_Page/profile";
 import Results from "./Pages/Results_Page/Results";
 import EditProfile from "./Pages/Profile_Page/edit_profile";
 import Room_Reserve from "./Pages/Room_Page/Room_Reserve";
-
+ 
 function App() {
   const [isBottomDisplay, setIsBottomDisplay] = useState(false);
   console.log(isBottomDisplay)
@@ -20,7 +20,6 @@ function App() {
     <>
       <NavBar bottom={isBottomDisplay}/>
       <Routes>
-<<<<<<< Updated upstream
         <Route path="/" element={<Home setBottom={setIsBottomDisplay}/>} />
         <Route path="/findreserve" element={<Room setBottom={setIsBottomDisplay}/>} />
         <Route path="/profile" element={<Profile setBottom={setIsBottomDisplay}/>}/>
@@ -30,25 +29,10 @@ function App() {
         <Route path="/register" element={<Register setBottom={setIsBottomDisplay}/>} />
         <Route path="/results" element={<Results setBottom={setIsBottomDisplay}/>} />
         <Route path="/roomreserve" element={<Room_Reserve setBottom={setIsBottomDisplay}/>} />
-=======
-        <Route path="/" element={<Home />} />
-        <Route path="/findreserve" element={<Room/>} />
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/editprofile" element={<EditProfile/>}/>
-        <Route path="/hotels/:hotel_id" element={<Hotel/>} />
-        <Route path="/contact" component={Contact} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
-        <Route path="/results" element={<Results/>} />
-        <Route path="/payment" element={<Payment/>} />
-        {/* TODO: remove success and cancel routes since they shouldn't be accessible via router */}
-        <Route path="/success" element={<Success/>} />
-        <Route path="/cancel" element={<Cancel/>} />
->>>>>>> Stashed changes
       </Routes>
       
     </>
   );
 }
-
+ 
 export default App;

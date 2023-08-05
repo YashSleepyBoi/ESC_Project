@@ -36,11 +36,9 @@ const EditProfile = ({setBottom}) => {
         <div className='bgImage'></div>
         <div className='editprofileContainer'>
             <div className='sectionContainer'>
-                <div className='profileTitle'>Edit Personal Particulars</div>
+                <div className='profileTitle'>Edit Personal Details</div>
                 {/* Route to /editprofile page */}
-                
-                <button className='editButton' onClick={onsubmit}>Save</button>
-                
+
             </div>
 {/* *************************************************************************** */}
 {/* NAME */}
@@ -88,7 +86,7 @@ const EditProfile = ({setBottom}) => {
                 {/* <button className='editButton'>Edit</button> */}
             </div>
 {/* *************************************************************************** */}
-<div className='sectionContainer'>
+            <div className='sectionContainer'>
 {/* CONFIRM PASSWORD */}
                 <div className='profileText'>Confirm New Password</div>
                 <div className='userInputContainer'>
@@ -99,6 +97,12 @@ const EditProfile = ({setBottom}) => {
                 {/* <button className='editButton'>Edit</button> */}
             </div>
 {/* *************************************************************************** */}
+            <div className='sectionContainer'>
+{/* SAVE BUTTON */}
+                <button className='editButton' onClick={onsubmit}>Save</button>
+{/* CANCEL BUTTON */}
+                <button className='editButton' onClick={onsubmit}>Cancel</button>
+            </div>
         </div>
         </form>
     </div>
