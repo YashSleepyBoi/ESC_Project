@@ -25,6 +25,7 @@ import Suite from './Components/suite';
 import NavBar from "./Components/RoomNavBar";
 
 
+<<<<<<< Updated upstream
 
 function Room({setBottom}) {
     const host="050G"
@@ -48,6 +49,17 @@ function Room({setBottom}) {
     const [room_dets, setroom_dets] = useState({});
     const hotel_name = "SHERATON KAGOSHIMA"
     
+=======
+// FETCHES HOTEL_ID FROM RESULTS PAGE
+function getHotelId() {
+    const {hotel_id} = useParams();
+    console.log("HOTEL ID IS:",hotel_id);
+    return hotel_id;
+}
+
+function Room() {
+    const hotel_name="SHERATON KAGOSHIMA"
+>>>>>>> Stashed changes
     function myFunction() {
         var dots = document.getElementById("dots");
         var moreText = document.getElementById("more");

@@ -3,7 +3,7 @@ import CallIcon from "@mui/icons-material/Call";
 import { Button, Divider, useMediaQuery } from "@mui/material";
 import { reserveButtonStyle } from "../Content";
 
-export default function NavBot() {
+export default function () {
     const isSmall = useMediaQuery('(max-width:700px)')
   return (
     <>

@@ -19,6 +19,7 @@ export default function NavBot() {
   const [room, setRoom] =useState(1)
   const [pax, setPax] =useState(1)
 
+<<<<<<< Updated upstream
   // Update input_dict
   // useEffect(() => {
   //   setStartDate(startDate);
@@ -51,6 +52,34 @@ export default function NavBot() {
     // alert("Send data?")
     console.log("Inputs posted to /inputs", JSON.stringify(input));
   }
+=======
+  // Check if button is clicked
+  const [clicked, setClicked] = useState("no");
+
+  function setInputs(input) {
+    if (input["dest_id"]=="" 
+    || input["check_in"]=="" 
+    || input["check_out"]=="" 
+    || input["rooms"]=="" 
+    || input["guests"]=="") 
+    {alert("Please fill in all fields");}
+
+    else {
+      fetch("http://localhost:8000/input", {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(input)
+    })
+    .then((response) => response.json()) // Parse the response as JSON
+    .catch((error) => console.error("Error occurred during fetch /input:", error));
+    console.log("NAVBOT1.JSX: Inputs posted to /input", JSON.stringify(input));
+  }
+    }
+  
+>>>>>>> Stashed changes
 
   return (
     <>
@@ -60,10 +89,15 @@ export default function NavBot() {
           <SearchDest setDest={setDest} ></SearchDest>
         </div>
         <div className="stay-duration-container">
+<<<<<<< Updated upstream
         <div> Stay Duration </div>
           {/* <DatePPicker className="date-picker" selected={startDate} onChange={(date) => setStartDate(date)} ></DatePPicker> */}
           <DatePPicker className="date-picker" startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} ></DatePPicker>
         {/* <DatePPicker className="date-picker" endDate={endDate}></DatePPicker> */}
+=======
+        <div> Start and End dates </div>
+          <DatePPicker className="date-picker" startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} ></DatePPicker>
+>>>>>>> Stashed changes
         </div>
         <div className="room-pax-container">
         <Collapsible room={room} pax={pax} setRoom={setRoom} setPax={setPax} ></Collapsible>
@@ -80,7 +114,12 @@ export default function NavBot() {
               "check_out": endDate, 
               "rooms": room, 
               "guests": pax
+<<<<<<< Updated upstream
             })}
+=======
+            })
+          }
+>>>>>>> Stashed changes
             // <Button
               sx={{
                 ...reserveButtonStyle,
