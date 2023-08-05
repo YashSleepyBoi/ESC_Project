@@ -26,6 +26,7 @@ import { useNavigate } from "react-router-dom";
 
 function Hotel_Rooms(props) {
     const navigate = useNavigate();
+    const id="1pMbIMFKQ24xAL8PLr8G"
     const onClickHandler =async () => {
         console.log(props)
         
@@ -35,8 +36,8 @@ function Hotel_Rooms(props) {
         //     booking:rooms+[props.r_name]
         // });
         //...
-        await updateDoc(doc(db, "Users","Of73cDsD51T1JwxXXweI"), {
-               booking: arrayUnion(props.r_name)
+        await updateDoc(doc(db, "Users",id), {
+               booking: arrayUnion(props.obj)
              });
         
         window.alert("Room Selected")
@@ -54,11 +55,11 @@ function Hotel_Rooms(props) {
         <Card sx={{ display: 'flex', width:"80%", }} className="room_holder">
             <Box sx={{ display: 'flex', flexDirection: 'column' ,height:"100%"}} className="room_quick_details">
                 <CardContent sx={{ flex: '1 0 auto' }}>
-                <Typography component="div" variant="h3">
+                <Typography component="div" variant="h4">
                     {props.r_name}
                 </Typography>
-                    <Typography variant="h5" color="text.secondary" component="div" sx={ {paddingTop:"20%"}}>
-                    {props.price}
+                    <Typography variant="h5" color="text.secondary" component="div" sx={ {paddingTop:"8%"}}>
+                    {props.price} SGD/night
                 </Typography>
                 </CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>

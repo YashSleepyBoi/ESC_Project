@@ -1,7 +1,9 @@
 import H_Object from "./H_Object";
 import { IconButton, Button, Divider, Grid } from "@mui/material";
+import { useState } from "react";
 
 function H_Information(props) {
+
     return (
         <div className="information" style={{display:"flex" , justifyContent:"center"}}>
             
@@ -11,8 +13,8 @@ function H_Information(props) {
                   
                     return (
                       <Grid item xs={12} sm={6} md={4} role="gridcell">
-                            <p className="amenities-text">{item.name }</p>
-
+                        <H_Object item={item}></H_Object>
+                        
                       </Grid>
                     );
                   })}

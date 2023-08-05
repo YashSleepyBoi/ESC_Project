@@ -2,6 +2,8 @@
 
 import "../Stylesheets/Venue.css"
 function HotelRating(props) {
+    const a=props.img.length
+    const v=Math.floor(Math.random() * 10)
     return (
         <div className="venue_view">
             <div>
@@ -10,7 +12,7 @@ function HotelRating(props) {
                 <p>Popularity: {Math.ceil(props.popularity)}</p>
             </div>
             <div>
-                <img src="https://cache.marriott.com/content/dam/marriott-renditions/SINJW/sinjw-room-4402-hor-clsc.jpg?output-quality=70&interpolation=progressive-bilinear&downsize=1846px:*" alt="" />
+                <img src={props.img[v]} alt="" />
             </div>
         </div>
     )

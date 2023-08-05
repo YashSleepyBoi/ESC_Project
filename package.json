@@ -31,12 +31,7 @@
     "react-datepicker": "^4.16.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
-<<<<<<< HEAD
     "react-router-dom": "^6.14.2",
-=======
-    "react-image-gallery": "^1.3.0",
-    "react-router-dom": "^6.14.1",
->>>>>>> 2e7cdbd47e529a0d7df5268eaa12c44edb2d2187
     "react-scripts": "^5.0.1",
     "react-slick": "^0.29.0",
     "react-spring-3d-carousel": "^1.3.4",

@@ -12,7 +12,7 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 import { convert } from 'html-to-text';
 import Footer from "./Components/RoomFooter";
 import classes from "./Stylesheets/Room.module.css"
-import "react-image-gallery/styles/css/image-gallery.css";
+
 import "./Stylesheets/Room.css"
 import Card_Slider from './Components/Card_Slider';
 import Ammenities from './Components/Ammenities';
@@ -23,7 +23,7 @@ import { useEffect } from 'react';
 import HotelRating from './Components/HotelsRating';
 import Suite from './Components/suite';
 import NavBar from "./Components/RoomNavBar";
-import ImageGallery from "react-image-gallery";
+
 
 
 function Room({setBottom}) {
@@ -243,27 +243,27 @@ function Room({setBottom}) {
                     <Slider >
                         <Slide index={0}>
                             <div className='holder view_holder'>
-                                <HotelRating name={hotel_dets.categories.lake_hotel.name} score={hotel_dets.categories.lake_hotel.score} popularity={hotel_dets.categories.lake_hotel.popularity}></HotelRating>
+                                <HotelRating name={hotel_dets.categories.lake_hotel.name} score={hotel_dets.categories.lake_hotel.score} popularity={hotel_dets.categories.lake_hotel.popularity} img={hotel_dets.arr3}></HotelRating>
                             </div>
                    
                         </Slide>
                     
                         <Slide index={1}>
                             <div className='holder view_holder'>
-                                <HotelRating name={hotel_dets.categories.overall.name} score={hotel_dets.categories.overall.score} popularity={hotel_dets.categories.overall.popularity}></HotelRating>
+                                <HotelRating name={hotel_dets.categories.overall.name} score={hotel_dets.categories.overall.score} popularity={hotel_dets.categories.overall.popularity}img={hotel_dets.arr3}></HotelRating>
                             </div>
                    
                         </Slide>
                         <Slide index={2}>
                             <div className='holder view_holder'>
-                                <HotelRating name={hotel_dets.categories.business_hotel.name} score={hotel_dets.categories.business_hotel.score} popularity={hotel_dets.categories.lake_hotel.popularity}></HotelRating>
+                                <HotelRating name={hotel_dets.categories.business_hotel.name} score={hotel_dets.categories.business_hotel.score} popularity={hotel_dets.categories.lake_hotel.popularity} img={hotel_dets.arr3}></HotelRating>
                             </div>
                    
                         </Slide>
   
                         <Slide index={3}>
                             <div className='holder view_holder'>
-                                <HotelRating name={hotel_dets.categories.city_hotel.name} score={hotel_dets.categories.city_hotel.score} popularity={hotel_dets.categories.city_hotel.popularity}></HotelRating>
+                                <HotelRating name={hotel_dets.categories.city_hotel.name} score={hotel_dets.categories.city_hotel.score} popularity={hotel_dets.categories.city_hotel.popularity} img={hotel_dets.arr3}></HotelRating>
                             </div>
                    
                         </Slide>
@@ -296,12 +296,7 @@ function Room({setBottom}) {
                 </CarouselProvider> : <></>}
                
             
-            {/* <Suite></Suite> */}
-            <div className='holder'>
-                
-            {/* <ImageGallery items={images} autoPlay="true" thumbnailHeight="0" showNav="false"></ImageGallery> */}
-            </div>
-            
+  
 
             {/* TODO 1.5 AMMENITIES */}
             <div className='holder'>
@@ -313,7 +308,7 @@ function Room({setBottom}) {
            
             {/* TODO 1.8 HOTEL INFORMATION */}
             <div className='holder'>
-                <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Hotel Information</h1>
+                <h1 className='text-left  pt-10 font-bold text-2xl mb-8 '>Hotel Ammenities Ratings</h1>
                 {hotel_dets.amenities_ratings ?
                     <H_Information h_name={hotel_dets.amenities_ratings}></H_Information>:<></>
                 }

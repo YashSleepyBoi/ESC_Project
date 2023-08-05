@@ -16,7 +16,7 @@ function Ammenity_Object(props) {
     }
     return (
         <div className="flex">
-            <img src="https://img.icons8.com/?size=512&id=611&format=png" style={{width:20}}></img>
+            {/* <img src="https://img.icons8.com/?size=512&id=611&format=png" style={{width:20}}></img> */}
             {/* TODO 1.7 FILL IN THE AMMENTITIES */}
             <h3> {obj[props.name]}</h3>
         </div>
