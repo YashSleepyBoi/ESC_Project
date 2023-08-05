@@ -22,32 +22,41 @@ const handleSubmit = async(e) =>{
     console.log(email);
     if (confirmPass == password){
         await createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
+        .then(async (userCredential) => {
             // Signed in
             const user = userCredential.user;
             const currentDateTime = new Date();
             
             const customDocumentId = user.uid; 
             //Add to the database
-            const docRef = setDoc(doc(db, "Users", customDocumentId), {
+            await setDoc(doc(db, "Users", customDocumentId), {
                 name: nameID,
                 email: email,
                 bookings: [],
                 created_date: currentDateTime,
                 updated_date: currentDateTime
-              });
+              }).then(()=>{
+                console.log("Successfully created:" + user);
+                signOut(auth).then(() => {
+                    // Sign-out successful.
+                    console.log("Successfully logged out of account")
+                }).catch((error) => {
+                    // An error happened.
+                    console.log(error);
+                })
+              })
 
 
-            console.log("Successfully created:" + user);
+            
 
             //Log out of the user account
-            signOut(auth).then(() => {
-                // Sign-out successful.
-                console.log("Successfully logged out of account")
-            }).catch((error) => {
-                // An error happened.
-                console.log(error);
-            })
+            // signOut(auth).then(() => {
+            //     // Sign-out successful.
+            //     console.log("Successfully logged out of account")
+            // }).catch((error) => {
+            //     // An error happened.
+            //     console.log(error);
+            // })
 
             navigate("/");
             // ...
