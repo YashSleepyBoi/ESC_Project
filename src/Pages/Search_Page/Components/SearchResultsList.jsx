@@ -11,7 +11,7 @@ function SearchResultsList ({results, clickHandler}) {
         return <div className="search-result"
         key={id}
         onClick={()=>clickHandler(result)}
-        style={{color: 'orange'}}>
+        style={{color: 'black'}}>
           {result.country}
         </div>;
       })}

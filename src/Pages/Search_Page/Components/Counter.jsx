@@ -16,13 +16,13 @@ function Counter({quantity, setQuantity}) {
       }
   return (
     <div className="counter">
-        <button className="plus-button" onClick={() => {handleIncrement()}}>+</button>
-        <div className='count-container'>
-            <div>{quantity}</div>
-        </div>
-        <button className="minus-button" onClick={() => {handleDecrement()}}>-</button>
+      
+      <button className="minus-button" onClick={() => {handleDecrement()}}>-</button>
+        
+        <div className='count-container'>{quantity}</div>
+      <button className="plus-button" onClick={() => {handleIncrement()}}>+</button>
     </div>
   )
 }
 
-export default Counter;
+export default Counter

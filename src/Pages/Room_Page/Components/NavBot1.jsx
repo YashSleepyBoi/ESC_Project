@@ -1,66 +1,144 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
+
 import CallIcon from "@mui/icons-material/Call";
+import PlaceIcon from '@mui/icons-material/Place';
+import PersonIcon from '@mui/icons-material/Person';
+import DateRange from '@mui/icons-material/DateRange';
+import HotelIcon from '@mui/icons-material/Hotel';
+
 import { Button, Divider, useMediaQuery } from "@mui/material";
 import { reserveButtonStyle } from "../Content";
-import SearchDest from "../../Search_Page/Components/SearchDest"
-import DatePPicker from "../../Search_Page/Components/DatePicker";
 import Collapsible from "../../Search_Page/Components/Collapsible";
 import "../../Search_Page/Stylesheets/DatePicker.css"
 import "../Stylesheets/NavBot.css"
 
+import Grid from '@mui/material/Grid';
+
+import useWindowSize from "../../../useWindowSize";
+import LowerGrid from "./LowerGrid";
+import Popup from "./Popup"
+
+import SearchDest from "../../Search_Page/Components/SearchDest"
+import DatePPicker from "../../Search_Page/Components/DatePicker";
+import Counter from "../../Search_Page/Components/Counter"
+
+
+
+
 
 export default function NavBot() {
-    const isSmall = useMediaQuery('(max-width:700px)')
+
+    const size = useWindowSize();
+    const isLarge = useMediaQuery('(min-width:1000px)')
+    const isSmall = useMediaQuery('(max-width:1000px)')
     const [startDate, setStartDate] = useState(new Date("2023/08/1"));
     const [endDate, setEndDate] = useState(new Date("2023/08/2"));
-
+    const [open, setOpen] = useState(false);
     const [dest, setDest] = useState("")
     const [room, setRoom] =useState(1)
     const [pax, setPax] =useState(1)
+    const [func, setFunc] = useState(null)
+
+    function multipleState(foo, bar){
+      setOpen(foo)
+      setFunc(bar)
+  }
     
 
   return (
     <>
       <div className="navbar-bottom">
-        {/* *********************************************** */}
-        {/* SEARCH BAR : Destination */}
-        <div className = "search-bar-container">
-          <div className="dest-header">
-            Destination
+        <Grid container spacing={4}>
+        <Grid item xs={3}>
+
+        <div className="dest-header" align="left" onClick={() => multipleState(true, <SearchDest/>)}>
+        <PlaceIcon></PlaceIcon>
+          <span >
+            DESTINATION
+            </span>
             </div>
+        </Grid>
+
+        <Grid item xs={3}>
+        
+        <div className="date-header" align="left" onClick={() => multipleState(true, <DatePPicker/>)}>
+        <DateRange></DateRange>
+          <span>DATES</span>
+        </div>
+        </Grid>
+
+        <Grid item xs={2} align="left" onClick={() => multipleState(true, <Counter className="room-counter" quantity={room} setQuantity={setRoom}></Counter>)}>
+        <div className="room-header" align="left">
+        <HotelIcon></HotelIcon>
+        <span >   {room} ROOM </span>
+        </div>
+        </Grid>
+
+        <Grid item xs={2}>
+        <div className="room-header" align="left" onClick={() => multipleState(true, <Counter className="pax-counter" quantity={pax} setQuantity={setPax}></Counter>)}>
+        <PersonIcon></PersonIcon>
+        <span >{pax} GUESTS</span>
+        </div>
+        </Grid>
+
+
+        <Grid item xs={1}>
+        {isSmall && 
+        <Link to="/findreserve">
+        <Button
+          sx={{
+            ...reserveButtonStyle,
+            fontSize: isSmall ? "0.75rem" : "auto",
+          }}
+        >
+          Find room
+        </Button>
+      </Link>}
+        </Grid>
+
+        
+        {isLarge && <LowerGrid room={room} pax={pax} setRoom={setRoom} setPax={setPax}/>}
+
+        {open ? <Popup body={func} closePopup={() => setOpen(false)} /> : null}
+
+
+        
+{/* 
+        <Grid item xs={3}>
+        <Paper className='grid-elements'></Paper>
+        </Grid>
+        <Grid item xs={3}>
+        <Paper className='grid-elements'>dates</Paper>
+        </Grid>
+        <Grid item xs={3}>
+        <Paper className='grid-elements'>dates</Paper>
+        
+        </Grid>
+        <Grid item xs={3}>
+        <Paper className='grid-elements'>button</Paper>
+        </Grid> */}
+
+        </Grid>
+        {/* <div className = "search-bar-container">
+
           <SearchDest setDest={setDest}></SearchDest>
         </div>
-        {/* *********************************************** */}
-        <div className="stay-duration-container">
-        <div className="date-header">
-          Stay Duration
-        </div>
+        <div className="stay-duration-container" align="left">
+        
           <DatePPicker className="date-picker" startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}></DatePPicker>
         </div>
-        {/* *********************************************** */}
         <div className="room-pax-container">
         <Collapsible room={room} pax={pax} setRoom={setRoom} setPax={setPax}></Collapsible>
       </div>
-      {/* *********************************************** */}
-        <div className="navbar-bottom links">
+        <div className="navbar-bottom links"> */}
           {/* <a href="tel:+65 -68181888">
             <CallIcon />
             +65 -68181888
           </a> */}
-          <Link to="/findreserve">
-            <Button
-              sx={{
-                ...reserveButtonStyle,
-                fontSize: isSmall ? "0.5rem" : "auto",
-              }}
-            >
-              Find room
-            </Button>
-          </Link>
+          
         </div>
-        {/* *********************************************** */}
-      </div>
+      {/* </div> */}
       
       <Divider sx={{ bgcolor: "white" }} />
       

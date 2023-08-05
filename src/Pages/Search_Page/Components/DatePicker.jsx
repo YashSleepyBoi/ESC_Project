@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker"
 
+import "../Stylesheets/DatePicker.css"
+
 import "react-datepicker/dist/react-datepicker.css";
 
 
@@ -8,7 +10,7 @@ function DatePPicker({startDate, endDate, setStartDate, setEndDate}){
 
     return(
         <div>
-            <DatePicker
+            <DatePicker 
                 selected={startDate}
                 onChange={
                     (date) => setStartDate(date)
@@ -16,9 +18,9 @@ function DatePPicker({startDate, endDate, setStartDate, setEndDate}){
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
+                color:black
                 />
-            <DatePicker
-                selected={endDate}
+            <DatePicker 
                 onChange={(date) => setEndDate(date)}
                 selectsEnd
                 startDate={startDate}
