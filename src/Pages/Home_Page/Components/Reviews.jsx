@@ -56,7 +56,7 @@ export default class VerticalCardSwiper extends Component {
         <Slider {...settings}>
           <div className='card'>
             <p className='p-header'>Emma, Los Angeles</p>
-            <p className='p-content'>I had the best time visiting Spain! Ascenda is a great place to find hotels!<br/>I visited the south of France for the summer, and did travelling within Europe. With Ascenda, I was easily able to find hotels in all of my destinations and for good prices too! Would definitely recommend this platform.</p>
+            <p className='p-content'>I had the best time visiting Europe! Ascenda is a great place to find hotels!<br/>I visited the south of France for the summer, and did travelling within Europe. With Ascenda, I was easily able to find hotels in all of my destinations and for good prices too! Would definitely recommend this platform.</p>
           </div>
           <div className='card'>
             <p className='p-header'>James, England</p>

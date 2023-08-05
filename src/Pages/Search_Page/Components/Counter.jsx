@@ -25,4 +25,4 @@ function Counter({quantity, setQuantity}) {
   )
 }
 
-export default Counter
+export default Counter;

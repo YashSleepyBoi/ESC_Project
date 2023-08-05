@@ -5,9 +5,8 @@ import { auth, db } from '../../firebase';
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
-
-
-
+import { doc, setDoc } from "firebase/firestore";
+import { signOut } from "firebase/auth";
 
 function Register(){
 //declare hooks
@@ -26,16 +25,30 @@ const handleSubmit = async(e) =>{
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-
+            const currentDateTime = new Date();
+            
+            const customDocumentId = user.uid; 
             //Add to the database
-            const docRef = addDoc(collection(db, "Users"), {
+            const docRef = setDoc(doc(db, "Users", customDocumentId), {
                 name: nameID,
                 email: email,
-                bookings: null,
+                bookings: [],
+                created_date: currentDateTime,
+                updated_date: currentDateTime
+              });
+
+
+            console.log("Successfully created:" + user);
+
+            //Log out of the user account
+            signOut(auth).then(() => {
+                // Sign-out successful.
+                console.log("Successfully logged out of account")
+            }).catch((error) => {
+                // An error happened.
+                console.log(error);
             })
 
-
-            console.log(user);
             navigate("/");
             // ...
         })

@@ -1,29 +1,60 @@
 // Setup for backend server
 const express = require('express')
+const cors = require('cors')
 const app = express()
-const port = 8383
 
-app.use(express.static('public'))
+// const port = 8787
+
+// app.use(express.urlencoded({extended:false}));
+// Accessible from any link
+app.use(
+    cors({
+        origin: "*",
+    }),
+);
+
+
+app.listen(8000, function () {
+    console.log('CORS-enabled web server listening on port 8000')
+  })
+
+//   app.options('/input', cors(issue2options)); // enable preflight OPTIONS
+//   router.post('/input', cors(issue2options), controller.sendContactForm);
+
+// function sendDataToLink(input, endpoint) {
+//     app.get(`/${endpoint}`, (req, res) => {
+//         res.send(input)
+//       })
+//     app.post(`/${endpoint}`, (req, res) => {
+//         let data = req.body;
+//         res.send(data)
+//       })
+// }
+// sendDataToLink("FUCK THIS SHIT", "input")
+
 
 // Backtick ``
-app.listen(port, () => {console.log(`Server has started on port ${port}`)})
-
+// app.listen(port, () => {console.log(`Server has started on port ${port}`)})
+ 
 // TODO: Migrate input
 // TEST PARAMETERS: 
+
 const dest_id = "RsBU";
 const check_in = "2023-10-01";
 const check_out = "2023-10-02";
-const curr = "SGD";
 const guests = 10
+
+// Assumed to be fixed
+const curr = "SGD";
 
 /* Fetching data from API endpoints */
 
 // First async function to fetch the data
 async function fetchDataAsync(func) {
     func.then(data => {
-        // post to localhost:8383/api
+        // post to localhost:8000/api
         app.get("/api", (req, res) => {
-            //res.json(test_output)
+            res.set('Access-Control-Allow-Origin', '*') // Any link
             res.json(data)
         })
         return data;
@@ -112,10 +143,25 @@ async function fetchDataAsync2(func) {
         });
 }
 
+async function fetchDataAsyncDisplay(func) {
+    func.then(data => {
+        // post to localhost:8383/display
+        app.get("/display", (req, res) => {
+            //res.json(test_output)
+            // res.set("Access-Control-Allow-Origin","*")
+            res.json(data)
+        })
+        return data;
+    })
+        .catch(error => {
+            console.log("Error fetching data:", error);
+        });
+}
+
 // WHEN 'BOOK NOW" IS CLICKED: replace "0vcz" with hotel id
 fetchDataAsync2(collateHotelInfo("0vcz",dest_id,check_in,check_out,curr,guests));
 
-
+fetchDataAsyncDisplay(searchResults("RsBU",dest_id,check_in,check_out,curr,guests));
 
 
 

@@ -8,8 +8,10 @@
     background-color: white;
     color: black;
     display: flex;
+    /* text-align: center; */
     align-items: center;
     float: left;
+    /* float:inline-end; */
     margin: 15px 10px;
 }
 

@@ -1,7 +1,7 @@
 .footer{
     display: flex;
     flex-direction: column;
-    background-color: #dbd8ce;
+    background-color: #af926e;
     padding: 2.5rem;
 }
 
@@ -14,7 +14,7 @@
 
 .footer-text{
     font-size: small;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 .footer-text:hover{

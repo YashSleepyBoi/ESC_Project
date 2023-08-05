@@ -1,49 +1,97 @@
-// import Navbar from '../Home_Page/Components/navbar/Navbar'
-import './profile.css'
+import './profile.css';
+import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import getProfile from './components/getProfile';
+import useAuth from './useAuth'; // Import the custom hook
+import { getAuth, signOut } from "firebase/auth";
+
 
 const Profile = () => {
-  return (
-    <div>
-        {/* <Navbar/> */}
-        <div className='background-image'></div>
-        <div className='profileContainer'>
-            <div className='profileTitle'>Edit Profile</div>
-{/* *************************************************************************** */}
-            <div className='sectionContainer'>
-                <div className='profileText'>Name</div>
-                <div className='userInputContainer'>
-                    <input type='text' placeholder='Alex Berry'/>
+    const user = useAuth();
+    // use states for updating the information
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [bookings, setBookings] = useState([]);
+    const auth = getAuth();
+
+    // On page load, get the user information
+    useEffect(() => {
+        const fetchProfileData = async () => {
+        if (user) {
+            try {
+            const userUID = user.uid;
+            const profileData = await getProfile(userUID);
+            console.log("Profiledata: ", profileData);
+            if (profileData) {
+                setName(profileData[0]);
+                setEmail(profileData[1]);
+                setBookings(profileData[2]);
+            }
+            } catch (error) {
+            console.log('Error obtaining info: ', error);
+            }
+        }
+        };
+
+        if (user) {
+        fetchProfileData();
+        }
+    }, [user]);
+
+    if (!user) {
+        // If the user is not logged in, show a loading screen or redirect to login page
+        return <div>Loading...</div>;
+    }
+
+    // HTML portion
+    return (
+        <div>
+            <div className='bgImage'></div>
+            <div className='profileContainer'>
+                <div className='sectionContainer'>
+                    <div className='profileTitle'>Personal Particulars</div>
+                    {/* Route to /editprofile page */}
+                    <Link to='/editprofile'>
+                        <button className='editButton'>Edit Particulars</button>
+                    </Link>
                 </div>
-                <button className='editButton'>Edit</button>
-            </div>
-{/* *************************************************************************** */}
-            <div className='sectionContainer'>
-                <div className='profileText'>email</div>
-                <div className='userInputContainer'>
-                    <input type='text' placeholder='alexberry@mail.com'/>
+    {/* *************************************************************************** */}
+                <div className='sectionContainer'>
+                    <div className='profileText'>Name</div>
+                    {/* Input Name from database */}
+                    <div className='userInfoText'><b>{name}</b></div>
                 </div>
-                <button className='editButton'>Edit</button>
-            </div>
-{/* *************************************************************************** */}
-            <div className='sectionContainer'>
-                <div className='profileText'>Password</div>
-                <div className='userInputContainer'>
-                    <input type='text' placeholder='**********'/>
+    {/* *************************************************************************** */}
+                <div className='sectionContainer'>
+                    <div className='profileText'>Email</div>
+                    {/* Input email from database */}
+                    <div className='userInfoText'><b>{email}</b></div>
                 </div>
-                <button className='editButton'>Edit</button>
+    {/* *************************************************************************** */}
+    
+                 {/*  REMOVED PASSWORD COMPONENT */}
+
+    {/* *************************************************************************** */}
+                <div className='profileTitle'>Booking History</div>
+                    <div className='bookingContainer'>
+                    {bookings.length === 0 ? "No History" : bookings.map((booking, index) => (
+                        <div key={index}>{booking}</div>
+                    ))}
+                    </div>
+    {/* *************************************************************************** */}
+                <Link to ="/">
+                    <button onClick={ () =>{
+                            //TODO Properly handle signout
+                            signOut(auth).then(() => {
+                                // Sign-out successful.
+                            }).catch((error) => {
+                                // An error happened.
+                            })}}>Signout
+                    </button>
+                </Link>
             </div>
-{/* *************************************************************************** */}
-            <div className='sectionContainer'>
-                <div className='profileText'>Credit Card</div>
-                <div className='userInputContainer'>
-                    <input type='text' placeholder='Visa xxxx xxxx xxxx 2983'/>
-                </div>
-                <button className='editButton'>Edit</button>
-            </div>
-{/* *************************************************************************** */}
         </div>
-    </div>
-  )
-}
+    )
+    }
 
 export default Profile;
