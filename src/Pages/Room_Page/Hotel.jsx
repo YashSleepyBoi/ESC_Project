@@ -27,7 +27,7 @@ import NavBar from "./Components/RoomNavBar";
 
 
 function Room({setBottom}) {
-    const host="diH7"
+    const host="050G"
     setBottom(false);
     const images = [
         {
@@ -112,6 +112,10 @@ function Room({setBottom}) {
  
               arr.push(key)
           }
+          let arr4=[]
+          for (const key in categories) {
+                arr4.push(categories[key])
+          }
           let arr3 = []
           const prefix = image_details.prefix
           const suffix= image_details.suffix
@@ -121,7 +125,7 @@ function Room({setBottom}) {
             arr3.push(`${prefix+i.toString()+suffix}`)
           }
           
-          sethotel_dets({ name, arr, categories, description ,amenities_ratings,address, original_metadata,image_details,arr3})
+          sethotel_dets({ name, arr, categories, description ,amenities_ratings,address, original_metadata,image_details,arr3,arr4})
           
       })
       
@@ -229,71 +233,53 @@ function Room({setBottom}) {
             </div>
             {hotel_dets.arr?
             
-                <CarouselProvider
-                    naturalSlideWidth={100}
-                    naturalSlideHeight={30}
-                    totalSlides={4}
-                    isPlaying={true}
-                    interval={6000}
-                    infinite={true}
-                    lockOnWindowScroll={true}
-                    className="car_2"
-                
-                >
+            <CarouselProvider
+                naturalSlideWidth={100}
+                naturalSlideHeight={30}
+                totalSlides={4}
+                isPlaying={true}
+                interval={6000}
+                infinite={true}
+                lockOnWindowScroll={true}
+                className="car_2"
+            
+            >
                     <Slider >
-                        <Slide index={0}>
-                            <div className='holder view_holder'>
-                                <HotelRating name={hotel_dets.categories.lake_hotel.name} score={hotel_dets.categories.lake_hotel.score} popularity={hotel_dets.categories.lake_hotel.popularity} img={hotel_dets.arr3}></HotelRating>
-                            </div>
+                        {hotel_dets.arr4.map((element,idx) => {
+                            return (
+                                <Slide index={idx}>
+                                    <div className='holder view_holder'>
+                                        <HotelRating name={element.name} score={element.score} popularity={element.popularity} img={hotel_dets.arr3}></HotelRating>
+                                    </div>
                    
                         </Slide>
-                    
-                        <Slide index={1}>
-                            <div className='holder view_holder'>
-                                <HotelRating name={hotel_dets.categories.overall.name} score={hotel_dets.categories.overall.score} popularity={hotel_dets.categories.overall.popularity}img={hotel_dets.arr3}></HotelRating>
-                            </div>
-                   
-                        </Slide>
-                        <Slide index={2}>
-                            <div className='holder view_holder'>
-                                <HotelRating name={hotel_dets.categories.business_hotel.name} score={hotel_dets.categories.business_hotel.score} popularity={hotel_dets.categories.lake_hotel.popularity} img={hotel_dets.arr3}></HotelRating>
-                            </div>
-                   
-                        </Slide>
-  
-                        <Slide index={3}>
-                            <div className='holder view_holder'>
-                                <HotelRating name={hotel_dets.categories.city_hotel.name} score={hotel_dets.categories.city_hotel.score} popularity={hotel_dets.categories.city_hotel.popularity} img={hotel_dets.arr3}></HotelRating>
-                            </div>
-                   
-                        </Slide>
+                            )
+                        })}
+                        
 
                     </Slider>
                 
 
                     
                         
-                    <div id="arrow_2" class="arrow-wrapper"  >
-                        <div class="arrow arrow--left" >
-                            
-                            <ButtonBack >BACK</ButtonBack>
-                        </div>
-
-                            
-
-                        <div class="arrow arrow--right">
-                                
-                            <ButtonNext>NEXT</ButtonNext>
+                <div id="arrow_2" class="arrow-wrapper"  >
+                    <div class="arrow arrow--left" >
                         
-                        </div>
+                        <ButtonBack >BACK</ButtonBack>
                     </div>
-                 
+
+                        
+
+                    <div class="arrow arrow--right">
+                            
+                        <ButtonNext>NEXT</ButtonNext>
                     
-                    
-                    
-              
-                
-                </CarouselProvider> : <></>}
+                    </div>
+                </div>
+            
+            
+            </CarouselProvider> : <></>}
+            
                
             
   

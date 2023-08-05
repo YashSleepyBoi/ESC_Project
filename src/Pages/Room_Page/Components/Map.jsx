@@ -1,5 +1,5 @@
 function Map(props) {
-    console.log(props)
+
     return (
         <div className="map_holder">
             
