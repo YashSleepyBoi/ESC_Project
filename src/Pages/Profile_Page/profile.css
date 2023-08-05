@@ -71,21 +71,22 @@
 
 /* Edit Button */
 .editButton {
-    border: none;
-    padding: 8px;
+    /* border: none; */
+    padding: 6px;
     font-size: 16px;
     /* background-color: orange; */
     /* rgb(255, 186, 47); */
-    width: 100%;
+    width: 10%;
     align-self: center;
     color: black;
     border-radius: 6px;
-    border: none;
-    /* border: 1px solid black; */
+    /* border: none; */
+    border: 1px solid black;
+    background-color: orange;
     cursor:pointer;
   }
 .editButton:hover {
-    background: orange;
+    background: orangered;
 }
 
 /* User Input (name,email,ect.) */
