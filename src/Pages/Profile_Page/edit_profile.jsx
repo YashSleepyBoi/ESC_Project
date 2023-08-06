@@ -6,7 +6,7 @@ import updateProfile from './components/updateProfile';
 import { useNavigate } from "react-router-dom";
 
 
-const EditProfile = () => {
+const EditProfile = ({setBottom}) => {
     const [nameID, setName] = useState("");
     const [email,setEmail] = useState(""); // use state to set the email as an empty field
     const [oldPassword,setOldPassword] = useState(""); // use state to set the email as an empty field
@@ -14,18 +14,28 @@ const EditProfile = () => {
     const [confirmPass,setConfirmPass] = useState(""); // use state to set the email as an empty field
     const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
-
+    setBottom(false);
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        await updateProfile(nameID,email,oldPassword,password,confirmPass)
-        .then(() => {
-            console.log("Change complete")
-            navigate("/profile");
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
+        if(password.length <6){
+            // When the password is not long enough
+            setErrorMsg("Password must be at least 6 letters!")
+        }
+        else if (password == confirmPass){
+            await updateProfile(nameID,email,oldPassword,password,confirmPass)
+            .then(() => {
+                console.log("Change complete")
+                navigate("/profile");
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+        }
+        else{
+            console.log("Passwords don't match")
+            setErrorMsg("Passwords don't match!")
+        }
 
 
     }
@@ -36,16 +46,14 @@ const EditProfile = () => {
         <div className='bgImage'></div>
         <div className='editprofileContainer'>
             <div className='sectionContainer'>
-                <div className='profileTitle'>Edit Personal Particulars</div>
+                <div className='profileTitle'>Edit Personal Details</div>
                 {/* Route to /editprofile page */}
-                
-                <button className='editButton' onClick={onsubmit}>Save</button>
-                
+
             </div>
 {/* *************************************************************************** */}
 {/* NAME */}
             <div className='sectionContainer'>
-                <div className='profileText'>Name</div>
+                <div className='profileText'>New Name</div>
                 <div className='userInputContainer'>
                     <input type='text' 
                     placeholder='Alex Berry'
@@ -56,7 +64,7 @@ const EditProfile = () => {
 {/* *************************************************************************** */}
 {/* EMAIL */}
             <div className='sectionContainer'>
-                <div className='profileText'>Email</div>
+                <div className='profileText'>New Email</div>
                 <div className='userInputContainer'>
                     <input type='text' 
                     placeholder='alexberry@mail.com'
@@ -88,7 +96,7 @@ const EditProfile = () => {
                 {/* <button className='editButton'>Edit</button> */}
             </div>
 {/* *************************************************************************** */}
-<div className='sectionContainer'>
+            <div className='sectionContainer'>
 {/* CONFIRM PASSWORD */}
                 <div className='profileText'>Confirm New Password</div>
                 <div className='userInputContainer'>
@@ -99,6 +107,19 @@ const EditProfile = () => {
                 {/* <button className='editButton'>Edit</button> */}
             </div>
 {/* *************************************************************************** */}
+{/* Error Message */}
+            <div className='sectionContainer'>
+                {/* ErrorMSG */}
+                <label>{errorMsg}</label>
+            </div>
+
+{/* *************************************************************************** */}
+            <div className='sectionContainer'>
+{/* SAVE BUTTON */}
+                <button className='editButton' onClick={onsubmit}>Save</button>
+{/* CANCEL BUTTON */}
+                <button className='editButton' onClick={onsubmit}>Cancel</button>
+            </div>
         </div>
         </form>
     </div>
