@@ -1,0 +1,17 @@
+.cancel-wrapper{
+    /* margin: 150px; */
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    gap: 30px;
+    height: 100vh;
+    background-color: #D7C3A3;
+    
+  }
+
+.cancel-msg {
+    font-size: 35px;
+    color:rgb(40, 16, 6);
+    margin-top: 300px;
+    margin-bottom: 200px;
+}
