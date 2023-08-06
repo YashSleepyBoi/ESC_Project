@@ -1,4 +1,51 @@
-.react-datepicker__input-container{
+.datepicker input {
+  color: black ; /* Change this to any desired color */
+}
+
+.datepicker2 input {
+  color: black ; /* Change this to any desired color */
+}
+
+
+/* .customDatePicker, 
+.customDatePicker > div.react-datepicker-wrapper, 
+.customDatePicker > div > div.react-datepicker__input-container
+.customDatePicker > div > div.react-datepicker__input-container   input, select, textarea{
+  color: #076000 !important;
+}
+
+textarea:focus, input:focus {
+  color: #076000 !important;
+} */
+
+/* .react-datepicker__input-container{
+    .input{
+      width: 100%;
+      padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+      -moz-padding-start: calc(0.75rem - 3px);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: black !important;
+      background-color: #030ffc;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
+      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      appearance: none;
+  }
+} */
+
+/* .datePicker{
+  input, select, textarea{
+    color: #076000 !important;
+}
+
+textarea:focus, input:focus {
+    color: #076000 !important;
+}
+} */
+
+/* .react-datepicker__input-container{
     input{
       width: 100%;
       padding: 0.375rem 2.25rem 0.375rem 0.75rem;
@@ -13,4 +60,4 @@
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
       appearance: none;
   }
-}
+} */

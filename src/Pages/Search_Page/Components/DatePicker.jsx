@@ -11,6 +11,7 @@ function DatePPicker({startDate, endDate, setStartDate, setEndDate}){
     return(
         <div>
             <DatePicker 
+                wrapperClassName="datepicker"
                 selected={startDate}
                 onChange={
                     (date) => setStartDate(date)
@@ -18,9 +19,10 @@ function DatePPicker({startDate, endDate, setStartDate, setEndDate}){
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
-                color:black
                 />
             <DatePicker 
+                wrapperClassName="datepicker2"
+                selected={endDate}
                 onChange={(date) => setEndDate(date)}
                 selectsEnd
                 startDate={startDate}
