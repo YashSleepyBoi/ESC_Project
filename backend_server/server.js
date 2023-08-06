@@ -158,6 +158,21 @@ async function fetchDataAsyncDisplay(func) {
         });
 }
 
+
+app.get("/features", async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*') // Any link
+    
+    const hotel_url = "https://hotelapi.loyalty.dev/api/hotels?destination_id=RsBU";
+    const u = hotel_url
+    const rez = await fetch(u, {
+        method: 'GET',
+        credentials: 'same-origin'
+    })
+
+    let all_data = await rez.json();
+    res.json(all_data)
+})
+
 // WHEN 'BOOK NOW" IS CLICKED: replace "0vcz" with hotel id
 fetchDataAsync2(collateHotelInfo("0vcz",dest_id,check_in,check_out,curr,guests));
 
