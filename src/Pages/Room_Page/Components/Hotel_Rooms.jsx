@@ -6,6 +6,8 @@ import { db } from '../../../firebase';
 
 
 
+import  useAuth  from "../../Profile_Page/useAuth"
+
 
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
@@ -26,7 +28,8 @@ import { useNavigate } from "react-router-dom";
 
 function Hotel_Rooms(props) {
     const navigate = useNavigate();
-    const id="1pMbIMFKQ24xAL8PLr8G"
+    // const id = "1pMbIMFKQ24xAL8PLr8G"
+    const id = useAuth()
     const onClickHandler =async () => {
         console.log(props)
         
@@ -36,7 +39,7 @@ function Hotel_Rooms(props) {
         //     booking:rooms+[props.r_name]
         // });
         //...
-        await updateDoc(doc(db, "Users",id), {
+        await updateDoc(doc(db, "Users",id.uid), {
                booking: arrayUnion(props.obj)
              });
         

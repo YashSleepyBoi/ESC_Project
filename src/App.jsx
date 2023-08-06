@@ -12,7 +12,7 @@ import Profile from "./Pages/Profile_Page/profile";
 import Results from "./Pages/Results_Page/Results";
 import EditProfile from "./Pages/Profile_Page/edit_profile";
 import Room_Reserve from "./Pages/Room_Page/Room_Reserve";
-import Hotel from "./Pages/Room_Page/Hotel"
+
  
 function App() {
   const [isBottomDisplay, setIsBottomDisplay] = useState(false);

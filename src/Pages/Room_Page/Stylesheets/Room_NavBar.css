@@ -9,7 +9,7 @@
     position: fixed;
     z-index: 100;
     font-size: 0.9rem;
-    overflow: hidden;
+    overflow: visible;
 }
 .navbar{
     position: relative;
