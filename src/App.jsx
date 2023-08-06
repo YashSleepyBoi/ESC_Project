@@ -16,7 +16,6 @@ import Room_Reserve from "./Pages/Room_Page/Room_Reserve";
  
 function App() {
   const [isBottomDisplay, setIsBottomDisplay] = useState(false);
-  console.log(isBottomDisplay)
   return (
     <>
       <NavBar bottom={isBottomDisplay}/>

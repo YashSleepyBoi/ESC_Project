@@ -7,7 +7,9 @@ import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
 
-function Login(){
+function Login({setBottom}){
+
+setBottom(false);
 //declare hooks
 const [email,setEmail] = useState(""); // use state to set the email as an empty field
 const [password,setPassword] = useState(""); // use state to set the email as an empty field

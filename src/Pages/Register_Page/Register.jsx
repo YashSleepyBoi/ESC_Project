@@ -8,7 +8,8 @@ import {Link} from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 
-function Register(){
+function Register({setBottom}){
+setBottom(false);
 //declare hooks
 const [nameID, setName] = useState("");
 const [email,setEmail] = useState(""); // use state to set the email as an empty field

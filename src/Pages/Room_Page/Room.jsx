@@ -19,6 +19,7 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import ImageGrid from "./Components/ImageGrid";
 import Footer from "./Components/RoomFooter";
 import RoomSearch from "./Components/Room_Search";
+import { Button } from "@mui/material";
 
 export default function Room({setBottom ,route}) {
   // const { id } = route.params?? id=null
@@ -54,7 +55,6 @@ export default function Room({setBottom ,route}) {
         <div className="banner-container">
           <div className="banner-image" />
         </div>
-        <RoomSearch/>
         <div className="accomodation">
           <h2 style={{ marginTop: "2rem" }}>Accomodations</h2>
           <p style={{ color: "#CD7F32" }}>_________</p>
