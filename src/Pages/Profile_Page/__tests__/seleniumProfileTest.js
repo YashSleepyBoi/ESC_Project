@@ -3,16 +3,18 @@ import "chromedriver";
 import '@testing-library/jest-dom';
 import useAuth from "../useAuth";
 
+// Before running the test, make sure the app is running
+
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 
 describe("selenium Tests", () => {
-
-    var login_target = "http://localhost:1111/login";
-    var register_target = "http://localhost:1111/register"; // Corrected URL for register
-    var profile_target = "http://localhost:1111/profile"; // Corrected URL for profile
+    // Change the localhost to the correct address before testing
+    var login_target = "http://localhost:5173/login";
+    var register_target = "http://localhost:5173/register"; // Corrected URL for register
+    var profile_target = "http://localhost:5173/profile"; // Corrected URL for profile
     let driver;
 
     const password = "password123";
