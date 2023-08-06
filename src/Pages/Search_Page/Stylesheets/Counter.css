@@ -1,39 +1,57 @@
-.count-container{
-    width: 5%;
+.counter{
+  width: 100%;
     height: 2.5rem;
-    border: none;
     border-radius: 10px;
+    border: none;
     padding: 0 15px;
-    box-shadow: 0px 0px 8px #ddd;
-    padding: 15 15px;
-    background-color: orange;
+    background-color: white;
     display: flex;
     align-items: center;
-    float: right
+    justify-content: space-between;
+
+}
+
+.count-container{
+    width: 30%;
+    height: 2rem;
+    border: inset;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px #0000;
+    padding: 0 15px;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    margin: 0px 15px;
+    display: inline-block;
+    
+    font-size: 1rem;
   }
 
 .minus-button{
-    width: 2.5%;
-    height: 2.5rem;
-    border: none;
-    border-radius: 10px;
-    padding: 15 15px;
+    width: 20%;
+    height: 2rem;
+    border: solid;
+    border-width: thin;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 0 10px;
     color: black;
     background-color: white;
     display: flex;
     align-items: center;
-    float:right
+    
 }
 .plus-button{
-  width: 2.5%;
-    height: 2.5rem;
-    border: none;
-    border-radius: 10px;
-    padding: 15 15px;
+  width: 20%;
+    height: 2rem;
+    border: solid;
+    border-width: thin;
+    border-radius: 50px;
+    padding: 0 10px;
     color: black;
     background-color: white;
     display: flex;
     align-items: center;
-  float:right;
-  margin: 0px 10px;
+    display: inline-block;
 }

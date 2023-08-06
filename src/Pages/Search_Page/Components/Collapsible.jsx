@@ -14,14 +14,13 @@ function Collapsible({room, pax,setRoom ,setPax}) {
 
   return (
     <div>
-      <div>
-        
-      </div>
         <button className="room-pax" onClick={toggle}>{room} room {pax} guests</button>
         {open && (
       <div className="toggle">
-        <Counter quantity={room} setQuantity={setRoom}></Counter>
-        <Counter quantity={pax} setQuantity={setPax}></Counter>
+        <div>Room</div>
+        <Counter className="room-counter" quantity={room} setQuantity={setRoom}></Counter>
+        <div>Guests</div>
+        <Counter className="pax-counter" quantity={pax} setQuantity={setPax}></Counter>
         {/* <Counter count={room} setCount={setRoom}/>
         <Counter count={pax} setCount={setPax}/> */}
       </div>

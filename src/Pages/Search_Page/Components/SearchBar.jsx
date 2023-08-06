@@ -16,10 +16,10 @@ function SearchBar({handleSearch, input}) {
         <>
         <div className="input-wrapper">
           <input
+            className="dest-input"
             placeholder = "Where do you want to go?"
             value = {input}
             onChange={(e) => handleChange(e.target.value)}
-            style={{color: 'orange'}}
           />
         </div>
         </>
