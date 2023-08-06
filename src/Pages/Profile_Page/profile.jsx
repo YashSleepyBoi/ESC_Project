@@ -58,13 +58,13 @@ const Profile = ({setBottom}) => {
                 </div>
     {/* *************************************************************************** */}
                 <div className='sectionContainer'>
-                    <div className='profileText'>Name</div>
+                    <div className='profileText' id="name">Name</div>
                     {/* Input Name from database */}
                     <div className='userInfoText'><b>{name}</b></div>
                 </div>
     {/* *************************************************************************** */}
                 <div className='sectionContainer'>
-                    <div className='profileText'>Email</div>
+                    <div className='profileText' id="email">Email</div>
                     {/* Input email from database */}
                     <div className='userInfoText'><b>{email}</b></div>
                 </div>
@@ -74,7 +74,7 @@ const Profile = ({setBottom}) => {
 
     {/* *************************************************************************** */}
                 <div className='profileTitle'>Booking History</div>
-                    <div className='bookingContainer'>
+                    <div className='bookingContainer' id="bookings">
                     {bookings.length === 0 ? "No History" : bookings.map((booking, index) => (
                         <div key={index}>{booking}</div>
                     ))}
