@@ -27,7 +27,7 @@ function SearchDest({setDest}) {
             value &&
             destination &&
             destination.country &&
-            destination.country.toLowerCase().includes(value)
+            destination.country.toLowerCase().includes(value.toLowerCase())
             )
         })
         console.log(results)
