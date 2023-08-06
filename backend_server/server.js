@@ -320,6 +320,20 @@ async function fetchDataAsync2(func) {
         });
 }
 
+app.get("/features", async (req, res) => {
+    res.set('Access-Control-Allow-Origin', '*') // Any link
+    
+    const hotel_url = "https://hotelapi.loyalty.dev/api/hotels?destination_id=RsBU";
+    const u = hotel_url
+    const rez = await fetch(u, {
+        method: 'GET',
+        credentials: 'same-origin'
+    })
+
+    let all_data = await rez.json();
+    res.json(all_data)
+})
+
 // Start the server at the end
 app.listen(port, function () {
     console.log(`CORS-enabled web server listening on port ${port}`);
