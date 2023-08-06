@@ -8,8 +8,7 @@ import {Link} from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore";
 import { signOut } from "firebase/auth";
 
-function Register({setBottom}){
-setBottom(false);
+function Register(){
 //declare hooks
 const [nameID, setName] = useState("");
 const [email,setEmail] = useState(""); // use state to set the email as an empty field
@@ -21,7 +20,12 @@ const navigate = useNavigate();
 const handleSubmit = async(e) =>{
     e.preventDefault();
     console.log(email);
-    if (confirmPass == password){
+    if(password.length <6){
+        // When the password is not long enough
+        setErrorMsg("Password must be at least 6 letters!")
+    }
+    else if (confirmPass == password
+        && password.length >= 6){
         await createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
             // Signed in
@@ -46,20 +50,8 @@ const handleSubmit = async(e) =>{
                     console.log(error);
                 })
               })
-
-
-            
-
-            //Log out of the user account
-            // signOut(auth).then(() => {
-            //     // Sign-out successful.
-            //     console.log("Successfully logged out of account")
-            // }).catch((error) => {
-            //     // An error happened.
-            //     console.log(error);
-            // })
-
-            navigate("/");
+            // Navigate back to the homepage
+            navigate("/login");
             // ...
         })
         .catch((error) => {
@@ -70,8 +62,7 @@ const handleSubmit = async(e) =>{
             setErrorMsg(errorCode.replace("-"," ").replace("auth/",''));
             // ..
         });
-    }
-    else{
+    }else{
         console.log("Passwords don't match")
         setErrorMsg("Passwords don't match!")
     }
