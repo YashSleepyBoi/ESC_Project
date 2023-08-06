@@ -1,12 +1,14 @@
 .featured{
-    width: 100%;
-    max-width: 1024px;
+    /* width: 100%; */
+    /* max-width: 1024px; */
     display: flex;
     justify-content: space-between;
     margin: auto;
     gap: 20px;
     z-index: 1;
     margin-bottom: 60px;
+    overflow-x: scroll;
+    margin-left: 30px;
 }
   
 
@@ -17,9 +19,9 @@
     color: white;
     border-radius: 20px;
     border-color: black;
-    overflow: hidden;
+    overflow: scroll;
     height: 250px;
-    flex:1
+    flex: 0 0 25%;
   }
   
   /* Hover featuredItem */
@@ -34,8 +36,8 @@
   }
   .featuredItem:hover .featuredImg{
     opacity: 0.3;
-    width: 100%;
-    max-width: 1024px;
+    /* width: 100%;
+    max-width: 1024px; */
     display: flex;
     justify-content: space-between;
     margin: auto;
@@ -44,8 +46,8 @@
   }
   .featuredItem:hover .middle{
     opacity: 1;
-    width: 100%;
-    max-width: 50%;
+    /* width: 100%;
+    max-width: 50%; */
     display: center;
     justify-content: space-between;
     margin: auto;
