@@ -12,13 +12,13 @@ import { Button, Divider, useMediaQuery } from "@mui/material";
 import { reserveButtonStyle } from "../Content";
 
 
-export default function LowerGrid({room,pax, setRoom, setPax}) {
+export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndDate, endDate, setStartDate}) {
 
     
     const isSmall = useMediaQuery('(max-width:700px)')
     
-    const [startDate, setStartDate] = useState(new Date("2023/08/1"));
-    const [endDate, setEndDate] = useState(new Date("2023/08/2"));
+    // const [startDate, setStartDate] = useState(new Date("2023/08/1"));
+    // const [endDate, setEndDate] = useState(new Date("2023/08/2"));
 
   return (
     <>

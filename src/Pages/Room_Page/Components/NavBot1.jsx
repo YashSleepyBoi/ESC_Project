@@ -50,7 +50,7 @@ export default function NavBot() {
         <Grid container spacing={4}>
         <Grid item xs={3}>
 
-        <div className="dest-header" align="left" onClick={() => multipleState(true, <SearchDest/>)}>
+        <div className="dest-header" align="left" onClick={() => multipleState(true, <SearchDest setDest={setDest}/>)}>
         <PlaceIcon></PlaceIcon>
           <span >
             DESTINATION
@@ -60,7 +60,7 @@ export default function NavBot() {
 
         <Grid item xs={3}>
         
-        <div className="date-header" align="left" onClick={() => multipleState(true, <DatePPicker/>)}>
+        <div className="date-header" align="left" onClick={() => multipleState(true, <DatePPicker startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}/>)}>
         <DateRange></DateRange>
           <span>DATES</span>
         </div>
@@ -96,7 +96,7 @@ export default function NavBot() {
         </Grid>
 
         
-        {isLarge && <LowerGrid room={room} pax={pax} setRoom={setRoom} setPax={setPax}/>}
+        {isLarge && <LowerGrid room={room} pax={pax} setRoom={setRoom} setPax={setPax} startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}/>}
 
         {open ? <Popup body={func} closePopup={() => setOpen(false)} /> : null}
 
