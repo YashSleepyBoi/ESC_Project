@@ -19,6 +19,7 @@ function DatePPicker({startDate, endDate, setStartDate, setEndDate}){
                 selectsStart
                 startDate={startDate}
                 endDate={endDate}
+                dateFormat="dd/MM/yyyy"
                 />
             <DatePicker 
                 wrapperClassName="datepicker2"
@@ -28,6 +29,7 @@ function DatePPicker({startDate, endDate, setStartDate, setEndDate}){
                 startDate={startDate}
                 endDate={endDate}
                 minDate={startDate}
+                dateFormat="dd/MM/yyyy"
                 />
         </div>
     )
