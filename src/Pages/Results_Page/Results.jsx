@@ -35,11 +35,6 @@ function Results() {
   // Define the React Router navigate function
   const navigate = useNavigate();
  
-  // Handle button click and navigate to the /hotels route with hotel_id parameter
-  const handleBookNow = (hotel_id) => {
-    navigate(`/hotels/${hotel_id}`);
-  };
- 
   // // Change to retrieve hotel id
   // function pushHotelId(id) {
   //   alert("hotel id:"+id);
@@ -54,8 +49,15 @@ function Results() {
     )
     }
  
-    let hotelsData = hotelsDataList.hotels;
+    let hotelsData = hotelsDataList?.hotels;
+    let startD = hotelsDataList?.startdate;
+    let endD = hotelsDataList?.enddate;
     console.log("RESULTS.JSX: DATA SHOULD SHOW", hotelsData);
+
+      // Handle button click and navigate to the /hotels route with hotel_id parameter
+    const handleBookNow = (hotel_id) => {
+      navigate(`/hotels/${hotel_id}/${startD}/${endD}`);
+    };
   
  
     // if ((hotelsData.length)==0) {
@@ -106,9 +108,9 @@ function Results() {
           <p>onwards</p>
  
             {/* Linking to hotel page */}
-            <Link to={`/hotels/${hotel.id}`}>
+            <Link to={`/hotels/${hotel.id}/${startD}/${endD}`}>
             {/* <Link to={`/hotels`}> */}
-              <button type="submit" id={hotel[index]} className="book-button" onClick={() => handleBookNow(hotel.id)}>Book Now</button>
+            <button type="submit" id={hotel[index]} className="book-button" onClick={() => handleBookNow(hotel.id)}>Book Now</button>
             </Link>
  
             <script>

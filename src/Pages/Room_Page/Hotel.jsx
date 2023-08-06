@@ -24,6 +24,13 @@ import HotelRating from './Components/HotelsRating';
 import Suite from './Components/suite';
 import NavBar from "./Components/RoomNavBar";
  
+
+// FETCHES HOTEL_ID, start and end date FROM RESULTS PAGE
+function getParams() {
+    const { hotel_id, start_date, end_date } = useParams();
+    console.log("Params are:",hotel_id);
+    return hotel_id, start_date, end_date;
+}
  
  
 function Room({setBottom}) {
