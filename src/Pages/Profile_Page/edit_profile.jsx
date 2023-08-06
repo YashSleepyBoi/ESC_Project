@@ -18,14 +18,24 @@ const EditProfile = ({setBottom}) => {
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        await updateProfile(nameID,email,oldPassword,password,confirmPass)
-        .then(() => {
-            console.log("Change complete")
-            navigate("/profile");
-        })
-        .catch((error)=>{
-            console.log(error)
-        })
+        if(password.length <6){
+            // When the password is not long enough
+            setErrorMsg("Password must be at least 6 letters!")
+        }
+        else if (password == confirmPass){
+            await updateProfile(nameID,email,oldPassword,password,confirmPass)
+            .then(() => {
+                console.log("Change complete")
+                navigate("/profile");
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+        }
+        else{
+            console.log("Passwords don't match")
+            setErrorMsg("Passwords don't match!")
+        }
 
 
     }
@@ -43,7 +53,7 @@ const EditProfile = ({setBottom}) => {
 {/* *************************************************************************** */}
 {/* NAME */}
             <div className='sectionContainer'>
-                <div className='profileText'>Name</div>
+                <div className='profileText'>New Name</div>
                 <div className='userInputContainer'>
                     <input type='text' 
                     placeholder='Alex Berry'
@@ -54,7 +64,7 @@ const EditProfile = ({setBottom}) => {
 {/* *************************************************************************** */}
 {/* EMAIL */}
             <div className='sectionContainer'>
-                <div className='profileText'>Email</div>
+                <div className='profileText'>New Email</div>
                 <div className='userInputContainer'>
                     <input type='text' 
                     placeholder='alexberry@mail.com'
@@ -96,6 +106,13 @@ const EditProfile = ({setBottom}) => {
                 </div>
                 {/* <button className='editButton'>Edit</button> */}
             </div>
+{/* *************************************************************************** */}
+{/* Error Message */}
+            <div className='sectionContainer'>
+                {/* ErrorMSG */}
+                <label>{errorMsg}</label>
+            </div>
+
 {/* *************************************************************************** */}
             <div className='sectionContainer'>
 {/* SAVE BUTTON */}
