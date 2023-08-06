@@ -1,0 +1,51 @@
+/* BookingSummary.css */
+
+/* Container styles */
+.summary {
+    min-width: 550px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    /* margin-top: 50px; */
+    font-family: 'proxima-nova', sans-serif;
+    margin: 20px auto;
+    background-color: #f2e2c9;
+  }
+  
+  /* Heading styles */
+  .card-title {
+    font-size: 24px;
+    color: rgb(40, 16, 6);
+    margin-bottom: 15px;
+  }
+  
+  /* Item styles */
+  .SummaryItem {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .SummaryItem span:first-child {
+    font-weight: bold;
+  }
+  
+  /* Total Price styles */
+  .SummaryItem:last-child {
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+  }
+  
+  .SummaryItem:last-child span:last-child {
+    font-weight: bold;
+    /* color: #007bff; */
+    color: #0800ff;
+  }
+  
+  /* Add some space below the entire summary */
+  .summary {
+    margin-bottom: 60px;
+  }
+  
