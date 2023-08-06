@@ -19,7 +19,7 @@ const Home = () =>{
             <MailList/></div> */}
             <div className="reviews-cont"><p className="reviews-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '0px', fontWeight: 'bold' }}><br/>What People Say</p><div className='cards-autoplay'>
             <VerticalCardSwiper/></div></div>
-            <div className='homepage-footer'><Footer/></div>
+            <Footer/>
         </div>
     );
 };

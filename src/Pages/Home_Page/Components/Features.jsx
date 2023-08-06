@@ -3,115 +3,65 @@ import { useState, useEffect } from 'react';
 import "../Stylesheets/Features.css";
 import {Link} from "react-router-dom";
 
+
+
 const Features = () => {
 
-  const [hotels, setHotels] = useState([]);
-
-  const apiURL = 'https://hotelapi.loyalty.dev/api/hotels?destination_id=RsBU';
-
-  function getHotels() {
-    return fetch(apiURL)
-    .then(data => data.json())
-  }
+    
+  const [features, setFeatures] = useState([]);
 
   useEffect(() => {
-    getHotels().then(hotels => {
-      setHotels(hotels);
-    });
-  },[]);
+    // Fetch hotels data from the backend API
+    fetch('http://localhost:8000/features')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch features data');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Set the retrieved data to the state
+        setFeatures(data);
+        console.log("Fetched features at features.jsx:",data);
+      })
+      .catch((error) => {
+        console.error('Error fetching features data:', error);
+      });
+  }, []);
 
-  // useEffect(() => {
-  //   // Fetch data from the API
-  //   fetch(apiURL)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       // Set the hotels state with the fetched data
-  //       setHotels(data);
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error fetching data:', error);
-  //     });
-  // }, []);ß
-
-  console.log("HOTELS FETCHED",hotels);
+  //Filter hotels with rating of 5.0
+  const featuresWithRating5 = features.filter((feature) => feature.rating === 5.0);
+  const featuresToDisplay = featuresWithRating5.slice(0, 30);
 
   return (
     <div className="featured">
-      {hotels.map((hotel, index) => (
-        <div key={index} className="featuredItem">
+      {featuresToDisplay.map((feature, index) => (
+
+
+        <div key= {index} className="featuredItem">
+          
           <img
-          src={hotel.imgix_url + hotel.image_details.prefix + hotel.image_details.default_image_index + hotel.image_details.suffix}
-          alt={hotel.name}
+          src = {feature.image_details.prefix+feature.default_image_index+feature.image_details.suffix}
+          // src="https://sitecore-cd-imgr.shangri-la.com/MediaFiles/7/E/A/%7B7EA00B0A-0F15-404E-A0C5-D302374BD781%7D1.png?width=750&height=752&mode=crop&quality=100&scale=both" alt=""
           className="featuredImg"
-        />
+          />
           {/* RESERVE NOW BUTTON */}
           <div className="middle">
-            <Link to="/findreserve">
-              <button className="buttontext">Reserve Now</button>
+            <Link to='/findreserve'>
+            <button className="buttontext">Reserve Now</button>
             </Link>
           </div>
           {/* TITLE */}
-          <div className="featuredTitles">
-            <h2>{hotel.name}</h2> {/* Replace 'name' with the key for the hotel name in your API response */}
-          </div>
-        </div>
+          <div className="featuredTitles"><h2>{feature.name}</h2></div>
+      </div>    
+
       ))}
+        
+
+      
     </div>
   );
 };
 
-  // return (
-  //   <div className="featured">
-  //       <div className="featuredItem">
-
-
-  //           <img
-  //           src="https://sitecore-cd-imgr.shangri-la.com/MediaFiles/7/E/A/%7B7EA00B0A-0F15-404E-A0C5-D302374BD781%7D1.png?width=750&height=752&mode=crop&quality=100&scale=both" alt=""
-  //           className="featuredImg"
-  //           />
-  //           {/* RESERVE NOW BUTTON */}
-  //           <div className="middle">
-  //             <Link to='/findreserve'>
-  //             <button className="buttontext">Reserve Now</button>
-  //             </Link>
-  //           </div>
-  //           {/* TITLE */}
-  //           <div className="featuredTitles"><h2>Shangri-La</h2></div>
-  //       </div>    
-
-
-  //       <div className="featuredItem">
-  //           <img
-  //           src="https://www.swissotel.com/assets/0/92/2119/3396/3435/3437/6442451793/9fa3daf9-5d46-4ab5-8147-bf0e17956fd4.jpg" alt=""
-  //           className="featuredImg"
-  //           />
-  //           {/* RESERVE NOW BUTTON */}
-  //           <div className="middle">
-  //             <Link to='/findreserve'>
-  //             <button className="buttontext">Reserve Now</button>
-  //             </Link>
-  //           </div>
-  //           {/* TITLE */}
-  //           <div className="featuredTitles"><h2>Swissotel</h2></div>
-  //       </div>
-
-
-  //       <div className="featuredItem">
-  //           <img
-  //           src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/21441842.jpg?k=fd0b1fef1617b2b80bf3a35f75feff54d38f034c81851542eeb1ad8026ccb9b9&o=&hp=1" alt=""
-  //           className="featuredImg"
-  //           />
-  //           {/* RESERVE NOW BUTTON */}
-  //           <div className="middle">
-  //             <Link to='/findreserve'>
-  //             <button className="buttontext">Reserve Now</button>
-  //             </Link>
-  //           </div>
-  //           {/* TITLE */}
-  //           <div className="featuredTitles"><h2>PARKROYAL</h2></div>
-  //     </div>
-  //   </div>
-  // );
-// };
-
 export default Features;
+
