@@ -18,7 +18,7 @@ import Grid from '@mui/material/Grid';
 import LowerGrid from "./LowerGrid";
 import Popup from "./Popup"
 
-import SearchDest from "../../Search_Page/Components/SearchDest"
+import SearchDest from "../../Search_Page/Components/SearchDest";
 import DatePPicker from "../../Search_Page/Components/DatePicker";
 import Counter from "../../Search_Page/Components/Counter"
 
@@ -43,28 +43,28 @@ export default function NavBot() {
       setFunc(bar)
   }
 
-  function setInputs(input) {
-    if (input["dest_id"]=="" 
-    || input["check_in"]=="" 
-    || input["check_out"]=="" 
-    || input["rooms"]=="" 
-    || input["guests"]=="") 
-    {alert("Please fill in all fields");}
+  // function setInputs(input) {
+  //   if (input["dest_id"]=="" 
+  //   || input["check_in"]=="" 
+  //   || input["check_out"]=="" 
+  //   || input["rooms"]=="" 
+  //   || input["guests"]=="") 
+  //   {alert("Please fill in all fields");}
 
-    else {
-      fetch("http://localhost:8000/input", {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        "Content-type": "application/json"
-      },
-      body: JSON.stringify(input)
-    })
-    .then((response) => response.json()) // Parse the response as JSON
-    .catch((error) => console.error("Error occurred during fetch /input:", error));
-    console.log("NAVBOT1.JSX: Inputs posted to /input", JSON.stringify(input));
-  }
-    }
+  //   else {
+  //     fetch("http://localhost:8000/input", {
+  //     method: 'POST',
+  //     mode: 'cors',
+  //     headers: {
+  //       "Content-type": "application/json"
+  //     },
+  //     body: JSON.stringify(input)
+  //   })
+  //   .then((response) => response.json()) // Parse the response as JSON
+  //   .catch((error) => console.error("Error occurred during fetch /input:", error));
+  //   console.log("NAVBOT1.JSX: Inputs posted to /input", JSON.stringify(input));
+  // }
+  //   }
     
 
   return (
@@ -74,7 +74,9 @@ export default function NavBot() {
         <Grid item xs={3}>
 
         <div className="dest-header" align="left" onClick={() =>
-           multipleState(true, <SearchDest setDest={setDest}/>)}>
+           multipleState(true, 
+           <SearchDest setDest={setDest}/>)}>
+
         <PlaceIcon></PlaceIcon>
           <span >
             DESTINATION
@@ -108,12 +110,14 @@ export default function NavBot() {
         <Grid item xs={1}>
         {isSmall && 
         <Link to="/results">
-        <Button onClick={() => setInputs({
-              "dest_id": dest, 
-              "check_in": startDate, 
-              "check_out": endDate, 
-              "rooms": room, 
-              "guests": pax
+        <Button
+        onClick={() =>
+            setInputs({
+              dest_id: dest,
+              check_in: startDate,
+              check_out: endDate,
+              rooms: room,
+              guests: pax,
             })
           }
           sx={{
@@ -126,8 +130,19 @@ export default function NavBot() {
       </Link>}
         </Grid>
 
-        
-        {isLarge && <LowerGrid room={room} pax={pax} setRoom={setRoom} setPax={setPax} startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} setDest={setDest} />}
+        {/* Pass dest to lowergrid as a prop. */}
+        {isLarge && <LowerGrid 
+        room={room} 
+        pax={pax} 
+        setRoom={setRoom} 
+        setPax={setPax} 
+        startDate={startDate} 
+        endDate={endDate} 
+        setStartDate={setStartDate} 
+        setEndDate={setEndDate} 
+        // dest={dest} 
+        setDest={setDest}
+        />} 
 
         {open ? <Popup body={func} closePopup={() => setOpen(false)} /> : null}
 

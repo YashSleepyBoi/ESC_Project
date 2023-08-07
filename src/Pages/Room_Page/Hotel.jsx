@@ -23,32 +23,28 @@ import { useEffect } from 'react';
 import HotelRating from './Components/HotelsRating';
 import Suite from './Components/suite';
 import NavBar from "./Components/RoomNavBar";
+import { useParams } from 'react-router-dom';
  
 
-// FETCHES HOTEL_ID, start and end date FROM RESULTS PAGE
+// get parameters: hotel id/start/end
 function getParams() {
     const { hotel_id, start_date, end_date } = useParams();
-    console.log("HOTEL.JSX: Params are:",hotel_id,start_date,end_date);
-    return [hotel_id, start_date, end_date];
+    const params = [hotel_id, start_date, end_date];
+    return params;
 }
-
-// FETCHES HOTEL_ID FROM RESULTS PAGE
-function getHotelId() {
-    const {hotel_id} = getParams[0];
-    console.log("HOTEL ID IS:",hotel_id);
-    return hotel_id;
-}
- 
  
 function Room({setBottom}) {
-    
-    
+
     const [hotel_dets, sethotel_dets] = useState({});
     const [room_dets, setroom_dets] = useState({});
     const hotel_name = "SHERATON KAGOSHIMA"
  
-        const host="diH7"
-        setBottom(false);
+    // Hotel ID, Check in and Check out values
+    // const host="diH7"
+    const host = getParams()[0];
+    const startDate = getParams()[1];
+    const endDate = getParams()[2];
+    setBottom(false);
    
     function myFunction() {
         var dots = document.getElementById("dots");
@@ -95,11 +91,10 @@ function Room({setBottom}) {
     
   function getRooms() {
     // needs access control
-    return fetch('http://localhost:8000/rooms/diH7')
+    return fetch(`http://localhost:8000/hotel/${host}`)
         .then(data =>
           
             data.json()
-            
         )
   }
  

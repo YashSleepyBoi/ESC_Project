@@ -36,14 +36,14 @@ function SearchDest({setDest}) {
 
     function handleResultClick(result) {
         setInput(result.country); 
-        setResults([])
         setDest(result.uid);
-        
+        console.log("SEARCHDEST.JSX: DEST ID=",result.uid)
+        setResults([])
       }
     
     const handleSearch = (value) => {
         setInput(value);
-        fetchData(value)
+        fetchData(value);
         console.log(results)
       };
       

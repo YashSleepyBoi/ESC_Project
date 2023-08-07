@@ -1,3 +1,4 @@
+// DON'T USE
 import React from 'react'
 
 import destinations from "../destinations.json"
@@ -5,7 +6,7 @@ import {useState} from "react";
 import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 
-function SearchDest({setDest}) {
+function SearchDestNo({setDest}) {
 
     const [results, setResults] = useState([])
     const [input, setInput] = useState([])
@@ -57,4 +58,4 @@ function SearchDest({setDest}) {
   )
 }
 
-export default SearchDest
+export default SearchDestNo

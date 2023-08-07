@@ -12,12 +12,11 @@ import { Button, Divider, useMediaQuery } from "@mui/material";
 import { reserveButtonStyle } from "../Content";
 
 
-export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndDate, endDate, setStartDate, setDest,dest }) {
+export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndDate, endDate, setStartDate, setDest }) {
 
     // Msg from natalie: HOW TO GET DEST ID FROM SEARCH? 
     const dest1 = "RsBU";
-    const newDest = dest;
-    console.log("setDest:",newDest);
+    console.log("setDest:",setDest);
     // console.log("PASSED DEST:", dest1)
     const isSmall = useMediaQuery('(max-width:700px)')
     
@@ -76,6 +75,7 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
         
         <Link to="/results">
             <Button onClick={() => setInputs({
+              // Change to setDest
               "dest_id": dest1, 
               "check_in": startDate, 
               "check_out": endDate, 

@@ -9,6 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
  
 function Results() {
  
+  const [hasData, setHasData] = useState(true);
   const [hotelsDataList, setHotelsData] = useState([])
   // Ensure hotel data is fetched before displaying
   const [isLoading, setLoading] = useState(true);
@@ -22,6 +23,7 @@ function Results() {
       .then((data) => {
         setHotelsData(data);
         setLoading(false);
+        setHasData(data.hotels.length > 0);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -30,9 +32,7 @@ function Results() {
   };
 
   useEffect(() => {
-    // Fetch data initially when the component mounts
     fetchData();
-
     // Set up regular polling
     const pollingInterval = setInterval(() => {
       fetchData();
@@ -45,11 +45,6 @@ function Results() {
   // Define the React Router navigate function
   const navigate = useNavigate();
  
-  // // Change to retrieve hotel id
-  // function pushHotelId(id) {
-  //   alert("hotel id:"+id);
-  // }
- 
     if (isLoading) {
     return (
       <div>
@@ -59,24 +54,20 @@ function Results() {
     )
     }
 
- 
+    // Check if there are any hotels in the result
+    if (!hasData) {
+      return (
+        <div>
+          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+          No results found
+        </div>
+      );
+    }
+
     let hotelsData = hotelsDataList?.hotels;
     let startD = hotelsDataList?.startdate;
     let endD = hotelsDataList?.enddate;
     console.log("RESULTS.JSX: DATA SHOULD SHOW", hotelsData);
-
-    // useEffect(() => {
-    //   // Set a timeout to show "No hotel results" after 5 seconds
-    //   const timeout = setTimeout(() => {
-    //     if (hotelsDataList.length === 0) {
-    //       return (
-    //         <div>No results found</div>
-    //       )
-    //     }
-    //   }, 5000);
-  
-    //   return () => clearTimeout(timeout);
-    // }, [hotelsData]);
 
     if (hotelsData.length==0){
       return (
@@ -90,16 +81,7 @@ function Results() {
     const handleBookNow = (hotel_id) => {
       navigate(`/hotels/${hotel_id}/${startD}/${endD}`);
     };
-  
- 
-    // if ((hotelsData.length)==0) {
-    //   return (
-    //     <div>
-    //     <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-    //     <p>No hotels found</p>
-    //     </div>
-    //   );
-    // }
+
  
   // Display
   return (
@@ -110,7 +92,6 @@ function Results() {
       <br></br>
       {hotelsData.map((hotel, index) => (
  
-        // RETURNS
         <div key={index} className="hotel-container">
           <div>
             <img src={hotel.image_details.prefix+hotel.default_image_index+hotel.image_details.suffix}/>
@@ -137,17 +118,12 @@ function Results() {
           <div className="hotel-title">{Math.round(hotel.lowest_converted_price)}</div>
           <p>onwards</p>
  
-            {/* Linking to hotel page */}
+            {/* Linking to hotel page with inputs as params */}
             <Link to={`/hotels/${hotel.id}/${startD}/${endD}`}>
-            {/* <Link to={`/hotels`}> */}
             <button type="submit" id={hotel[index]} className="book-button" onClick={() => handleBookNow(hotel.id)}>Book Now</button>
             </Link>
  
             <script>
-              {/* const baseUrl = "http://localhost:8383/id"
-              const bookBtn = document.getElementById(hotel.id);
-              bookBtn.addEventListener('click', console.log("clicked"))
-               */}
             </script>
             {/* </Link> */}
           </div>
