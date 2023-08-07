@@ -1,161 +1,145 @@
-import './profile.css'
-import {Link} from "react-router-dom";
-import { useState } from 'react';
-import updateProfile from './components/updateProfile';
-import { useNavigate } from "react-router-dom";
-import {deleteUser} from './components/deleteProfile';
+import { By, Key, Builder } from "selenium-webdriver";
+import "chromedriver";
+import '@testing-library/jest-dom';
 
+// Before running the test, make sure the app is running
 
-const EditProfile = ({setBottom}) => {
-    const [nameID, setName] = useState("");
-    const [email,setEmail] = useState(""); // use state to set the email as an empty field
-    const [oldPassword,setOldPassword] = useState(""); // use state to set the email as an empty field
-    const [password,setPassword] = useState(""); // use state to set the email as an empty field
-    const [confirmPass,setConfirmPass] = useState(""); // use state to set the email as an empty field
-    const [errorMsg, setErrorMsg] = useState("");
-    const [stay, setStay] = useState(false);
-    const navigate = useNavigate();
-    setBottom(false);
-
-    const handleSubmit = async(e) =>{
-        e.preventDefault();
-        
-        // Allow the user to stay
-        if (stay){
-            return false;
-        }
-
-        if (oldPassword == ""){
-            setErrorMsg("please enter old password!!!")
-            return false;
-        }
-        if(password.length < 6 && password.length>0){
-            // When the password is not long enough
-            setErrorMsg("Password must be at least 6 letters!")
-        }
-        else if (password == confirmPass){
-            await updateProfile(nameID,email,oldPassword,password,confirmPass)
-            .then(() => {
-                console.log("Change complete")
-                navigate("/profile");
-            })
-            .catch((error)=>{
-                console.log(error)
-            })
-        }
-        else{
-            console.log("Passwords don't match")
-            setErrorMsg("Passwords don't match!")
-        }
-
-
-    }
-// ================================================================================
-  return (
-    <div>
-        <form onSubmit={handleSubmit}>
-        <div className='bgImage'></div>
-        <div className='editprofileContainer'>
-            <div className='sectionContainer'>
-                <div className='profileTitle'>Edit Personal Details</div>
-                {/* Route to /editprofile page */}
-
-            </div>
-{/* *************************************************************************** */}
-{/* NAME */}
-            <div className='sectionContainer'>
-                <div className='profileText'>New Name</div>
-                <div className='userInputContainer'>
-                    <input type='text' 
-                    id="nameIn"
-                    placeholder='Alex Berry'
-                    onChange={(e) => setName(e.target.value)}/>
-                </div>
-                {/* <button className='editButton'>Edit</button> */}
-            </div>
-{/* *************************************************************************** */}
-{/* EMAIL */}
-            <div className='sectionContainer'>
-                <div className='profileText'>New Email</div>
-                <div className='userInputContainer'>
-                    <input type='text' 
-                    id="emailIn"
-                    placeholder='alexberry@mail.com'
-                    onChange={(e) => setEmail(e.target.value)}/>
-                </div>
-                {/* <button className='editButton'>Edit</button> */}
-            </div>
-
-{/* *************************************************************************** */}
-{/* OLD PASSWORD  */}
-<div className='sectionContainer'>
-                <div className='profileText'>Old Password</div>
-                <div className='userInputContainer'>
-                    <input type='password' 
-                    id="oldPwdIn"
-                    placeholder='**********'
-                    onChange={(e) => setOldPassword(e.target.value)}/>
-                </div>
-                {/* <button className='editButton'>Edit</button> */}
-            </div>
-{/* *************************************************************************** */}
-{/* NEW PASSWORD */}
-            <div className='sectionContainer'>
-                <div className='profileText'>New Password</div>
-                <div className='userInputContainer'>
-                    <input type='password' 
-                    id="newPwdIn"
-                    placeholder='**********'
-                    onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-                {/* <button className='editButton'>Edit</button> */}
-            </div>
-{/* *************************************************************************** */}
-            <div className='sectionContainer'>
-{/* CONFIRM PASSWORD */}
-                <div className='profileText'>Confirm New Password</div>
-                <div className='userInputContainer'>
-                    <input type='password' 
-                    id="newPwdInCfm"
-                    placeholder='**********'
-                    onChange={(e) => setConfirmPass(e.target.value)}/>
-                </div>
-                {/* <button className='editButton'>Edit</button> */}
-            </div>
-{/* *************************************************************************** */}
-{/* Error Message */}
-            <div className='sectionContainer'>
-                {/* ErrorMSG */}
-                <label>{errorMsg}</label>
-            </div>
-
-{/* *************************************************************************** */}
-            <div className='sectionContainer' >
-{/* SAVE BUTTON */}
-                <button className='editButton' id="saveBtn" onClick={onsubmit}>Save</button>
-{/* CANCEL BUTTON */}
-                <button className='editButton' onClick={()=> navigate("/profile")}>Cancel</button>
-{/* DELETE ACCOUNT BUTTON */}
-                <button className='editButton' id="deleteBtn" onClick={async () => {
-                     if (window.confirm('Are you sure you wish to delete this item?')){ 
-                        await deleteUser(oldPassword);
-                        navigate("/");
-                     }
-                     else{
-                        return setStay(true);
-                     }
-                     }}>
-                        Delete Account</button>
-                
-                
-            </div>
-
-        </div>
-        </form>
-        
-        
-    </div>
-  )
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
+// Give more time to load the websites by allowing jest more timeout
+jest.setTimeout(50000);
 
-export default EditProfile;
+describe("selenium Tests", () => {
+    // Change the localhost to the correct address before testing
+    var login_target = "http://localhost:5173/login";
+    var register_target = "http://localhost:5173/register"; // Corrected URL for register
+    var profile_target = "http://localhost:5173/profile"; // Corrected URL for profile
+    var editProfTarget = "http://localhost:5173/editprofile"
+    let driver;
+
+    const password = "password123";
+    const name1 = "seleniumTest";
+    const email1 = "seleniumTest@gmail.com";
+
+    const newPassword = "123456";
+    const name2 = "seleniumTest2";
+    const email2 = "seleniumTest2@gmail.com"
+
+    beforeAll(async () => {
+        // Set up the driver before running all
+        driver = await new Builder().forBrowser("chrome").build();
+        await driver.manage().window().maximize();
+        
+        //switch to the window
+        let allWindows = await driver.getAllWindowHandles();
+        await driver.switchTo().window(allWindows[0]);
+        
+    });
+
+    afterAll(async () => {
+        //Tear down
+        await driver.quit();
+
+    });
+
+    test("should create an account", async () => {
+        await driver.get(register_target);
+        // Create an account called SeleniumTest
+        await driver.findElement(By.id("name")).sendKeys(name1);
+        await driver.findElement(By.id("email")).sendKeys(email1);
+        await driver.findElement(By.id("password")).sendKeys(password);
+        await driver.findElement(By.id("confirmPassword")).sendKeys(password);
+        await driver.findElement(By.className("RegisterBtn")).click();
+        await sleep(2000);
+    });
+
+
+    test("should login to the account", async () => {
+        //Login to the account
+        await driver.get(login_target);
+        await driver.findElement(By.id("email")).sendKeys(email1);
+        await driver.findElement(By.id("password")).sendKeys(password);
+        await driver.findElement(By.className("LoginBtn")).click();
+        console.log("button has been clicked");
+        await sleep(4000);
+        
+    });
+
+    test("should move to the profile page and check name and email", async () => {
+        // Move to profile page
+        await driver.get(profile_target);
+        
+        await sleep(5000); // Give time for the page to load
+        const nameTest1 = await driver.findElement(By.id("name")).getText();
+        const emailTest1 = await driver.findElement(By.id("email")).getText();
+        console.log(nameTest1);
+        console.log(emailTest1);
+
+        expect(nameTest1).toBe(name1);
+        expect(emailTest1).toBe(email1);
+    });
+
+
+    test("move to the editprofile page and change the account details", async() =>{
+        await sleep(2000);
+        await driver.get(editProfTarget);
+        
+
+        await driver.findElement(By.id("nameIn")).sendKeys(name2);
+        await sleep(500);
+        await driver.findElement(By.id("emailIn")).sendKeys(email2);
+        await sleep(500);
+        await driver.findElement(By.id("oldPwdIn")).sendKeys(password);
+        await sleep(500);
+
+  
+        await driver.findElement(By.id("saveBtn")).click();
+        await sleep(2000);
+    })
+
+    // Selenium doesnt let us change password 
+
+    // test("Should change the password", async()=>{
+        
+    //     await sleep(2000);
+    //     await driver.get(editProfTarget);
+
+    //     await driver.findElement(By.id("oldPwdIn")).sendKeys(password);
+    //     await sleep(500);
+    //     await driver.findElement(By.id("newPwdIn")).sendKeys(newPassword);
+    //     await sleep(500);
+    //     await driver.findElement(By.id("newPwdInCfm")).sendKeys(newPassword);
+    //     await sleep(500);
+    //     await driver.findElement(By.id("saveBtn")).click();
+    //     await driver.wait();
+    // })
+
+    
+    test("should move to the profile page again and check new name and email", async () => {
+        // Move to profile page again
+        await driver.get(profile_target);
+        
+        await sleep(3000); // Give time for the page to load
+        const nameTest2 = await driver.findElement(By.id("name")).getText();
+        const emailTest2 = await driver.findElement(By.id("email")).getText();
+        console.log(nameTest2);
+        console.log(emailTest2);
+
+        expect(nameTest2).toBe(name2);
+        expect(emailTest2).toBe(email2);
+    });
+
+    test("Delete the account", async ()=>{
+        //move to edit profile and delete the account
+        await driver.get(editProfTarget);
+        await sleep(2000);
+        
+        await driver.findElement(By.id("oldPwdIn")).sendKeys(password);
+        await driver.findElement(By.id("deleteBtn")).click();
+        sleep(2000);
+        await driver.switchTo().alert().accept();
+        sleep(10000);
+    })
+
+});

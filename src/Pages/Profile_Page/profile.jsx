@@ -62,16 +62,16 @@ const Profile = ({setBottom}) => {
     {/* *************************************************************************** */}
     {/* NAME */}
                 <div className='sectionContainer'>
-                    <div className='profileText' id="name">Name</div>
+                    <div className='profileText' >Name</div>
                     {/* Input Name from database */}
-                    <div className='userInfoText'><b>{name}</b></div>
+                    <div className='userInfoText' id="name"><b>{name}</b></div>
                 </div>
     {/* *************************************************************************** */}
     {/* EMAIL */}
                 <div className='sectionContainer'>
-                    <div className='profileText' id="email">Email</div>
+                    <div className='profileText' >Email</div>
                     {/* Input email from database */}
-                    <div className='userInfoText'><b>{email}</b></div>
+                    <div className='userInfoText' id="email"><b>{email}</b></div>
                 </div>
     {/* *************************************************************************** */}
     {/* PASSWORD */}
