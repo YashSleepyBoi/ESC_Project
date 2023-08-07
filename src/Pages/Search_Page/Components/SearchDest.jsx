@@ -5,7 +5,7 @@ import {useState} from "react";
 import SearchBar from "./SearchBar"
 import SearchResultsList from "./SearchResultsList"
 
-function SearchDest({setDest}) {
+function SearchDest({clickHandler}) {
 
     const [results, setResults] = useState([])
     const [input, setInput] = useState([])
@@ -27,7 +27,7 @@ function SearchDest({setDest}) {
             value &&
             destination &&
             destination.country &&
-            destination.country.toLowerCase().includes(value)
+            destination.country.toLowerCase().includes(value.toLowerCase())
             )
         })
         console.log(results)
@@ -36,9 +36,10 @@ function SearchDest({setDest}) {
 
     function handleResultClick(result) {
         setInput(result.country); 
-        setDest(result.uid);
+        
         console.log("SEARCHDEST.JSX: DEST ID=",result.uid)
         setResults([])
+        clickHandler(result.uid);
       }
     
     const handleSearch = (value) => {
