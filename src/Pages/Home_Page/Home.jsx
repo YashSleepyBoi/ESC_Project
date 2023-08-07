@@ -10,16 +10,42 @@ import { Link } from "react-router-dom";
 
 const Home = ({setBottom}) =>{
     setBottom(true);
+// ====================================================================================
     return (
         <div className="home-container">
+    {/* *************************************************************************** */}
+    {/* COVER IMAGE & SERVICES */}
             <Cover />
-            <div className="services"><Services /></div>
-            <div className="hotel-cont"><p className="hotel-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '40px', fontWeight: 'bold' }}>Our Top Hotels</p>
-            <Features /></div>
+            <div className="services">
+                <Services />
+            </div>
+
+    {/* *************************************************************************** */}
+    {/* HOTEL "TOP PICKS" + FEATURES */}
+
+            <div className="hotel-cont">
+                <p className="hotel-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '40px', fontWeight: 'bold' }}>Our Top Hotels</p>
+                <Features />
+            </div>
+            
+    {/* *************************************************************************** */}
+    {/* MAILLIST */}
             {/* <div className="maillist-cont"><p className="mail-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '0px', fontWeight: 'bold' }}><br/>What People Say</p>
             <MailList/></div> */}
-            <div className="reviews-cont"><p className="reviews-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '0px', fontWeight: 'bold' }}><br/>What People Say</p><div className='cards-autoplay'>
-            <VerticalCardSwiper/></div></div>
+
+    {/* *************************************************************************** */}
+    {/* REVIEWS */}
+
+            <div className="reviews-cont">
+                <p className="reviews-title" align="left" style={{ color: 'white', fontSize: '30px', marginTop: '40px', marginLeft: '80px', marginBottom: '0px', fontWeight: 'bold' }}><br/>What People Say</p>
+                <div className='cards-autoplay'>
+                    <VerticalCardSwiper/>
+                </div>
+            </div>
+
+    {/* *************************************************************************** */}
+    {/* FOOTER */}
+
            <Footer/>
         </div>
     );

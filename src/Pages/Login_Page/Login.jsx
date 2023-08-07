@@ -38,12 +38,13 @@ const navigate = useNavigate();
             }
         });   
     }
-
+// ====================================================================================
     return(
         <div className="Wrapper">
             <div className="bgImage"></div>
             <form className="LoginForm" onSubmit={handleSubmit}>
                 
+    {/* *************************************************************************** */}
                 {/* Enter the email */}
                 <label htmlFor="email">Email:</label>
                     <input
@@ -55,6 +56,7 @@ const navigate = useNavigate();
                     name="email"
                     />
 
+    {/* *************************************************************************** */}
                 {/* Enter the Password */}
                 <label htmlFor="password">Password:</label>
                     <input
@@ -65,20 +67,24 @@ const navigate = useNavigate();
                     id="password"
                     name="password"
                     />
- 
+    {/* *************************************************************************** */}
                 {/* ErrorMSG */}
                 <label>{errorMsg}</label>
 
+    {/* *************************************************************************** */}
                 {/* Submit Button */}
                 {/* TODO route to home upon successful submit */}
                 <button className="LoginBtn" id="loginBtn" type="Login" onClick={onsubmit}>Login</button>
 
+    {/* *************************************************************************** */}
                 {/* route to Register page */}
                 <label className="changePageTxt" htmlFor="changePage">No account yet?
                     <Link to="/register">
                         <button className="transitionReg"> Create account </button>
                     </Link>
                 </label>
+
+    {/* *************************************************************************** */}
 {/* 
                 <button onClick={ () =>{
                             //TODO Properly handle signout

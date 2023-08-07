@@ -26,10 +26,40 @@ import NavBar from "./Components/RoomNavBar";
 import { useParams } from 'react-router-dom';
  
 
+function getGuestrooms () {
+
+    const [guests, setGuests] = useState([])
+    const [rooms, setRooms] = useState([])
+
+    // Function to fetch data from the inputs
+    const fetchData = () => {
+        const cacheBuster = Date.now(); // Generate a random value based on the current timestamp
+
+        fetch(`http://localhost:8000/inputs?cache=${cacheBuster}`) // Replace with your API endpoint
+        .then((response) => response.json())
+        .then((data) => {
+            setGuests(data.guests);
+            setRooms(data.rooms);
+            set
+        })
+        .catch((error) => {
+            console.error('Error fetching data:', error);
+        });
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    return [guests, rooms];
+}
+
+console.log("FETCHED FROM INPUTS:", getGuestrooms()[0]);
+
 // get parameters: hotel id/start/end/numguests
 function getParams() {
-    const { hotel_id, start_date, end_date ,num_guests="1",rooms="2"} = useParams();
-    const params = [hotel_id, start_date, end_date,num_guests,rooms];
+    const { hotel_id, start_date, end_date } = useParams();
+    const params = [hotel_id, start_date, end_date ];
     return params;
 }
  

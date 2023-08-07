@@ -29,7 +29,7 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
       || input["check_in"]=="" 
       || input["check_out"]=="" 
       || input["rooms"]=="" 
-      || input["guests"]=="") 
+      || input["guests"]=="")
       {alert("Please fill in all fields");}
   
       else {

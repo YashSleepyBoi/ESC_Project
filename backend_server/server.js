@@ -199,14 +199,15 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
     hotelslist = [];
     startDate = checkin.toString();
     endDate = checkout.toString();
-    const characters = guests.split("|")
-    const strings = characters.map((char) => char.toString());
-    const nguests = strings.join("|");
-    const guests = nguests[0];
-    const rooms = (nguests.length()+1)/2
+    // console.log("NUM GUESTS TYPE", typeof num_guests);
+    // const characters = num_guests.toString().split('|')
+    // const strings = characters.map((char) => char.toString());
+    // const nguests = strings.join('|');
+    // const guests = nguests[0];
+    // const rooms = ((nguests.length()+1)/2).toString()
 
 
-    const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist, "numguests": guests.toString(), "rooms": rooms.toString()};
+    const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist};
     for (let i = 0; i < all_data.length; i++) {
         let hotel1 = all_data[i];
         //console.log(hotel1);
