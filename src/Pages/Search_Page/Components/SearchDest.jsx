@@ -33,10 +33,12 @@ function SearchDest({setDest}) {
         })
         console.log(results)
         setResults(results);
+        setDest(result.uid)
       }
 
     function handleResultClick(result) {
         setInput(result.country); 
+        setResults([])
         // setDest(result.uid);
         setResults([])
       }

@@ -126,7 +126,7 @@ export default function NavBot() {
         </Grid>
 
         
-        {isLarge && <LowerGrid room={room} pax={pax} setRoom={setRoom} setPax={setPax} startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate}/>}
+        {isLarge && <LowerGrid room={room} pax={pax} setRoom={setRoom} setPax={setPax} startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} setDest={setDest}/>}
 
         {open ? <Popup body={func} closePopup={() => setOpen(false)} /> : null}
 
