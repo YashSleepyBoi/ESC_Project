@@ -2,8 +2,8 @@ import './profile.css'
 import {Link} from "react-router-dom";
 import { useState } from 'react';
 import updateProfile from './components/updateProfile';
-
 import { useNavigate } from "react-router-dom";
+import {deleteUser} from './components/deleteProfile';
 
 
 const EditProfile = ({setBottom}) => {
@@ -13,12 +13,23 @@ const EditProfile = ({setBottom}) => {
     const [password,setPassword] = useState(""); // use state to set the email as an empty field
     const [confirmPass,setConfirmPass] = useState(""); // use state to set the email as an empty field
     const [errorMsg, setErrorMsg] = useState("");
+    const [stay, setStay] = useState(false);
     const navigate = useNavigate();
     setBottom(false);
 
     const handleSubmit = async(e) =>{
         e.preventDefault();
-        if(password.length <6){
+        
+        // Allow the user to stay
+        if (stay){
+            return false;
+        }
+
+        if (oldPassword == ""){
+            setErrorMsg("please enter old password!!!")
+            return false;
+        }
+        if(password.length < 6 && password.length>0){
             // When the password is not long enough
             setErrorMsg("Password must be at least 6 letters!")
         }
@@ -118,10 +129,27 @@ const EditProfile = ({setBottom}) => {
 {/* SAVE BUTTON */}
                 <button className='editButton' onClick={onsubmit}>Save</button>
 {/* CANCEL BUTTON */}
-                <button className='editButton' onClick={onsubmit}>Cancel</button>
+                <button className='editButton' onClick={()=> navigate("/profile")}>Cancel</button>
+{/* DELETE ACCOUNT BUTTON */}
+<button className='deleteButton' onClick={async () => {
+                     if (window.confirm('Are you sure you wish to delete this item?')){ 
+                        await deleteUser(oldPassword);
+                        navigate("/");
+                     }
+                     else{
+                        // Stay on page
+                        return setStay(true);
+                     }
+                     }}>
+                        Delete Account</button>
+                
+                
             </div>
+
         </div>
         </form>
+        
+        
     </div>
   )
 }
