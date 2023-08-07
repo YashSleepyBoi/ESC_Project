@@ -19,12 +19,14 @@ import Cancel from "./Pages/Payment_Page/Components/Cancel";
  
 function App() {
   const [isBottomDisplay, setIsBottomDisplay] = useState(false);
+  const [isHotelNavbar, setIsHotelNavbar] = useState(false);
+  const [hotelName, setHotelName] = useState("");
   return (
     <>
-      <NavBar bottom={isBottomDisplay}/>
+      <NavBar bottom={isBottomDisplay} hotelNavbar={isHotelNavbar} hotelName={hotelName}/>
       <Routes>
         <Route path="/" element={<Home setBottom={setIsBottomDisplay}/>} />
-        <Route path="/room/:hotel_id/:room_id/:guests/:start_date/:end_date/:rooms/:h_name" element={<Room setBottom={setIsBottomDisplay}/>} />
+        <Route path="/room/:hotel_id/:room_id/:guests/:start_date/:end_date/:rooms/:h_name" element={<Room setBottom={setIsBottomDisplay} setHotelNavbar={setIsHotelNavbar} setHotelName={setHotelName}/>} />
         <Route path="/hotels/:hotel_id/:start_date/:end_date" element={<Hotel setBottom={setIsBottomDisplay}/>} />
         <Route path="/profile" element={<Profile setBottom={setIsBottomDisplay}/>}/>
         <Route path="/editprofile" element={<EditProfile setBottom={setIsBottomDisplay}/>}/>

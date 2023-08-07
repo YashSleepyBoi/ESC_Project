@@ -5,12 +5,12 @@
 }
 
 h2{
-    font-size: 2rem !important;
+    font-size: 2.5rem !important;
     text-transform: uppercase;
 }
 
 p{
-    font-size: 0.75rem;
+    font-size: 1rem;
 }
 
 .banner-container {
@@ -19,7 +19,7 @@ p{
     height: 100vh;
   }
 .banner-image {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -30,6 +30,13 @@ p{
     transition: .3s ease-in;
   }
 
+.banner-button{
+    position: absolute;
+    z-index: 10;
+    top: 80%;
+    left: -40%;
+}
+
 .accomodation{
     display:flex;
     flex-direction: column;
@@ -39,7 +46,6 @@ p{
     position: relative;
     text-align: center;
     padding: 1rem;
-    font-size: 0.75rem;
     max-width: 50vw;
     left:50%;
     top: 50%;
@@ -51,6 +57,16 @@ p{
     .accomodation-description{
         max-width: 90vw;
         margin-bottom: 1rem;
+    }
+}
+
+@media only screen and (max-width: 500px){
+    h2{
+        font-size: 1.5rem !important;
+    }
+    
+    p{
+        font-size: 0.75rem;
     }
 }
 
@@ -181,7 +197,6 @@ p{
 }
 .accordion{
     display: flex;
-    background-color: #f4f4f4;
     width: 100%;
     padding: 2.5rem;
     margin: 2.5rem 0;
@@ -214,6 +229,12 @@ p{
 
 .action-button{
     margin: 1rem;
+}
+
+.other-rooms{
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    font-weight: 500;
 }
 
 .transparent-overlay {
