@@ -1,8 +1,6 @@
 import { By, Key, Builder } from "selenium-webdriver";
 import "chromedriver";
 import '@testing-library/jest-dom';
-import useAuth from "../useAuth";
-import { deleteUser } from "../components/deleteProfile";
 
 // Before running the test, make sure the app is running
 
@@ -36,9 +34,8 @@ describe("selenium Tests", () => {
     });
 
     afterAll(async () => {
-        //Tear down and delete the test accounts after
-        // deleteUser(newPassword);
-        // await driver.quit();
+        //Tear down
+        await driver.quit();
 
     });
 
@@ -61,7 +58,7 @@ describe("selenium Tests", () => {
         await driver.findElement(By.id("password")).sendKeys(password);
         await driver.findElement(By.className("LoginBtn")).click();
         console.log("button has been clicked");
-        await sleep(4000);
+        await sleep(3000);
         
     });
 
@@ -117,6 +114,7 @@ describe("selenium Tests", () => {
     
     test("should move to the profile page again and check new name and email", async () => {
         // Move to profile page again
+        await sleep(2000);
         await driver.get(profile_target);
         
         await sleep(3000); // Give time for the page to load
