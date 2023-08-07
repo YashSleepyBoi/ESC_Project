@@ -14,7 +14,7 @@ function Card_Slider(props) {
             
                 {props.data.map((i, index) => {
                 
-            return <ActionAreaCard name={props.data5[index]} image={props.data3[index]} cost={props.data2[index]} h_id={props.id} s_d={props.s_d} e_d={props.e_d} type={i} r_id={props.data4[index]} guests={props.guests}></ActionAreaCard>
+            return <ActionAreaCard name={props.data5[index]}  image={props.data3[index]} cost={props.data2[index]} h_id={props.id} h_name={props.name} s_d={props.s_d} e_d={props.e_d} type={i} r_id={props.data4[index]} guests={props.guests} rooms={props.guests}></ActionAreaCard>
         })}
       </div></>
         
