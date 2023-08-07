@@ -67,8 +67,8 @@ function Results() {
     let hotelsData = hotelsDataList?.hotels;
     let startD = hotelsDataList?.startdate;
     let endD = hotelsDataList?.enddate;
-    let guests = hotelsDataList?.numguests.toString();
-    let rooms = hotelsDataList?.rooms.toString();
+    let guests = hotelsDataList?.numguests;
+    let rooms = hotelsDataList?.rooms;
     console.log("RESULTS.JSX: DATA SHOULD SHOW", hotelsData);
 
     if (hotelsData.length==0){

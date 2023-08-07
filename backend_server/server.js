@@ -206,7 +206,7 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
     const rooms = (nguests.length()+1)/2
 
 
-    const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist, "numguests": guests, "rooms": rooms};
+    const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist, "numguests": guests.toString(), "rooms": rooms.toString()};
     for (let i = 0; i < all_data.length; i++) {
         let hotel1 = all_data[i];
         //console.log(hotel1);

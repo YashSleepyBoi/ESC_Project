@@ -28,8 +28,8 @@ import { useParams } from 'react-router-dom';
 
 // get parameters: hotel id/start/end/numguests
 function getParams() {
-    const { hotel_id, start_date, end_date ,guests,rooms} = useParams();
-    const params = [hotel_id, start_date, end_date, guests, rooms];
+    const { hotel_id, start_date, end_date ,num_guests,rooms} = useParams();
+    const params = [hotel_id, start_date, end_date,num_guests,rooms];
     return params;
 }
  
