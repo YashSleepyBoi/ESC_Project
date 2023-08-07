@@ -78,11 +78,11 @@ app.post('/input', (req, res) => {
         const tes_guests = 1|1;
     
         console.log( dest_id, check_in, check_out, guests);
-        console.log( "TESTING", dest_id, tes_check_in, tes_check_out, tes_guests);
+        // console.log( "TESTING", dest_id, tes_check_in, tes_check_out, tes_guests);
         // console.log(typeof dest_id, typeof check_in, typeof check_out, typeof guests);
         
         // Call the searchResults function
-        searchResults(dest_id, tes_check_in, tes_check_out, curr, guests)
+        searchResults(dest_id, check_in, check_out, curr, guests)
         .then(data => {
             // Update searchdata
             searchData = data;
@@ -199,7 +199,12 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
     hotelslist = [];
     startDate = checkin.toString();
     endDate = checkout.toString();
-    const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist};
+    const characters = guests.split("|")
+    const strings = characters.map((char) => char.toString());
+    const guests = strings.join("|");
+
+
+    const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist, "numguests": guests};
     for (let i = 0; i < all_data.length; i++) {
         let hotel1 = all_data[i];
         //console.log(hotel1);

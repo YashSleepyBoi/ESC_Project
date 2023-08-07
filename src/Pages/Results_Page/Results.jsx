@@ -67,6 +67,7 @@ function Results() {
     let hotelsData = hotelsDataList?.hotels;
     let startD = hotelsDataList?.startdate;
     let endD = hotelsDataList?.enddate;
+    let guests = hotelsDataList?.numguests.toString();
     console.log("RESULTS.JSX: DATA SHOULD SHOW", hotelsData);
 
     if (hotelsData.length==0){
@@ -79,7 +80,7 @@ function Results() {
 
       // Handle button click and navigate to the /hotels route with hotel_id parameter
     const handleBookNow = (hotel_id) => {
-      navigate(`/hotels/${hotel_id}/${startD}/${endD}`);
+      navigate(`/hotels/${hotel_id}/${startD}/${endD}/${guests}`);
     };
 
  

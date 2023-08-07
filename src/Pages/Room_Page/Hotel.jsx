@@ -26,10 +26,10 @@ import NavBar from "./Components/RoomNavBar";
 import { useParams } from 'react-router-dom';
  
 
-// get parameters: hotel id/start/end
+// get parameters: hotel id/start/end/numguests
 function getParams() {
-    const { hotel_id, start_date, end_date } = useParams();
-    const params = [hotel_id, start_date, end_date];
+    const { hotel_id, start_date, end_date, num_guests } = useParams();
+    const params = [hotel_id, start_date, end_date, num_guests];
     return params;
 }
  
@@ -44,6 +44,8 @@ function Room({setBottom}) {
     const host =getParams()[0];
     const startDate = getParams()[1];
     const endDate = getParams()[2];
+    // e.g. 2|2|2 is 2 guests, 3 rooms
+    const num_guests = getParams()[3];
     setBottom(false);
    
     function myFunction() {
