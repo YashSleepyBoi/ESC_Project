@@ -235,7 +235,7 @@ function Room({setBottom}) {
             <div style={{ background: "#fbfbfb" }} className="rooms">
                 {room_dets.unique ?
                     
-                    <Card_Slider data={room_dets.unique} data2={room_dets.arr2} data3={room_dets.arr3} data5={room_dets.arr5} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4} name={room_dets.name} guests={guests} rooms={ rooms}></Card_Slider>:<></>
+                    <Card_Slider data={room_dets.unique} data2={room_dets.arr2} data3={room_dets.arr3} data5={room_dets.arr5} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4} name={hotel_dets.name} guests={guests} rooms={ rooms}></Card_Slider>:<></>
                 }
                 
             </div>
