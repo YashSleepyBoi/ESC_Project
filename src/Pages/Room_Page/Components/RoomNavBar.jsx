@@ -1,9 +1,10 @@
 import "../Stylesheets/Room_NavBar.css";
 import { useEffect, useState } from "react";
 import NavTop from "./NavTop";
-import NavBot from "./NavBot1";
+import NavBot1 from "./NavBot1";
+import NavBot2 from "./NavBot";
 
-export default function NavBar({ bottom }) {
+export default function NavBar({ bottom, hotelNavbar, hotelName }) {
 
   const [color, setColor] = useState(false);
   const [show, setShow] = useState(true);
@@ -36,8 +37,8 @@ export default function NavBar({ bottom }) {
           id="navbar"
         >
           <NavTop color={color} setColor={setColor}/>
-          {bottom &&<NavBot  />}
-          
+          {bottom && <NavBot1/>}
+          {hotelNavbar && <NavBot2 hotelName={hotelName}/>}
           {/* <QuickSearch/> */}
         </div>
       </div>

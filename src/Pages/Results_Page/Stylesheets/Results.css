@@ -1,120 +1,148 @@
-.hotel-container {
-  border: 0px solid gray;
-  background-color: whitesmoke;
-  padding-top: 20px;
-  padding-bottom: 40px;
+.results-page {
+  padding-top: 20%;
   display: flex;
-  justify-content: space-between;
-  gap: 70px;
-  margin: 10px;
-  z-index: 900;
+  flex-wrap: wrap;
+  justify-content: center; /* Center child elements horizontally */
+  align-items: center;
+  gap: 20px;
 }
 
 
-.hotel-image {
-  margin-left: 10px;
-  width: 250px;
-  height: 250px;
-  border-radius: 5px;
-  object-fit: cover;
+.num-results {
+  font-size: 20px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  margin-right: 70%;
 }
 
-.hotel-features{
-  font-size: 17px;
-  padding-top: 5px;
-  font-weight: 350;
-  color: gray;
-}
-
-.siDesc {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  flex: 2;
-}
-
-.hotel-title {
-  font-size: 23px;
+.is-loading {
+  padding-top: 20%;
+  font-size: 18px;
   color: black;
   font-weight: 400;
   padding-bottom: 10px;
 }
 
-.hotel-distance {
-  font-size: 15px;
-  font-style: italic;
-  padding-top: 2%;
-  padding-bottom: 10%;
-  color: gray;
+.hotel-container {
+  border: 0px solid gray;
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  gap: 7%;
+  height: 200px;
+  max-width: 1200px;
+  z-index: 900;
+  width: 100%;
 }
 
-.siSubtitle{
-  font-size: 12px;
-  font-weight: bold;
+.hotel-image-container {
+  flex: 0 0 29%; /* Set the width to 20% of the container */
+  height: 100%; /* Set the height to occupy the full height of the container */
+  overflow: hidden; /* Crop the image to fit within the container */
+  margin-right: 20px;
 }
 
-.siCancelOp{
-  font-size: 12px;
-  color: #008009;
-  font-weight: bold;
-}
-
-.siCancelOpSubtitle{
-  font-size: 12px;
-  color: #008009;
+.hotel-image {
+  width: 100%; /* Make sure the image fills the container */
+  height: 100%; /* Make sure the image fills the container */
+  object-fit: cover; /* Crop and fit the image within the container */
 }
 
 .hotel-details {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center
+  justify-content: center;
 }
 
-.siRating{
-  display: flex;
-  justify-content: space-between
+.hotel-features{
+  font-size: 14px;
+  padding-top: 0px;
+  font-weight: 300;
+  color: black;
+  align-content: center;
 }
 
-.siRating>span{
+.hotel-title {
+  font-size: 18px;
+  color: black;
+  font-weight: 400;
+  padding-bottom: 10px;
+}
+
+.hotel-distance {
+  font-size: 12px;
+  padding-top: 2%;
+  color: brown;
+}
+
+.rating-num {
+  font-size: 25px;
+  color: brown;
+  font-weight: 400;
+  margin-right: 250px;
+}
+
+.ratings-bar {
+  width: 100px; /* Set the width of the ratings bar */
+  height: 16px; /* Set the height of the ratings bar */
+  background-color: rgb(230, 165, 137); /* Set the background color of the empty bar */
+  border-radius: 10px; /* Rounded corners for the bar */
+  overflow: hidden; /* Hide any overflowing content (in case of fractional ratings) */
+  width: 200px;
+}
+
+.ratings-bar-filled {
+  height: 100%; /* Set the height to 100% to fill the empty bar */
+  background-color: rgba(195, 64, 17, 0.909); /* Set the background color of the filled bar */
+  border-radius: 10px; /* Rounded corners for the filled bar */
+}
+
+.no-rating-message {
+  font-size: 15px;
   font-weight: 500;
-}
-.siRating>button{
- background-color: #003580;
- color: white;
- font-size: 15px;
- padding: 10px;
- font-weight: bold;
- border: none;
+  color: gray;
+  margin-top: 22px;
 }
 
-.siDetailTexts{
-  text-align: right;
+
+.price-column {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  align-items: center;
+  border-left: 1px solid #ccc; /* Add a left border to separate columns */
+  padding-left: 20px;
 }
 
-.siPrice{
-  font-size: 24px;
+.sg-d {
+  padding-top: 30px;
+  font-size: 16px;
+  color: brown;
+  font-weight: 400;
 }
 
-.siTaxOp{
-  font-size: 12px;
-  color: gray;
+.hotel-price {
+  font-size: 30px;
+  color: brown;
+  font-weight: 600;
+}
+
+.onwards {
+  font-size: 13px;
+  color: brown;
+  font-weight: 300;
 }
 
 .book-button{
-  background: orangered;
-  color: black;
+  margin-top: 10px;
+  background: rgb(218, 96, 26);
   font-weight: bold;
-  font-size: 23px;
-  font-weight: 500;
+  color: black;
+  font-size: 18px;
+  border: none;
   padding: 10px 10px;
-  padding-top: 20%;
-  border: black;
+  border-radius: 10px;
   cursor: pointer;
-  border-radius: 5px;
-  margin-right: 10px;
-  z-index: 950;
+  width: 200px;
 }
