@@ -41,7 +41,7 @@ function Room({setBottom}) {
  
     // Hotel ID, Check in and Check out values
     // const host="diH7"
-    const host = getParams()[0];
+    const host ="diH7";
     const startDate = getParams()[1];
     const endDate = getParams()[2];
     setBottom(false);
@@ -91,7 +91,7 @@ function Room({setBottom}) {
     
   function getRooms() {
     // needs access control
-    return fetch(`http://localhost:8000/hotel/${host}`)
+    return fetch(`http://localhost:8000/rooms/${host}`)
         .then(data =>
           
             data.json()
