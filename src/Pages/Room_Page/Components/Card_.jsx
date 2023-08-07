@@ -15,7 +15,7 @@ export default function ActionAreaCard(props) {
   const roomClickHandler = () => {
     // TODO 1.6: LINK TO ROOM PAGE
 
-    navigate(`/room/${props.h_id}/${props.type}/${props.guests}/${props.s_d}/${props.e_d}`);
+    navigate(`/room/${props.h_id}/${props.type}/${props.guests}/${props.s_d}/${props.e_d}/${props.guests}/${props.rooms}/${props.h_name}`);
   
   }
   
