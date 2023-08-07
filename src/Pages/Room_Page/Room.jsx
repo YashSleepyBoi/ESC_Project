@@ -20,6 +20,13 @@ import ImageGrid from "./Components/ImageGrid";
 import Footer from "./Components/RoomFooter";
 import RoomSearch from "./Components/Room_Search";
 import { Button } from "@mui/material";
+import { useParams } from 'react-router-dom';
+function getParams() {
+  const { hotel_id,room_id,guests,start_date,end_date } = useParams();
+  const params = [hotel_id,room_id,guests,start_date,end_date];
+  console.log(params)
+  return params;
+}
 
 export default function Room({setBottom ,route}) {
   // const { id } = route.params?? id=null
@@ -31,7 +38,7 @@ export default function Room({setBottom ,route}) {
   const numCarouselImages = 3;
   const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
   setBottom(false);
-
+  getParams()
   const fetchRoomData = () =>
     fetch("http://localhost:8000/room/diH7")
       .then((response) => {

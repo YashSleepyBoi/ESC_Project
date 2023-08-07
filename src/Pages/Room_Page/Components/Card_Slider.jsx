@@ -13,7 +13,7 @@ function Card_Slider(props) {
         <div style={{ width: "80%"}} className="slider">
             
             {props.data.map((i,index) => {
-            return <ActionAreaCard name={i} image={props.data3[index]} cost={props.data2[index]} id={props.id}></ActionAreaCard>
+            return <ActionAreaCard name={i} image={props.data3[index]} cost={props.data2[index]} h_id={props.id} s_d={props.s_d} e_d={props.e_d}  r_id={props.data4[index]} guests={props.guests}></ActionAreaCard>
         })}
       </div></>
         

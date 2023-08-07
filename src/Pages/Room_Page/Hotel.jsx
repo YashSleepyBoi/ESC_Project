@@ -41,7 +41,7 @@ function Room({setBottom}) {
  
     // Hotel ID, Check in and Check out values
     // const host="diH7"
-    const host ="diH7";
+    const host =getParams()[0];
     const startDate = getParams()[1];
     const endDate = getParams()[2];
     setBottom(false);
@@ -121,6 +121,7 @@ function Room({setBottom}) {
               
             arr3.push(`${prefix+i.toString()+suffix}`)
           }
+
           
           sethotel_dets({ name, arr, categories, description ,amenities_ratings,address, original_metadata,image_details,arr3,arr4})
           
@@ -135,14 +136,16 @@ function Room({setBottom}) {
             const { rooms } = roomz
             let arr = []
             let arr2 = []
-            let arr3=[]
+            let arr3 = []
+            let arr4=[]
             rooms.map(item => {``
                 arr.push(item.roomDescription)
                 arr2.push(item.coverted_max_cash_payment)
                 arr3.push(item.images[0].url)
+                arr4.push(item.key)
             })
           
-            setroom_dets({arr,arr2,arr3})
+            setroom_dets({arr,arr2,arr3,arr4})
         })
     },[])
   
@@ -224,7 +227,7 @@ function Room({setBottom}) {
             {/* TODO 1.4 : ROOMS AND SUITS SLIDER */}
             <div style={{ background: "#fbfbfb" }} className="rooms">
                 {room_dets.arr ?
-                    <Card_Slider data={ room_dets.arr } data2={room_dets.arr2} data3={room_dets.arr3} id={host}></Card_Slider>:<></>
+                    <Card_Slider data={ room_dets.arr } data2={room_dets.arr2} data3={room_dets.arr3} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4}  guests="2"></Card_Slider>:<></>
                 }
                 
             </div>

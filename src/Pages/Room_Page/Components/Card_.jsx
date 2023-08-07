@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
 import { useNavigate } from "react-router-dom";
 
 
@@ -14,13 +14,8 @@ export default function ActionAreaCard(props) {
   const cost="1234"
   const roomClickHandler = () => {
     // TODO 1.6: LINK TO ROOM PAGE
-    axios
-    .post('http://localhost:8000/hotel/diH7')
-    .then(() => console.log('Redirect Created'))
-    .catch(err => {
-      console.error(err);
-    });
-    navigate("/findreserve");
+
+    navigate(`/room/${props.h_id}/${props.r_id}/${props.guests}/${props.s_d}/${props.e_d}`);
   
   }
   
