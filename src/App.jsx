@@ -38,7 +38,7 @@ function App() {
         <Route path="/cancel" element={<Cancel setBottom={setIsBottomDisplay}/>} />
 
 
-        <Route path="/roomreserve/:r_name/:r_cost/:r_num_rooms/:r_start_d/:r_end_d" element={<Room_Reserve setBottom={setIsBottomDisplay}/>} />
+        <Route path="/roomreserve/:r_name/:r_cost/:r_start_d/:r_end_d" element={<Room_Reserve setBottom={setIsBottomDisplay}/>} />
       </Routes>
       
     </>
