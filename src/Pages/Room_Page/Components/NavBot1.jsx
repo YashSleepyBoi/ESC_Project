@@ -43,6 +43,10 @@ export default function NavBot() {
       setFunc(bar)
   }
 
+  function handleResultClick(result){
+    setDest(result)
+}
+
   // function setInputs(input) {
   //   if (input["dest_id"]=="" 
   //   || input["check_in"]=="" 
@@ -65,7 +69,9 @@ export default function NavBot() {
   //   console.log("NAVBOT1.JSX: Inputs posted to /input", JSON.stringify(input));
   // }
   //   }
-    
+
+
+
 
   return (
     <>
@@ -75,7 +81,7 @@ export default function NavBot() {
 
         <div className="dest-header" align="left" onClick={() =>
            multipleState(true, 
-           <SearchDest setDest={setDest}/>)}>
+           <SearchDest clickHandler={handleResultClick}/>)}>
 
         <PlaceIcon></PlaceIcon>
           <span >
@@ -140,8 +146,8 @@ export default function NavBot() {
         endDate={endDate} 
         setStartDate={setStartDate} 
         setEndDate={setEndDate} 
-        // dest={dest} 
-        setDest={setDest}
+        dest={dest}
+        clickHandler={handleResultClick}
         />} 
 
         {open ? <Popup body={func} closePopup={() => setOpen(false)} /> : null}
