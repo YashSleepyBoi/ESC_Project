@@ -17,7 +17,6 @@ function Results() {
   // Function to fetch data from the API
   const fetchData = () => {
     const cacheBuster = Date.now(); // Generate a random value based on the current timestamp
-
     fetch(`http://localhost:8000/api?cache=${cacheBuster}`) // Replace with your API endpoint
       .then((response) => response.json())
       .then((data) => {
@@ -37,9 +36,9 @@ function Results() {
     const pollingInterval = setInterval(() => {
       fetchData();
     }, 5000); // Poll every 5 seconds (adjust the interval as per your requirement)
-
     // Clean up the interval when the component is unmounted to avoid memory leaks
     return () => clearInterval(pollingInterval);
+    
   }, []);
  
   // Define the React Router navigate function
@@ -47,9 +46,8 @@ function Results() {
  
     if (isLoading) {
     return (
-      <div>
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-      <p>Loading results...</p>
+      <div className='is-loading'>
+        Loading results... 
       </div>
     )
     }
@@ -57,9 +55,8 @@ function Results() {
     // Check if there are any hotels in the result
     if (!hasData) {
       return (
-        <div>
-          <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
-          No results found
+        <div className='is-loading'>
+          Loading results...
         </div>
       );
     }
@@ -67,14 +64,12 @@ function Results() {
     let hotelsData = hotelsDataList?.hotels;
     let startD = hotelsDataList?.startdate;
     let endD = hotelsDataList?.enddate;
-    // let guests = hotelsDataList?.numguests.toString();
-    // let rooms = hotelsDataList?.rooms.toString();
+
     console.log("RESULTS.JSX: DATA SHOULD SHOW", hotelsData);
 
     if (hotelsData.length==0){
       return (
-        <div>
-        <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        <div className='is-loading'>
         No results found</div>
       )
     }
@@ -84,50 +79,58 @@ function Results() {
       navigate(`/hotels/${hotel_id}/${startD}/${endD}`);
     };
 
+    const defaultImageUrl = 'https://htmlcolorcodes.com/assets/images/colors/dark-gray-color-solid-background-1920x1080.png'
+    const handleImageError = (event) => {
+      event.target.src = defaultImageUrl;
+    };
+
  
   // Display
   return (
-    <div className="results">
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+    <div className="results-page">
+
+      <div className='num-results'>
       {hotelsData.length} hotels found
       <p>prices incl. of taxes and fees</p>
-      <br></br>
-      {hotelsData.map((hotel, index) => (
- 
-        <div key={index} className="hotel-container">
-          <div>
-            <img src={hotel.image_details.prefix+hotel.default_image_index+hotel.image_details.suffix}/>
+      </div>
 
+      {hotelsData.map((hotel, index) => (
+        <div key={index} className="hotel-container">
+
+          <div className='hotel-image-container'>
+            <img className="hotel-image" 
+            src={hotel.image_details.prefix+hotel.default_image_index+hotel.image_details.suffix} 
+            onError={handleImageError} />
           </div>
- 
-          {/*<div className="hotel-image">{hotel.image_details.count}</div>*/}
+
+          
           <div className="hotel-details">
             <div className="hotel-title">{hotel.name}</div>
             <div className="hotel-features">{hotel.address}</div>
-            <div className="hotel-distance">{Math.round(hotel.distance/100)/10} km from Airport</div>
-            {hotel.rating && <div className="siRating">
-              {/* put stars */}
-            <span></span>
-            <div className='hotel-details'>Rating: </div>
-            <button>{hotel.rating}</button>
-        </div>}
-            {/* <div className="hotel-features">Rating: {hotel.rating}/5</div> */}
+            <div className="hotel-distance">{Math.round(hotel.distance / 100) / 10} km from Airport</div>
+            {hotel.rating ? (
+              <div className="siRating">
+                <div className="rating-num">{hotel.rating}/5</div>
+                <div className="ratings-bar">
+                  <div className="ratings-bar-filled" style={{ width: `${(hotel.rating / 5) * 100}%` }}></div>
+                </div>
+              </div>
+            ) : (
+              <div className="no-rating-message">No ratings yet</div>
+            )}
           </div>
- 
-          <div className="hotel-details">
-            <br></br>
-          <div className='hotel-features'>SGD</div>
-          <div className="hotel-title">{Math.round(hotel.lowest_converted_price)}</div>
-          <p>onwards</p>
- 
+
+          <div className='price-column'>
+            <div className='sg-d'>SGD</div>
+            <div className="hotel-price">
+            {Math.round(hotel.lowest_converted_price)}
+            </div>
+            <div className='onwards'>onwards</div>
             {/* Linking to hotel page with inputs as params */}
             <Link to={`/hotels/${hotel.id}/${startD}/${endD}`}>
-            <button type="submit" id={hotel[index]} className="book-button" onClick={() => handleBookNow(hotel.id)}>Book Now</button>
-            </Link>
- 
-            <script>
-            </script>
-            {/* </Link> */}
+              <button type="submit" id={hotel[index]} className="book-button" 
+              onClick={() => handleBookNow(hotel.id)}>BOOK NOW</button>
+              </Link>
           </div>
  
         </div>
