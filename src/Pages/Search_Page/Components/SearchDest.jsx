@@ -9,7 +9,6 @@ function SearchDest({setDest}) {
 
     const [results, setResults] = useState([])
     const [input, setInput] = useState([])
-    // const [dest, setDest] = useState([])
 
     const items = destinations.map(
         (destination, i) =>(
@@ -28,19 +27,18 @@ function SearchDest({setDest}) {
             value &&
             destination &&
             destination.country &&
-            destination.country.toLowerCase().includes(value.toLowerCase())
+            destination.country.toLowerCase().includes(value)
             )
         })
         console.log(results)
         setResults(results);
-        setDest(result.uid)
       }
 
     function handleResultClick(result) {
         setInput(result.country); 
         setResults([])
-        // setDest(result.uid);
-        setResults([])
+        setDest(result.uid);
+        
       }
     
     const handleSearch = (value) => {

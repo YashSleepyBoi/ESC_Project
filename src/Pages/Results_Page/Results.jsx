@@ -12,24 +12,34 @@ function Results() {
   const [hotelsDataList, setHotelsData] = useState([])
   // Ensure hotel data is fetched before displaying
   const [isLoading, setLoading] = useState(true);
- 
-  async function getHotels() {
-    setLoading(true);
-    const data = await fetch('http://localhost:8000/api');
-    return await data.json();
-  }
- 
-  useEffect(() => {
-    getHotels()
-      .then((hotels) => {
-        setHotelsData(hotels);
+
+  // Function to fetch data from the API
+  const fetchData = () => {
+    const cacheBuster = Date.now(); // Generate a random value based on the current timestamp
+
+    fetch(`http://localhost:8000/api?cache=${cacheBuster}`) // Replace with your API endpoint
+      .then((response) => response.json())
+      .then((data) => {
+        setHotelsData(data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
-      })
-      .finally(() => {
-        setLoading(false);
+        // Retry after a delay
       });
+  };
+
+  useEffect(() => {
+    // Fetch data initially when the component mounts
+    fetchData();
+
+    // Set up regular polling
+    const pollingInterval = setInterval(() => {
+      fetchData();
+    }, 5000); // Poll every 5 seconds (adjust the interval as per your requirement)
+
+    // Clean up the interval when the component is unmounted to avoid memory leaks
+    return () => clearInterval(pollingInterval);
   }, []);
  
   // Define the React Router navigate function
@@ -43,16 +53,38 @@ function Results() {
     if (isLoading) {
     return (
       <div>
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
       <p>Loading results...</p>
       </div>
     )
     }
+
  
     let hotelsData = hotelsDataList?.hotels;
     let startD = hotelsDataList?.startdate;
     let endD = hotelsDataList?.enddate;
     console.log("RESULTS.JSX: DATA SHOULD SHOW", hotelsData);
+
+    // useEffect(() => {
+    //   // Set a timeout to show "No hotel results" after 5 seconds
+    //   const timeout = setTimeout(() => {
+    //     if (hotelsDataList.length === 0) {
+    //       return (
+    //         <div>No results found</div>
+    //       )
+    //     }
+    //   }, 5000);
+  
+    //   return () => clearTimeout(timeout);
+    // }, [hotelsData]);
+
+    if (hotelsData.length==0){
+      return (
+        <div>
+        <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+        No results found</div>
+      )
+    }
 
       // Handle button click and navigate to the /hotels route with hotel_id parameter
     const handleBookNow = (hotel_id) => {
@@ -72,7 +104,7 @@ function Results() {
   // Display
   return (
     <div className="results">
-      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
       {hotelsData.length} hotels found
       <p>prices incl. of taxes and fees</p>
       <br></br>
@@ -82,6 +114,7 @@ function Results() {
         <div key={index} className="hotel-container">
           <div>
             <img src={hotel.image_details.prefix+hotel.default_image_index+hotel.image_details.suffix}/>
+
           </div>
  
           {/*<div className="hotel-image">{hotel.image_details.count}</div>*/}

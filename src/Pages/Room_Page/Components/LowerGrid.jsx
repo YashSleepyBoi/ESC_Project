@@ -12,11 +12,13 @@ import { Button, Divider, useMediaQuery } from "@mui/material";
 import { reserveButtonStyle } from "../Content";
 
 
-export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndDate, endDate, setStartDate}) {
+export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndDate, endDate, setStartDate, setDest,dest }) {
 
     // Msg from natalie: HOW TO GET DEST ID FROM SEARCH? 
-    // REPLACE THIS DUMMY VALUE: singapore
-    const dest = "RsBU"
+    const dest1 = "RsBU";
+    const newDest = dest;
+    console.log("setDest:",newDest);
+    // console.log("PASSED DEST:", dest1)
     const isSmall = useMediaQuery('(max-width:700px)')
     
     // const [startDate, setStartDate] = useState(new Date("2023/08/1"));
@@ -38,6 +40,7 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
           "Content-type": "application/json"
         },
         body: JSON.stringify(input)
+        
       })
       .then((response) => response.json()) // Parse the response as JSON
       .catch((error) => console.error("Error occurred during fetch /input:", error));
@@ -73,7 +76,7 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
         
         <Link to="/results">
             <Button onClick={() => setInputs({
-              "dest_id": dest, 
+              "dest_id": dest1, 
               "check_in": startDate, 
               "check_out": endDate, 
               "rooms": room, 

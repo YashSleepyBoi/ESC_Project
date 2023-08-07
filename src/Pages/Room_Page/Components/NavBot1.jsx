@@ -73,7 +73,8 @@ export default function NavBot() {
         <Grid container spacing={4}>
         <Grid item xs={3}>
 
-        <div className="dest-header" align="left" onClick={() => multipleState(true, <SearchDest setDest={setDest}/>)}>
+        <div className="dest-header" align="left" onClick={() =>
+           multipleState(true, <SearchDest setDest={setDest}/>)}>
         <PlaceIcon></PlaceIcon>
           <span >
             DESTINATION
@@ -126,7 +127,7 @@ export default function NavBot() {
         </Grid>
 
         
-        {isLarge && <LowerGrid room={room} pax={pax} setRoom={setRoom} setPax={setPax} startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} setDest={setDest}/>}
+        {isLarge && <LowerGrid room={room} pax={pax} setRoom={setRoom} setPax={setPax} startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} setDest={setDest} />}
 
         {open ? <Popup body={func} closePopup={() => setOpen(false)} /> : null}
 

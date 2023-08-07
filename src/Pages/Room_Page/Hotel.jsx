@@ -28,8 +28,15 @@ import NavBar from "./Components/RoomNavBar";
 // FETCHES HOTEL_ID, start and end date FROM RESULTS PAGE
 function getParams() {
     const { hotel_id, start_date, end_date } = useParams();
-    console.log("Params are:",hotel_id);
-    return hotel_id, start_date, end_date;
+    console.log("HOTEL.JSX: Params are:",hotel_id,start_date,end_date);
+    return [hotel_id, start_date, end_date];
+}
+
+// FETCHES HOTEL_ID FROM RESULTS PAGE
+function getHotelId() {
+    const {hotel_id} = getParams[0];
+    console.log("HOTEL ID IS:",hotel_id);
+    return hotel_id;
 }
  
  
@@ -39,14 +46,6 @@ function Room({setBottom}) {
     const [hotel_dets, sethotel_dets] = useState({});
     const [room_dets, setroom_dets] = useState({});
     const hotel_name = "SHERATON KAGOSHIMA"
-    
-// FETCHES HOTEL_ID FROM RESULTS PAGE
-function getHotelId() {
-    const {hotel_id} = useParams();
-    console.log("HOTEL ID IS:",hotel_id);
-    return hotel_id;
-}
- 
  
         const host="diH7"
         setBottom(false);
