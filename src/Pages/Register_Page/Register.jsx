@@ -69,6 +69,7 @@ const handleSubmit = async(e) =>{
 }
 
 
+// ======================================================================================
 
     return(
         <div className="Wrapper">   
@@ -76,7 +77,9 @@ const handleSubmit = async(e) =>{
             <div className="bgImage"></div>
             <form className="RegForm" onSubmit={handleSubmit}>
 
-                {/* Enter the Name */}
+{/* ************************************************************** */}
+{/* Enter the Name */}
+
                 <label htmlFor="Name">Name:</label>
                     <input
                     value={nameID}
@@ -87,8 +90,9 @@ const handleSubmit = async(e) =>{
                     name="name"
                     />
 
-                
-                {/* Enter the email */}
+{/* ************************************************************** */}
+{/* Enter the email */}
+
                 <label htmlFor="email">Email:</label>
                     <input
                     value={email}
@@ -99,7 +103,9 @@ const handleSubmit = async(e) =>{
                     name="email"
                     />
 
-                {/* Enter the Password */}
+{/* ************************************************************** */}
+{/* Enter the Password */}
+
                 <label htmlFor="password">Password:</label>
                     <input
                     value={password}
@@ -110,7 +116,9 @@ const handleSubmit = async(e) =>{
                     name="password"
                     />
 
-                 {/* Enter the Confirm Password */}
+{/* ************************************************************** */}
+{/* Enter the Confirm Password */}
+
                  <label htmlFor="confirmPassword">Confirm Password:</label>
                     <input
                     value={confirmPass}
@@ -120,8 +128,13 @@ const handleSubmit = async(e) =>{
                     id="confirmPassword"
                     name="confirmPassword"
                     />
+
+{/* ************************************************************** */}
+
                 {/* ErrorMSG */}
                 <label>{errorMsg}</label>
+
+{/* ************************************************************** */}
 
                 {/* Submit Button */}
                 <button className="RegisterBtn" type="submit" onClick={onsubmit}>Register</button>
@@ -133,6 +146,8 @@ const handleSubmit = async(e) =>{
                         <button className="transitionLogin"> Sign in! </button>
                     </Link>
                 </label>
+
+{/* ************************************************************** */}
 
             </form>
 

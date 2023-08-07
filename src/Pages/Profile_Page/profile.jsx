@@ -44,11 +44,14 @@ const Profile = ({setBottom}) => {
         return <div>Loading...</div>;
     }
 
+    // ===============================================================================
     // HTML portion
     return (
         <div>
             <div className='bgImage'></div>
             <div className='profileContainer'>
+    {/* *************************************************************************** */}
+    {/* EDIT DETAILS BUTTON */}
                 <div className='sectionContainer'>
                     <div className='profileTitle'>Personal Details</div>
                     {/* Route to /editprofile page */}
@@ -57,22 +60,26 @@ const Profile = ({setBottom}) => {
                     </Link>
                 </div>
     {/* *************************************************************************** */}
+    {/* NAME */}
                 <div className='sectionContainer'>
                     <div className='profileText' id="name">Name</div>
                     {/* Input Name from database */}
                     <div className='userInfoText'><b>{name}</b></div>
                 </div>
     {/* *************************************************************************** */}
+    {/* EMAIL */}
                 <div className='sectionContainer'>
                     <div className='profileText' id="email">Email</div>
                     {/* Input email from database */}
                     <div className='userInfoText'><b>{email}</b></div>
                 </div>
     {/* *************************************************************************** */}
+    {/* PASSWORD */}
     
                  {/*  REMOVED PASSWORD COMPONENT */}
 
     {/* *************************************************************************** */}
+    {/* BOOKING HISTORY */}
                 <div className='profileTitle'>Booking History</div>
                     <div className='bookingContainer' id="bookings">
                     {bookings.length === 0 ? "No History" : bookings.map((booking, index) => (
@@ -80,6 +87,7 @@ const Profile = ({setBottom}) => {
                     ))}
                     </div>
     {/* *************************************************************************** */}
+    {/* SIGNOUT BUTTON */}
                 <Link to ="/">
                     <button onClick={ () =>{
                             //TODO Properly handle signout

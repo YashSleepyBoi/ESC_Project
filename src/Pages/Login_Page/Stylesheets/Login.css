@@ -1,4 +1,4 @@
-
+/* background image */
 .bgImage{
     background-image: url("https://i.pinimg.com/564x/7e/be/e1/7ebee115934ba6aed7ae9514288f177a.jpg");
     background-repeat: no-repeat;
@@ -10,6 +10,7 @@
     /* -webkit-filter: blur(10px) */
 }
 
+/* login form container */
 .LoginForm{
     text-align: center;
     display: flex;
@@ -33,6 +34,7 @@
     box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
 }
 
+/*  */
 label{
     text-align: left;
     padding: 0.25rem0 !important;
@@ -46,14 +48,13 @@ input{
 
 }
 
-
+/* Login button */
 .LoginBtn{
     padding:0.2rem;
     margin-top: 1rem;
     background-color: rgb(255, 186, 47);
     border: none;
 }
-
 
 button{
     background-color: rgb(255, 186, 47);
