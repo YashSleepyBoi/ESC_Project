@@ -67,6 +67,7 @@ const EditProfile = ({setBottom}) => {
                 <div className='profileText'>New Name</div>
                 <div className='userInputContainer'>
                     <input type='text' 
+                    id="nameIn"
                     placeholder='Alex Berry'
                     onChange={(e) => setName(e.target.value)}/>
                 </div>
@@ -78,6 +79,7 @@ const EditProfile = ({setBottom}) => {
                 <div className='profileText'>New Email</div>
                 <div className='userInputContainer'>
                     <input type='text' 
+                    id="emailIn"
                     placeholder='alexberry@mail.com'
                     onChange={(e) => setEmail(e.target.value)}/>
                 </div>
@@ -90,6 +92,7 @@ const EditProfile = ({setBottom}) => {
                 <div className='profileText'>Old Password</div>
                 <div className='userInputContainer'>
                     <input type='password' 
+                    id="oldPwdIn"
                     placeholder='**********'
                     onChange={(e) => setOldPassword(e.target.value)}/>
                 </div>
@@ -101,6 +104,7 @@ const EditProfile = ({setBottom}) => {
                 <div className='profileText'>New Password</div>
                 <div className='userInputContainer'>
                     <input type='password' 
+                    id="newPwdIn"
                     placeholder='**********'
                     onChange={(e) => setPassword(e.target.value)}/>
                 </div>
@@ -112,6 +116,7 @@ const EditProfile = ({setBottom}) => {
                 <div className='profileText'>Confirm New Password</div>
                 <div className='userInputContainer'>
                     <input type='password' 
+                    id="newPwdInCfm"
                     placeholder='**********'
                     onChange={(e) => setConfirmPass(e.target.value)}/>
                 </div>
@@ -125,21 +130,18 @@ const EditProfile = ({setBottom}) => {
             </div>
 
 {/* *************************************************************************** */}
-            <div className='sectionContainer'>
+            <div className='sectionContainer' >
 {/* SAVE BUTTON */}
-                <button className='editButton' onClick={onsubmit}>Save</button>
+                <button className='editButton' id="saveBtn" onClick={onsubmit}>Save</button>
 {/* CANCEL BUTTON */}
                 <button className='editButton' onClick={()=> navigate("/profile")}>Cancel</button>
 {/* DELETE ACCOUNT BUTTON */}
-                <button className='editButton' onClick={async () => {
+                <button className='editButton' id="deleteBtn" onClick={async () => {
                      if (window.confirm('Are you sure you wish to delete this item?')){ 
-
-                        // Call the deleteUser Function
                         await deleteUser(oldPassword);
                         navigate("/");
                      }
                      else{
-                        // Stay on page
                         return setStay(true);
                      }
                      }}>

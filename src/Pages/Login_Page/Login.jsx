@@ -71,7 +71,7 @@ const navigate = useNavigate();
 
                 {/* Submit Button */}
                 {/* TODO route to home upon successful submit */}
-                <button className="LoginBtn" type="Login" onClick={onsubmit}>Login</button>
+                <button className="LoginBtn" id="loginBtn" type="Login" onClick={onsubmit}>Login</button>
 
                 {/* route to Register page */}
                 <label className="changePageTxt" htmlFor="changePage">No account yet?

@@ -77,20 +77,22 @@ export default function updateProfile(name,email,oldPassword, password,confirmPa
         }
 
 
+    if (name != ""){
+        console.log("starting name change")
+        await changeUserName(name);
+    }
+
+    if (email != ""){
+        console.log("starting email change")
+        await changeEmail(email);
+    }
 
     // Change the user account based on the parameters given
     if (password != "" && confirmPassword != ""){
         console.log("starting change pwd");
-        changePassword(oldPassword, password,confirmPassword);
+        await changePassword(oldPassword, password,confirmPassword);
     }
-    if (email != ""){
-        console.log("starting email change")
-        changeEmail(email);
-    }
-    if (name != ""){
-        console.log("starting name change")
-        changeUserName(name);
-    }
+    
 
     resolve();
 });
