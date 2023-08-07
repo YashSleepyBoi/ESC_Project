@@ -44,7 +44,7 @@ function Hotel_Rooms(props) {
              });
         
         window.alert("Room Selected")
-        navigate("/")
+        navigate(`/payment/${props.obj.h_name}/${props.obj.r_name}/${props.obj.r_cost}/${props.obj.r_start_d}/${props.obj.r_end_d}/${props.obj.rooms}/${props.obj.guests}`)
         
 
         

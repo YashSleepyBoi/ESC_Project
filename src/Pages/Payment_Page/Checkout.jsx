@@ -10,7 +10,12 @@ const stripePromise = await loadStripe('pk_test_51NVr6zGQefOqlensGMp4GxW6VXWQRZm
 //     }
 //     return stripePromise;
 // }
-
+function getParams() {
+    const { h_id,r_id,price,start,end,guests,rooms} = useParams();
+    const params = [ h_id,r_id,price,start,end,guests,rooms];
+    return params;
+}
+ 
 const Checkout = () => {
     // Define the items theat they are buying
     const item = {

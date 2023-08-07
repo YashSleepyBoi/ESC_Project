@@ -33,7 +33,7 @@ function App() {
         <Route path="/register" element={<Register setBottom={setIsBottomDisplay}/>} />
         <Route path="/results" element={<Results setBottom={setIsBottomDisplay}/>} />
         <Route path="/roomreserve" element={<Room_Reserve setBottom={setIsBottomDisplay} />} />
-        <Route path="/payment" element={<Payment setBottom={setIsBottomDisplay}/>} />
+        <Route path="/payment/:h_id/:r_id/:price/:start/:end/:guests/:rooms" element={<Payment setBottom={setIsBottomDisplay}/>} />
         {/* TODO: remove success and cancel routes since they shouldn't be accessible via router */}
         <Route path="/success" element={<Success setBottom={setIsBottomDisplay}/>} />
         <Route path="/cancel" element={<Cancel setBottom={setIsBottomDisplay}/>} />

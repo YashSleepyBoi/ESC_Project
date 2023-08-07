@@ -18,9 +18,12 @@ function Room_Reserve({setBottom}) {
     const theme = useTheme();
     const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
     const obj = {
+        h_name:"WALAOOOOO",
         r_name: "Premier Courtyard Room King",
         r_id: "e21424563563",
         r_cost: "4000",
+        rooms: "2",
+        guests:"3",
         r_start_d: "dd/mm/yyyy",
         r_end_d: "dd/mm/yyyy",
         url:"https://i.travelapi.com/lodging/1000000/900000/893000/892940/0c4c3ec8_z.jpg"
