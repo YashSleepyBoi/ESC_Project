@@ -30,8 +30,8 @@ export default function NavBot() {
 
     const isLarge = useMediaQuery('(min-width:1000px)')
     const isSmall = useMediaQuery('(max-width:1000px)')
-    const [startDate, setStartDate] = useState(new Date("2023/08/1"));
-    const [endDate, setEndDate] = useState(new Date("2023/08/2"));
+    const [startDate, setStartDate] = useState(new Date("2023/08/10"));
+    const [endDate, setEndDate] = useState(new Date("2023/08/12"));
     const [open, setOpen] = useState(false);
     const [dest, setDest] = useState("")
     const [room, setRoom] =useState(1)
@@ -42,6 +42,29 @@ export default function NavBot() {
       setOpen(foo)
       setFunc(bar)
   }
+
+  function setInputs(input) {
+    if (input["dest_id"]=="" 
+    || input["check_in"]=="" 
+    || input["check_out"]=="" 
+    || input["rooms"]=="" 
+    || input["guests"]=="") 
+    {alert("Please fill in all fields");}
+
+    else {
+      fetch("http://localhost:8000/input", {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(input)
+    })
+    .then((response) => response.json()) // Parse the response as JSON
+    .catch((error) => console.error("Error occurred during fetch /input:", error));
+    console.log("NAVBOT1.JSX: Inputs posted to /input", JSON.stringify(input));
+  }
+    }
     
 
   return (
@@ -83,8 +106,15 @@ export default function NavBot() {
 
         <Grid item xs={1}>
         {isSmall && 
-        <Link to="/findreserve">
-        <Button
+        <Link to="/results">
+        <Button onClick={() => setInputs({
+              "dest_id": dest, 
+              "check_in": startDate, 
+              "check_out": endDate, 
+              "rooms": room, 
+              "guests": pax
+            })
+          }
           sx={{
             ...reserveButtonStyle,
             fontSize: isSmall ? "0.75rem" : "auto",

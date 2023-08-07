@@ -14,11 +14,36 @@ import { reserveButtonStyle } from "../Content";
 
 export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndDate, endDate, setStartDate}) {
 
-    
+    // Msg from natalie: HOW TO GET DEST ID FROM SEARCH? 
+    // REPLACE THIS DUMMY VALUE: singapore
+    const dest = "RsBU"
     const isSmall = useMediaQuery('(max-width:700px)')
     
     // const [startDate, setStartDate] = useState(new Date("2023/08/1"));
     // const [endDate, setEndDate] = useState(new Date("2023/08/2"));
+
+    function setInputs(input) {
+      if (input["dest_id"]=="" 
+      || input["check_in"]=="" 
+      || input["check_out"]=="" 
+      || input["rooms"]=="" 
+      || input["guests"]=="") 
+      {alert("Please fill in all fields");}
+  
+      else {
+        fetch("http://localhost:8000/input", {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          "Content-type": "application/json"
+        },
+        body: JSON.stringify(input)
+      })
+      .then((response) => response.json()) // Parse the response as JSON
+      .catch((error) => console.error("Error occurred during fetch /input:", error));
+      console.log("NAVBOT1.JSX: Inputs posted to /input", JSON.stringify(input));
+    }
+      }
 
   return (
     <>
@@ -46,8 +71,15 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
 
         <Grid item xs={1} className="tohide">
         
-        <Link to="/findreserve">
-            <Button
+        <Link to="/results">
+            <Button onClick={() => setInputs({
+              "dest_id": dest, 
+              "check_in": startDate, 
+              "check_out": endDate, 
+              "rooms": room, 
+              "guests": pax
+            })
+          }
               sx={{
                 ...reserveButtonStyle,
                 fontSize: isSmall ? "0.75rem" : "auto",

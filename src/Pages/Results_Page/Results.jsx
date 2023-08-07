@@ -81,10 +81,7 @@ function Results() {
         // RETURNS
         <div key={index} className="hotel-container">
           <div>
-          {/* prefix + number + suffix */}
-            <img alt="cat" className="hotel-image" src="https://media.cnn.com/api/v1/images/stellar/prod/180222154237-soboutique-sobed-hotel-bedding-set-so-1210-s-xlrg.jpg?q=w_1599,h_900,x_0,y_0,c_fill/w_1280"/>
-            {/* TODO: images don't show! */}
-            {/* <img src={hotel.image_details.prefix+hotel.image_details.default_image_index+hotel.image_details.suffix}/> */}
+            <img src={hotel.image_details.prefix+hotel.default_image_index+hotel.image_details.suffix}/>
           </div>
  
           {/*<div className="hotel-image">{hotel.image_details.count}</div>*/}

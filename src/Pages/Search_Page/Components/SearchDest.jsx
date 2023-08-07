@@ -9,6 +9,7 @@ function SearchDest({setDest}) {
 
     const [results, setResults] = useState([])
     const [input, setInput] = useState([])
+    // const [dest, setDest] = useState([])
 
     const items = destinations.map(
         (destination, i) =>(
@@ -36,9 +37,8 @@ function SearchDest({setDest}) {
 
     function handleResultClick(result) {
         setInput(result.country); 
-        setResults([])
         // setDest(result.uid);
-        
+        setResults([])
       }
     
     const handleSearch = (value) => {
