@@ -201,10 +201,12 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
     endDate = checkout.toString();
     const characters = guests.split("|")
     const strings = characters.map((char) => char.toString());
-    const guests = strings.join("|");
+    const nguests = strings.join("|");
+    const guests = nguests[0];
+    const rooms = (nguests.length()+1)/2
 
 
-    const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist, "numguests": guests};
+    const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist, "numguests": guests, "rooms": rooms};
     for (let i = 0; i < all_data.length; i++) {
         let hotel1 = all_data[i];
         //console.log(hotel1);
