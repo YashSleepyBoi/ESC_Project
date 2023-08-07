@@ -6,7 +6,7 @@ const roomDesc =
   "Begin your journey with our Luxurious Room, an intimate and elegantly designed space perfect for leisure or business travellers. Every Deluxe Room boasts premium bedding, a well-stocked minibar, and a state-of-the-art entertainment system. The ensuite marble bathroom, equipped with a spacious shower and high-end amenities, offers a spa-like retreat right in your room.";
 const suitDesc1 =
   "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, incidunt sapiente unde magnam vero repudiandae commodi, temporibus accusamus, facere placeat ipsum id odio.";
-const footerData = ['Overview', 'Gallery', 'Accommodations', 'Dining', 'Experiences', 'Meetings & Weddings', 'Tracking Preferences', 'Your Privacy Rights', '30 BEACH ROAD, ACCESS VIA NICOLL HIGHWAY, SINGAPORE, 189763', 'TOLL FREE:+65-68181881'];
+const footerData = ['Overview', 'Gallery', 'Accommodations', 'Dining', 'Experiences', 'Meetings & Weddings', 'Tracking Preferences', 'Your Privacy Rights'];
 // exporting all the data
 const actionButtonStyle = { width:"100%", bgcolor: '#e4beb6', textTransform: 'capitalize', borderRadius: '1rem', color: 'black', fontSize: 'small', '&:hover': { filter: 'brightness(1.1)', bgcolor: '#e4beb6' } }
 const iconButtonStyle = { bgcolor: "#dbd8cf", width: '2rem', marginLeft: 'auto', marginBottom: '1.5rem', borderRadius: '4px', '&:hover': { filter: 'brightness(1.05)', bgcolor: '#dbd8cf' } }

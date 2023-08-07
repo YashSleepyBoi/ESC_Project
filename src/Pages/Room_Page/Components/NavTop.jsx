@@ -55,7 +55,7 @@ export default function NavTop({ color, setColor }) {
           {links.map((item) => {
             return (
               <Link to={item.route} key={item.name}>
-                <li>{item.name}</li>
+                <li><item.icon/></li>
               </Link>
             );
           })}
