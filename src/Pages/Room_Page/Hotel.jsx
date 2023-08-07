@@ -26,10 +26,40 @@ import NavBar from "./Components/RoomNavBar";
 import { useParams } from 'react-router-dom';
  
 
+function getGuestrooms () {
+
+    const [guests, setGuests] = useState([])
+    const [rooms, setRooms] = useState([])
+
+    // Function to fetch data from the inputs
+    const fetchData = () => {
+        const cacheBuster = Date.now(); // Generate a random value based on the current timestamp
+
+        fetch(`http://localhost:8000/inputs?cache=${cacheBuster}`) // Replace with your API endpoint
+        .then((response) => response.json())
+        .then((data) => {
+            setGuests(data.guests);
+            setRooms(data.rooms);
+            set
+        })
+        .catch((error) => {
+            console.error('Error fetching data:', error);
+        });
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    return [guests, rooms];
+}
+
+console.log("FETCHED FROM INPUTS:", getGuestrooms()[0]);
+
 // get parameters: hotel id/start/end/numguests
 function getParams() {
-    const { hotel_id, start_date, end_date ,num_guests,rooms} = useParams();
-    const params = [hotel_id, start_date, end_date,num_guests,rooms];
+    const { hotel_id, start_date, end_date } = useParams();
+    const params = [hotel_id, start_date, end_date ];
     return params;
 }
  
@@ -235,7 +265,7 @@ function Room({setBottom}) {
             <div style={{ background: "#fbfbfb" }} className="rooms">
                 {room_dets.unique ?
                     
-                    <Card_Slider data={room_dets.unique} data2={room_dets.arr2} data3={room_dets.arr3} data5={room_dets.arr5} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4} name={hotel_dets.name} guests={guests} rooms={ rooms}></Card_Slider>:<></>
+                    <Card_Slider data={room_dets.unique} data2={room_dets.arr2} data3={room_dets.arr3} data5={room_dets.arr5} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4} name={room_dets.name} guests={guests} rooms={ rooms}></Card_Slider>:<></>
                 }
                 
             </div>
