@@ -36,11 +36,12 @@ export default function Room({setBottom ,route}) {
   const [images, setImages] = useState([]);
   const theme = useTheme();
   const numCarouselImages = 3;
+  const a=getParams()[0]
   const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
   setBottom(false);
   getParams()
   const fetchRoomData = () =>
-    fetch("http://localhost:8000/room/diH7")
+    fetch(`http://localhost:8000/rooms/${a}`)
       .then((response) => {
         return response.json();
       })
