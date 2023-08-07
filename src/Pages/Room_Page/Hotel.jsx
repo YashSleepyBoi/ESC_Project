@@ -37,8 +37,8 @@ function Room({setBottom}) {
 
     const [hotel_dets, sethotel_dets] = useState({});
     const [room_dets, setroom_dets] = useState({});
-    const hotel_name = "SHERATON KAGOSHIMA"
- 
+    const hotel_name = "SHERAON KAGOSHIMA"
+    console.log(getParams())
     // Hotel ID, Check in and Check out values
     // const host="diH7"
     const host =getParams()[0];

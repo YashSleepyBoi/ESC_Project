@@ -1,13 +1,8 @@
-// this is the room page
 import React, { useEffect, useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import "./Stylesheets/Rooms.css";
-import {
-  accomodationDesc,
-  roomHeader,
-  roomDesc,
-} from "./Content";
+import { accomodationDesc, roomHeader, roomDesc } from "./Content";
 import {
   CarouselProvider,
   Slider,
@@ -20,38 +15,45 @@ import ImageGrid from "./Components/ImageGrid";
 import Footer from "./Components/RoomFooter";
 import RoomSearch from "./Components/Room_Search";
 import { Button } from "@mui/material";
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from "react-router-dom";
 function getParams() {
-  const { hotel_id,room_id,guests,start_date,end_date } = useParams();
-  const params = [hotel_id,room_id,guests,start_date,end_date];
-  console.log(params)
+  const { hotel_id, room_id, guests, start_date, end_date } = useParams();
+  const params = [hotel_id, room_id, guests, start_date, end_date];
   return params;
 }
 
-export default function Room({setBottom ,route}) {
+export default function Room({ setBottom }) {
   // const { id } = route.params?? id=null
-  
+
   // retrieving the params of the item in modal
+  const [params, setParams] = useState(getParams());
   const [scroll, setScroll] = useState(0);
-  const [images, setImages] = useState([]);
+  const [imagesList, setImagesList] = useState([]);
+  const [room, setRoom] = useState({});
+  const navigate = useNavigate();
   const theme = useTheme();
   const numCarouselImages = 3;
-  const a=getParams()[0]
   const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
   setBottom(false);
-  getParams()
   const fetchRoomData = () =>
-    fetch(`http://localhost:8000/rooms/${a}`)
+    fetch(`http://localhost:8000/rooms/${params[0]}`)
       .then((response) => {
         return response.json();
       })
-      .then((data) => {
-        setImages(data.rooms.slice(4,4+numCarouselImages).map((item) => item.images[0].high_resolution_url))
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  useEffect(() => fetchRoomData, []);
+  useEffect(() => {
+    fetchRoomData().then((data) => {
+      const {rooms} = data;
+      const r = rooms.find((item) => item.type === params[1]);
+      const {images} = r;
+      setImagesList(images);
+      setRoom(r);
+    })
+    .catch((error) => {
+      console.error(error);
+    });;
+  }, []);
+
+  console.log(room.images);
   return (
     <>
       <div
@@ -62,6 +64,16 @@ export default function Room({setBottom ,route}) {
       >
         <div className="banner-container">
           <div className="banner-image" />
+          <Button
+            className="banner-button"
+            onClick={() => {
+              navigate(
+                `/roomreserve/${room.roomDescription}/${room.price}/${params[3]}/${params[4]}`
+              );
+            }}
+          >
+            Book Now
+          </Button>
         </div>
         <div className="accomodation">
           <h2 style={{ marginTop: "2rem" }}>Accomodations</h2>
@@ -77,7 +89,7 @@ export default function Room({setBottom ,route}) {
             <CarouselProvider
               naturalSlideWidth={100}
               naturalSlideHeight={55}
-              totalSlides={images.length}
+              totalSlides={imagesList.length}
               isPlaying={true}
               interval={10000}
               infinite={true}
@@ -85,11 +97,11 @@ export default function Room({setBottom ,route}) {
               sx={{ marginBottom: 0 }}
             >
               <Slider>
-                {images.map((item, index) => {
+                {imagesList.map((item, index) => {
                   return (
                     <Slide index={index}>
                       <img
-                        src={item}
+                        src={item.high_resolution_url ? item.low_resolution_url : item.url}
                         alt="room"/>
                     </Slide>
                   )

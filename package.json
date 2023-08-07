@@ -17,6 +17,7 @@
     "@ionic/react": "^7.1.1",
     "@mui/icons-material": "^5.14.0",
     "@mui/material": "^5.14.0",
+    "@stripe/react-stripe-js": "^1.11.0",
     "array-union": "^3.0.1",
     "axios": "^1.4.0",
     "cors-anywhere": "^0.4.4",
