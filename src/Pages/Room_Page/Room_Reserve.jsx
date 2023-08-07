@@ -15,8 +15,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useParams } from 'react-router-dom';
 function getParams() {
-    const { r_name,r_cost,r_start_d,r_end_d} = useParams();
-    const params = [r_name,r_cost,r_start_d,r_end_d];
+    const { r_name,num_guests,r_cost,r_start_d,r_end_d,rooms,h_name} = useParams();
+    const params = [r_name,num_guests,r_cost,r_start_d,r_end_d,rooms,h_name];
     return params;
 }
 
@@ -26,15 +26,15 @@ function Room_Reserve({setBottom}) {
     const isSmall = useMediaQuery(theme.breakpoints.down("lg"));
     const params=getParams()
     const obj = {
-        h_name:"WALAOOOOO",
+        h_name:params[6],
         r_name: params[0],
         r_id: "e21424563563",
-        r_cost: params[1],
-        rooms: "2",
-        guests:"3",
-        r_start_d: params[2],
-        r_end_d: params[3],
-        url:"https://i.travelapi.com/lodging/1000000/900000/893000/892940/0c4c3ec8_z.jpg"
+        r_cost: params[2],
+        rooms: params[5],
+        guests:params[1],
+        r_start_d: params[3],
+        r_end_d: params[4],
+        url:"https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cm9vbXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
     }
     console.log(params)
     return (

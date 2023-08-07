@@ -68,7 +68,7 @@ export default function Room({ setBottom }) {
             className="banner-button"
             onClick={() => {
               navigate(
-                `/roomreserve/${room.roomDescription}/${params[2]}/${room.price}/${params[3]}/${params[4]}/${params[5]}/${imagesList[0].url}/${params[6]}}`
+                `/roomreserve/${room.roomDescription}/${params[2]}/${room.price}/${params[3]}/${params[4]}/${params[5]}/${params[6]}}`
               );
             }}
           >
