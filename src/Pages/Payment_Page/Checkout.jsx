@@ -38,6 +38,7 @@ const Checkout = () => {
 
     return (
         <div className="Wrapper">
+             <div className='checkout-summary'><BookingSummary/></div>
             <label>PRICE: $0.01</label>
             <button onClick={redirectToCheckout}>BUY</button>
         </div>
