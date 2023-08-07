@@ -131,8 +131,10 @@ const EditProfile = ({setBottom}) => {
 {/* CANCEL BUTTON */}
                 <button className='editButton' onClick={()=> navigate("/profile")}>Cancel</button>
 {/* DELETE ACCOUNT BUTTON */}
-<button className='deleteButton' onClick={async () => {
+                <button className='editButton' onClick={async () => {
                      if (window.confirm('Are you sure you wish to delete this item?')){ 
+
+                        // Call the deleteUser Function
                         await deleteUser(oldPassword);
                         navigate("/");
                      }

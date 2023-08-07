@@ -71,7 +71,6 @@
 
 /* Edit Button */
 .editButton {
-    border: none;
     padding: 8px;
     font-size: 16px;
     /* background-color: orange; */
@@ -81,11 +80,12 @@
     color: black;
     border-radius: 6px;
     border: none;
-    /* border: 1px solid black; */
+    border: 1px solid black;
+    background-color:orange ;
     cursor:pointer;
   }
 .editButton:hover {
-    background: orange;
+    background: orangered;
 }
 
 /* User Input (name,email,ect.) */
