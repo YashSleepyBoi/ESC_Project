@@ -137,15 +137,20 @@ function Room({setBottom}) {
             let arr = []
             let arr2 = []
             let arr3 = []
-            let arr4=[]
-            rooms.map(item => {``
-                arr.push(item.roomDescription)
+            let arr4 = []
+            let arr5=[]
+            rooms.map(item => {
+                ``
+                arr.push(item.type)
+                arr5.push(item.roomDescription)
                 arr2.push(item.coverted_max_cash_payment)
                 arr3.push(item.images[0].url)
                 arr4.push(item.key)
             })
-          
-            setroom_dets({arr,arr2,arr3,arr4})
+            var unique = [...new Set(arr)]
+            console.log(arr)
+            console.log(unique)
+            setroom_dets({unique,arr2,arr3,arr4,arr5})
         })
     },[])
   
@@ -226,8 +231,9 @@ function Room({setBottom}) {
             </div>
             {/* TODO 1.4 : ROOMS AND SUITS SLIDER */}
             <div style={{ background: "#fbfbfb" }} className="rooms">
-                {room_dets.arr ?
-                    <Card_Slider data={ room_dets.arr } data2={room_dets.arr2} data3={room_dets.arr3} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4}  guests="2"></Card_Slider>:<></>
+                {room_dets.unique ?
+                    
+                    <Card_Slider data={room_dets.unique} data2={room_dets.arr2} data3={room_dets.arr3} data5={ room_dets.arr5} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4}  guests="2"></Card_Slider>:<></>
                 }
                 
             </div>
