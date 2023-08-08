@@ -5,10 +5,10 @@ import Footer from "../../Room_Page/Components/RoomFooter";
 
 const Success = () => {
     return(
-        <div className='success-wrapper'>
+        < div className='success-wrapper'>
             <p className='header-title'>Thank you for booking with us!</p>
-            <div className='book-summ'><Summary/></div>
-            <div className='success-footer'><Footer/></div>
+            {/* <div className='book-summ'><Summary/></div> */}
+            <Footer/>
         </div>
     )
 };

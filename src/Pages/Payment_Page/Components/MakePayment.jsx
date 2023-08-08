@@ -26,7 +26,7 @@ export default async function  makePayment(productID){
         const session = await stripe.checkout.sessions.create({
             line_items: [item],
             mode: "payment",
-            success_url: `${window.location.origin}/success`, // Change the success page as needed
+            success_url: `http://localhost:5173/success`, // Change the success page as needed
             cancel_url: `${window.location.origin}/cancel`, // Change the cancel page as needed
         });
         
