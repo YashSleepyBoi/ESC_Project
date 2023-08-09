@@ -6,9 +6,16 @@ import { Button, Divider, useMediaQuery } from "@mui/material";
 import { reserveButtonStyle } from '../Room_Page/Content';
 import NavBot from '../Room_Page/Components/NavBot1';
 import { Link, useNavigate } from "react-router-dom";
- 
+  
 function Results() {
  
+  let [no_guests, no_rooms] = 
+  [
+  window.inputsGlobal.guests.toString(),
+  window.inputsGlobal.rooms.toString()
+  ]
+  console.log(no_guests, no_rooms);
+
   const [hasData, setHasData] = useState(true);
   const [hotelsDataList, setHotelsData] = useState([])
   // Ensure hotel data is fetched before displaying
@@ -76,7 +83,8 @@ function Results() {
 
       // Handle button click and navigate to the /hotels route with hotel_id parameter
     const handleBookNow = (hotel_id) => {
-      navigate(`/hotels/${hotel_id}/${startD}/${endD}`);
+      navigate(`/hotels/${hotel_id}/${startD}/${endD}/${no_guests}/${no_rooms}`);
+      // navigate(`/hotels/${hotel_id}/${startD}/${endD}`);
     };
 
     const defaultImageUrl = 'https://htmlcolorcodes.com/assets/images/colors/dark-gray-color-solid-background-1920x1080.png'
@@ -127,7 +135,8 @@ function Results() {
             </div>
             <div className='onwards'>onwards</div>
             {/* Linking to hotel page with inputs as params */}
-            <Link to={`/hotels/${hotel.id}/${startD}/${endD}`}>
+            {/* <Link to={`/hotels/${hotel.id}/${startD}/${endD}`}> */}
+            <Link to={`/hotels/${hotel.id}/${startD}/${endD}/${no_guests}/${no_rooms}`}>
               <button type="submit" id={hotel[index]} className="book-button" 
               onClick={() => handleBookNow(hotel.id)}>BOOK NOW</button>
               </Link>

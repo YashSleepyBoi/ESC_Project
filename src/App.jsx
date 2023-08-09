@@ -27,7 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home setBottom={setIsBottomDisplay}/>} />
         <Route path="/room/:hotel_id/:room_id/:guests/:start_date/:end_date/:rooms/:h_name" element={<Room setBottom={setIsBottomDisplay} setHotelNavbar={setIsHotelNavbar} setHotelName={setHotelName}/>} />
-        <Route path="/hotels/:hotel_id/:start_date/:end_date" element={<Hotel setBottom={setIsBottomDisplay}/>} />
+        <Route path="/hotels/:hotel_id/:start_date/:end_date/:no_guests/:no_rooms" element={<Hotel setBottom={setIsBottomDisplay}/>} />
         <Route path="/profile" element={<Profile setBottom={setIsBottomDisplay}/>}/>
         <Route path="/editprofile" element={<EditProfile setBottom={setIsBottomDisplay}/>}/>
         <Route path="/hotels" element={<Hotel setBottom={setIsBottomDisplay}/>} />

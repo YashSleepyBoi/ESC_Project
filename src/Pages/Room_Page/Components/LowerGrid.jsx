@@ -11,20 +11,20 @@ import Counter from "../../Search_Page/Components/Counter"
 import { Button, Divider, useMediaQuery } from "@mui/material";
 import { reserveButtonStyle } from "../Content";
 
-
+// Accessed from results.jsx
+function setInputsToGlobal(inputs) {
+  let input = JSON.parse(JSON.stringify(inputs));
+  window.inputsGlobal = input;
+}
+console.log("LOWERGRID.JSX SETS", console.log("LOWERGRID.JSX SETS", window.inputsGlobal))
 export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndDate, endDate, setStartDate, dest, clickHandler}) {
 
-    // Msg from natalie: HOW TO GET DEST ID FROM SEARCH? 
-    const dest1 = "RsBU";
-    const newDest = dest;
-    // console.log("setDest:",newDest);
-    // console.log("PASSED DEST:", dest1)
     const isSmall = useMediaQuery('(max-width:700px)')
     
     // const [startDate, setStartDate] = useState(new Date("2023/08/1"));
     // const [endDate, setEndDate] = useState(new Date("2023/08/2"));
 
-    function setInputs(input) {
+    function setInputs(input) { 
       if (input["dest_id"]=="" 
       || input["check_in"]=="" 
       || input["check_out"]=="" 
@@ -33,6 +33,7 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
       {alert("Please fill in all fields");}
   
       else {
+        setInputsToGlobal(input);
         fetch("http://localhost:8000/input", {
         method: 'POST',
         mode: 'cors',
