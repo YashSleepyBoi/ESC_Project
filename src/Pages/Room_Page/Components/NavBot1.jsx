@@ -30,8 +30,8 @@ export default function NavBot() {
 
     const isLarge = useMediaQuery('(min-width:1000px)')
     const isSmall = useMediaQuery('(max-width:1000px)')
-    const [startDate, setStartDate] = useState(new Date("2023/08/10"));
-    const [endDate, setEndDate] = useState(new Date("2023/08/12"));
+    const [startDate, setStartDate] = useState(new Date("2023/08/13"));
+    const [endDate, setEndDate] = useState(new Date("2023/08/15"));
     const [open, setOpen] = useState(false);
     const [dest, setDest] = useState("")
     const [room, setRoom] =useState(1)

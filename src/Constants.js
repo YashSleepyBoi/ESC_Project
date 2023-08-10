@@ -6,7 +6,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from '@mui/icons-material/Search';
 
 const links = [
-    { name: "Find & Reserve", route: "/results", icon: SearchIcon},
+    { name: "Find & Reserve", route: "/defaultresults", icon: SearchIcon},
     { name : "Hotels", route: "/", icon: HomeIcon},
 ];
 

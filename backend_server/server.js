@@ -2,12 +2,11 @@
 const express = require('express')
 const cors = require('cors')
 const app = express()
-const port = 8383
+const port = 8000
 let h_id=null
-// const port = 8787
 
 // Middleware to parse JSON data
-app.use(express.json());
+app.use(express.json()); 
 
 // Accessible from any link
 app.use(
@@ -34,21 +33,35 @@ app.get('/input', (req, res) => {
     res.json(responseData);
   });
 
-  let searchData = {};
+
+
+let isProcessing = false;
+let searchData = {};
 // Set up the /api route to respond with the stored search data
 app.get("/api", (req, res) => {
     // Respond with the stored search data
     res.json(searchData);
   });
 
+// Route to clear data in /api
+app.post('/clear', (req, res) => {
+  searchData = {}; // Clear the search data
+  isProcessing = false; // Reset processing flag
+  console.log('Data cleared in /api');
+  res.status(200).json({ message: 'Data cleared' });
+});
 
-// app.options('*', cors());
-
-
-
+// Add a global variable to keep track of whether the search algorithm is completed
+let isSearchAlgorithmCompleted = false;
 
 app.post('/input', (req, res) => {
+    if (isProcessing) {
+        return res.status(400).json({ message: 'Processing in progress' });
+    }
+    isProcessing = true;
+    
     try {
+        // ... your existing code for processing data ...
         // Handle the incoming POST request here and send a response
         const inputData = req.body; // Access the data directly from req.body
         console.log('DATA RECEIVED ON SERVER:', inputData);
@@ -84,6 +97,14 @@ app.post('/input', (req, res) => {
         // Call the searchResults function
         searchResults(dest_id, check_in, check_out, curr, guests)
         .then(data => {
+            if (data.hotels.length === 0) {
+                // If first attempt returned empty list, try again
+                console.log("SERVER.JS: 2nd attempt is triggered")
+                return searchResults(dest_id, check_in, check_out, curr, guests);
+            }
+            return data;
+        })
+        .then(data => {
             // Update searchdata
             searchData = data;
             console.log("SERVER.JS: DATA POSTED TO /api", data);
@@ -92,13 +113,20 @@ app.post('/input', (req, res) => {
             .catch(error => {
                 console.log("Error fetching data:", error);
             });
-    }
-    catch (error) {
+        // Reset the flag once processing is complete
+        isProcessing = false;
+        isSearchAlgorithmCompleted = true;
+        // res.json(data);
+    } catch (error) {
+        isProcessing = false;
         console.error('Error processing search:', error);
-        res.status(500).json({error: 'Error processing search'});
+        res.status(500).json({ error: 'Error processing search' });
     }
 });
 
+app.get('/status', (req, res) => {
+    res.json({ isProcessing });
+});
 
 
 app.get("/hotel/:id", async (req, res) => {
@@ -155,9 +183,9 @@ app.get("/room/:id", async (req, res) => {
     res.json(all_data)
 })
 
-app.listen(8000, function () {
-    console.log('CORS-enabled web server listening on port 8000');
-  });
+// app.listen(8000, function () {
+//     console.log('CORS-enabled web server listening on port 8000');
+//   });
 
 
 // NOT IDEAL, NOT IN USE

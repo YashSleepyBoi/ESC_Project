@@ -15,6 +15,8 @@ import Room_Reserve from "./Pages/Room_Page/Room_Reserve";
 import Payment from "./Pages/Payment_Page/Checkout";
 import Success from "./Pages/Payment_Page/Components/Success";
 import Cancel from "./Pages/Payment_Page/Components/Cancel";
+import Loading from "./Pages/Results_Page/Loading";
+import Default from "./Pages/Results_Page/Default";
 
  
 function App() {
@@ -33,7 +35,9 @@ function App() {
         <Route path="/hotels" element={<Hotel setBottom={setIsBottomDisplay}/>} />
         <Route path="/login" element={<Login setBottom={setIsBottomDisplay}/>} />
         <Route path="/register" element={<Register setBottom={setIsBottomDisplay}/>} />
+        <Route path="/defaultresults" element={<Default setBottom={setIsBottomDisplay}/>} />
         <Route path="/results" element={<Results setBottom={setIsBottomDisplay}/>} />
+        <Route path="/loading" element={<Loading setBottom={setIsBottomDisplay}/>} />
         <Route path="/payment/:h_id/:r_id/:price/:start/:end/:guests/:rooms" element={<Payment setBottom={setIsBottomDisplay}/>} />
         {/* TODO: remove success and cancel routes since they shouldn't be accessible via router */}
         <Route path="/success" element={<Success setBottom={setIsBottomDisplay}/>} />

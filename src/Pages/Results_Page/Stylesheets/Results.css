@@ -1,10 +1,12 @@
 .results-page {
+  /* background-color: #e4d2b9; */
   padding-top: 20%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center; /* Center child elements horizontally */
   align-items: center;
   gap: 20px;
+  margin-bottom: 20%;
 }
 
 
@@ -111,7 +113,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-left: 1px solid #ccc; /* Add a left border to separate columns */
+  border-left: 2px solid #e4d2b9; /* Add a left border to separate columns */
   padding-left: 20px;
 }
 
