@@ -28,8 +28,8 @@ To run this project locally, follow these steps:
 1. Clone this repository to your local machine.
 2. Install the required dependencies using the package manager for your chosen technology stack.
    run "npm install" in ESC_Project
-   run "npm install nodemon" in ESC_Project/backend_server
-   run "npm run dev" in ESC_Project
+   <br>run "npm install nodemon" in ESC_Project/backend_server
+   <br>run "npm run dev" in ESC_Project
 4. Set up the database and configure the connection details in the project's configuration files.
 5. Start the server and launch the website on your local development environment.
 6. Access the website through your web browser to begin exploring and using the hotel booking functionalities.
