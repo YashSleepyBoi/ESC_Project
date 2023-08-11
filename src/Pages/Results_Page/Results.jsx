@@ -10,21 +10,20 @@ import { Link, useNavigate } from "react-router-dom";
 function Results() {
  
   // Retrieve inputs directly from LowerGrid.jsx
-  let [no_guests, no_rooms] = [window.inputsGlobal.guests.toString(), window.inputsGlobal.rooms.toString()]
-  console.log(no_guests, no_rooms);
+  let [dest_id, no_guests, no_rooms] = [window.inputsGlobal.dest_id, window.inputsGlobal.guests.toString(), window.inputsGlobal.rooms.toString()]
+  console.log(dest_id, no_guests, no_rooms);
 
-  // const [retryAttempt, setRetryAttempt] = useState(0);
+  // Define the React Router navigate function
+  const navigate = useNavigate();
 
-  // Store results fetched from /api
+  const [retryAttempt, setRetryAttempt] = useState(0);
   const [hotelsDataList, setHotelsData] = useState([])
-  // Ensure hotel data is fetched before displaying
   const [isLoading, setLoading] = useState(true);
 
   // Function to fetch data from the API
   const fetchData = () => {
-    // setLoading(true);
     const cacheBuster = Date.now(); // Generate a random value based on the current timestamp
-    fetch(`http://localhost:8000/api?cache=${cacheBuster}`) // Replace with your API endpoint
+    fetch(`http://localhost:8000/api?cache=${cacheBuster}`)
       .then((response) => response.json())
       .then((data) => {
         if (data && data.hotels) {
@@ -39,79 +38,108 @@ function Results() {
         // Retry after a delay
       });
   };
-
-  // // Retry fetching data
-  // const retryFetchData = () => {
-  //   fetchData();
-  //   setLoading(true); // Set loading state while retrying
-  // };
+  
 
   useEffect(() => {
     fetchData();
-    // Set up regular polling
-    // const pollingInterval = setInterval(() => {
-    //   fetchData();
-    // }, 5000); // Poll every 5 seconds (adjust the interval as per your requirement)
-    // // Clean up the interval when the component is unmounted to avoid memory leaks
-    // return () => clearInterval(pollingInterval);
   }, []);
- 
-  // Define the React Router navigate function
-  const navigate = useNavigate();
 
-    if (isLoading) {
-      return (
-        <div className="results-page">
-          <div className='is-loading'>
-            Fetching data... 
-          </div>
+  if (isLoading) {
+    return (
+      <div className="results-page">
+        <div className='num-results'>
+          Fetching data... 
         </div>
-      )
+      </div>
+    )
+    }
+
+  let hotelsData = hotelsDataList?.hotels;
+  let startD = hotelsDataList?.startdate;
+  let endD = hotelsDataList?.enddate;
+
+    /* Retry block */
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const handleTryAgain = () => {
+      // Increment the retry attempt count
+      setRetryAttempt(retryAttempt + 1);
+    
+      // Trigger the same logic as pressing the "Find rooms" button
+      setInputs({
+        "dest_id": window.inputsGlobal.dest_id,
+        "check_in": window.inputsGlobal.check_in,
+        "check_out": window.inputsGlobal.check_out,
+        "rooms": window.inputsGlobal.rooms,
+        "guests": window.inputsGlobal.guests
+      });
+    };
+
+    function setInputs(input) {
+      if (input["dest_id"] == "" || input["check_in"] == "" || input["check_out"] == "" || input["rooms"] == "" || input["guests"] == "") {alert("Please fill all fields with valid inputs");
+      } else {
+          navigate('/loading');
+          fetch('http://localhost:8000/input', {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(input),
+        })
+          .then(() => {
+              const pollStatus = () => {
+                  fetch('http://localhost:8000/status')
+                      .then((response) => response.json())
+                      .then((data) => {
+                          if (!data.isProcessing) {
+                            navigate('/results');
+                          } else {
+                              setTimeout(pollStatus, 2000); // Poll every 2s
+                          }
+                      })
+                      .catch((error) => {
+                          console.error('Error checking processing status:', error);
+                      });
+              };
+              pollStatus(); // Start polling
+          })
+          .catch((error) => {
+              console.error('Error occurred during fetch /input:', error);
+          });
       }
+  }
 
-    let hotelsData = hotelsDataList?.hotels;
-    let startD = hotelsDataList?.startdate;
-    let endD = hotelsDataList?.enddate;
-
-    console.log("RESULTS.JSX: DATA SHOULD SHOW", hotelsData);
-
-    // 3 attempts to fetch data
     if (hotelsData.length === 0) {
-      // If data is not available and retryAttempt is less than 2
-      // if (retryAttempt < 3) {
-      //   retryFetchData();
-      //   return (
-      //     <div className='is-loading'>
-      //       Attempting fetch again...
-      //     </div>
-      //   );
-      // } else {
+      if (retryAttempt < 3) {
+        return (
+          <div className='is-loading'>
+            Your results seem to be taking a while to load.
+            <button className='try-again-button' onClick={handleTryAgain}>
+              Try Again?
+            </button>
+          </div>
+        );
+      } else {
         return (
           <div className='is-loading'>
             No results found
           </div>
         );
+      }
     }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // if (hotelsData.length === 0) {
-    //   // If data is still not available, display "No results found"
-    //   return (
-    //     <div className='is-loading'>
-    //       No results found
-    //     </div>
-    //   );
-    // }
+  // Handle button click and navigate to the /hotels route with hotel_id parameter
+  const handleBookNow = (hotel_id) => {
+    navigate(`/hotels/${hotel_id}/${startD}/${endD}/${no_guests}/${no_rooms}`);
+    // navigate(`/hotels/${hotel_id}/${startD}/${endD}`);
+  };
 
-    // Handle button click and navigate to the /hotels route with hotel_id parameter
-    const handleBookNow = (hotel_id) => {
-      navigate(`/hotels/${hotel_id}/${startD}/${endD}/${no_guests}/${no_rooms}`);
-      // navigate(`/hotels/${hotel_id}/${startD}/${endD}`);
-    };
-
-    const defaultImageUrl = 'https://htmlcolorcodes.com/assets/images/colors/dark-gray-color-solid-background-1920x1080.png'
-    const handleImageError = (event) => {
-      event.target.src = defaultImageUrl;
-    };
+  // Set default grey image for faulty image urls
+  const defaultImageUrl = 'https://htmlcolorcodes.com/assets/images/colors/dark-gray-color-solid-background-1920x1080.png'
+  const handleImageError = (event) => {
+    event.target.src = defaultImageUrl;
+  };
 
  
   // Display

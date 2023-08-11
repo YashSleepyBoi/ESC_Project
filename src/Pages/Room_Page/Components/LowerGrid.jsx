@@ -16,14 +16,11 @@ function setInputsToGlobal(inputs) {
   let input = JSON.parse(JSON.stringify(inputs));
   window.inputsGlobal = input;
 }
-console.log("LOWERGRID.JSX SETS", console.log("LOWERGRID.JSX SETS", window.inputsGlobal))
+
 export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndDate, endDate, setStartDate, dest, clickHandler}) {
 
     const isSmall = useMediaQuery('(max-width:700px)')
     const navigate = useNavigate();
-
-    // Clear previous set of data before inputs are posted to /input
-    const [isFetching, setIsFetching] = useState(false);
 
     function setInputs(input) {
       if (input["dest_id"] == "" 
@@ -64,7 +61,7 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
                           .then((response) => response.json())
                           .then((data) => {
                               if (!data.isProcessing) {
-                                  navigate('/results');
+                                navigate('/results');
                               } else {
                                   setTimeout(pollStatus, 2000); // Poll every 2s
                               }
@@ -80,53 +77,6 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
               });
       }
   }
-  
-
-    // function setInputs(input) { 
-    //   if (input["dest_id"]=="" 
-    //   || input["check_in"]=="" 
-    //   || input["check_out"]=="" 
-    //   || input["rooms"]=="" 
-    //   || input["guests"]=="")
-    //   {alert("Please fill in all fields");}
-  
-    //   else {
-
-    //     const pollStatus = () => {
-    //       fetch('http://localhost:8000/status')
-    //           .then((response) => response.json())
-    //           .then((data) => {
-    //               if (!data.isProcessing) {
-    //                   navigate('/results');
-    //               } else {
-    //                   setTimeout(pollStatus, 1000); // Poll every 1 second
-    //               }
-    //           })
-    //           .catch((error) => {
-    //               console.error('Error checking processing status:', error);
-    //           });
-    //   };
-      
-    //   setInputsToGlobal(input);
-    //   fetch('http://localhost:8000/input', {
-    //       method: 'POST',
-    //       mode: 'cors',
-    //       headers: {
-    //           'Content-Type': 'application/json'
-    //       },
-    //       body: JSON.stringify(input)
-    //   })
-    //   .then(() => {
-    //       pollStatus(); // Start polling
-    //   })
-    //   .catch((error) => {
-    //       console.error('Error occurred during fetch /input:', error);
-    //   });
-      
-
-    // }
-    //   }
-
 
   return (
     <>
