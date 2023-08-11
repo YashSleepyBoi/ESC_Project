@@ -94,8 +94,8 @@ export default function Room({ setBottom, setHotelNavbar, setHotelName }) {
         </div>
         <div className="room-cards">
           <div className="room-description">
-            <h2>{room.roomDescription}</h2>
-            <p>{room.long_description ? parse(room.long_description) : roomDesc}</p>
+            <h2 data-testid="room-description">{room.roomDescription}</h2>
+            <p data-testid="room-long-description">{room.long_description ? parse(room.long_description) : roomDesc}</p>
           </div>
           <div className="room-card">
             <CarouselProvider
