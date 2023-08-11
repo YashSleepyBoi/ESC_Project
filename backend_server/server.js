@@ -15,16 +15,6 @@ app.use(
     }),
 );
 
-
-// TEST 
-app.get('/', (req, res) => {
-    res.send('Welcome to CORS server 😁')
-})
-app.get('/cors', (req, res) => {
-    res.send('This has CORS enabled 🎈')
-})
-
-
 // Route to get search inputs
 app.get('/input', (req, res) => {
     // Handle the GET request here and send a response
@@ -32,7 +22,6 @@ app.get('/input', (req, res) => {
     console.log("SERVER.JS: INPUTS",responseData);
     res.json(responseData);
   });
-
 
 
 let isProcessing = false;
@@ -51,9 +40,7 @@ app.post('/clear', (req, res) => {
   res.status(200).json({ message: 'Data cleared' });
 });
 
-// Add a global variable to keep track of whether the search algorithm is completed
-let isSearchAlgorithmCompleted = false;
-
+// Route to access inputs from lowergrid
 app.post('/input', (req, res) => {
     if (isProcessing) {
         return res.status(400).json({ message: 'Processing in progress' });
@@ -61,17 +48,13 @@ app.post('/input', (req, res) => {
     isProcessing = true;
     
     try {
-        // ... your existing code for processing data ...
-        // Handle the incoming POST request here and send a response
         const inputData = req.body; // Access the data directly from req.body
         console.log('DATA RECEIVED ON SERVER:', inputData);
 
         const curr = "SGD"
         const dest_id = inputData["dest_id"];
-        // TODO: timings are one day early
         const check_in = inputData["check_in"].substring(0,10);
         const check_out = inputData["check_out"].substring(0,10);
-        // // Calculate guests per room
         const rooms = inputData["rooms"];
         const eachguest = inputData["guests"];
         
@@ -84,20 +67,25 @@ app.post('/input', (req, res) => {
             return parseInt(guests);
         }
         guests = findguests()
-    
-        // const tes_destid = "RsBU";
-        const tes_check_in = "2023-09-30";
-        const tes_check_out = "2023-10-02";
-        const tes_guests = 1|1;
-    
         console.log( dest_id, check_in, check_out, guests);
-        // console.log( "TESTING", dest_id, tes_check_in, tes_check_out, tes_guests);
-        // console.log(typeof dest_id, typeof check_in, typeof check_out, typeof guests);
         
         // Call the searchResults function
         searchResults(dest_id, check_in, check_out, curr, guests)
         .then(data => {
             if (data.hotels.length === 0) {
+                // Clear data in /api by sending a POST request
+                try {
+                    fetch('http://localhost:8000/clear', {
+                        method: 'POST',
+                        mode: 'cors',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    console.log('Data cleared in /api');
+                } catch (error) {
+                    console.error('Error clearing data:', error);
+                }
                 // If first attempt returned empty list, try again
                 console.log("SERVER.JS: 2nd attempt is triggered")
                 return searchResults(dest_id, check_in, check_out, curr, guests);
@@ -115,8 +103,6 @@ app.post('/input', (req, res) => {
             });
         // Reset the flag once processing is complete
         isProcessing = false;
-        isSearchAlgorithmCompleted = true;
-        // res.json(data);
     } catch (error) {
         isProcessing = false;
         console.error('Error processing search:', error);
@@ -124,6 +110,7 @@ app.post('/input', (req, res) => {
     }
 });
 
+// Send status to lowergrid
 app.get('/status', (req, res) => {
     res.json({ isProcessing });
 });
@@ -183,27 +170,7 @@ app.get("/room/:id", async (req, res) => {
     res.json(all_data)
 })
 
-// app.listen(8000, function () {
-//     console.log('CORS-enabled web server listening on port 8000');
-//   });
-
-
-// NOT IDEAL, NOT IN USE
-// First async function to fetch the data
-// async function fetchDataAsync(func) {
-//     func.then(data => {
-//         // post to /api
-//         app.get("/api", (req, res) => {
-//             //res.json(test_output)
-//             res.json(data)
-//         })
-//         return data;
-//     })
-//         .catch(error => {
-//             console.log("Error fetching data:", error);
-//         });
-// }
-
+// Return search results in mapping.hotels
 async function searchResults(destination_id, checkin, checkout, currency, num_guests) {
     const dest_prices = `https://hotelapi.loyalty.dev/api/hotels/prices?destination_id=${destination_id}&checkin=${checkin}&checkout=${checkout}&lang=en_US&currency=${currency}&landing_page=&partner_id=16&country_code=SG&guests=${num_guests}`;
     const url = dest_prices
@@ -227,44 +194,22 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
     hotelslist = [];
     startDate = checkin.toString();
     endDate = checkout.toString();
-    // console.log("NUM GUESTS TYPE", typeof num_guests);
-    // const characters = num_guests.toString().split('|')
-    // const strings = characters.map((char) => char.toString());
-    // const nguests = strings.join('|');
-    // const guests = nguests[0];
-    // const rooms = ((nguests.length()+1)/2).toString()
 
 
     const mapping = {"startdate": startDate, "enddate": endDate, "hotels": hotelslist};
     for (let i = 0; i < all_data.length; i++) {
         let hotel1 = all_data[i];
-        //console.log(hotel1);
         for (let x = 0; x < data.length; x++) {
             let hotel2 = data[x];
             
             if (hotel1.id == hotel2.id) {
                 const obj = Object.assign(hotel1, hotel2)
-                // idlist.push(obj.id);
                 hotelslist.push(obj);
-                //mapping[obj.id] = obj;
             }
         }
     }
     return mapping;
 }
-
-function sendDataToLink(input, endpoint) {
-    app.get(`/${endpoint}`, (req, res) => {
-        res.send(input)
-      })
-    app.post(`/${endpoint}`, (req, res) => {
-        let data = req.body;
-        res.send(data)
-      })
-}
-
-// Collate results
-// let result = fetchDataAsync(searchResults(dest_id,check_in,check_out,curr,guests));
 
 async function collateHotelInfo(hotel_id, destination_id, checkin, checkout, currency, num_guests) {
     // 3.2 price search for a given hotel
@@ -288,20 +233,6 @@ async function collateHotelInfo(hotel_id, destination_id, checkin, checkout, cur
     let infolist = Object.assign(data, all_data);
     console.log(typeof data + typeof all_data);
     return infolist;
-}
-
-async function fetchDataAsync2(func) {
-    func.then(data => {
-        // post to localhost:8383/api2
-        app.get("/static", (req, res) => {
-            //res.json(test_output)
-            res.json(data)
-        })
-        return data;
-    })
-        .catch(error => {
-            console.log("Error fetching data:", error);
-        });
 }
 
 app.get("/features", async (req, res) => {

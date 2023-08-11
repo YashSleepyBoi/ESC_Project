@@ -104,7 +104,6 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
 
         <Grid item xs={1} className="tohide">
         
-        {/* <Link to="/loading"> */}
             <Button onClick={() => setInputs({
               "dest_id": dest, 
               "check_in": startDate, 
@@ -120,7 +119,6 @@ export default function LowerGrid({room,pax, setRoom, setPax, startDate, setEndD
             >
               Find room
             </Button>
-          {/* </Link> */}
 
         </Grid>
     </>

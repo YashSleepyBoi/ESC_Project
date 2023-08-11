@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ReactDOM from "react-dom";
 import "./Stylesheets/Results.css";
-import { data } from 'autoprefixer';
-import { Button, Divider, useMediaQuery } from "@mui/material";
-import { reserveButtonStyle } from '../Room_Page/Content';
-import NavBot from '../Room_Page/Components/NavBot1';
 import { Link, useNavigate } from "react-router-dom";
   
 function Results() {
@@ -52,7 +47,7 @@ function Results() {
         </div>
       </div>
     )
-    }
+  }
 
   let hotelsData = hotelsDataList?.hotels;
   let startD = hotelsDataList?.startdate;
