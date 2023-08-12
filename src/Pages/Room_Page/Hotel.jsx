@@ -47,7 +47,7 @@ function Room({setBottom}) {
     const endDate = getParams()[2];
     const guests = getParams()[3]
     const rooms=getParams()[4]
-    setBottom(false);
+    // setBottom(false);
    
     function myFunction() {
         var dots = document.getElementById("dots");
@@ -183,7 +183,7 @@ function Room({setBottom}) {
                     {hotel_dets.arr3.map((item, index) => {
                         return(
                             <Slide index={index}>
-                            <img src={item} alt="Description when image is not found" style={{ width: "100%"}}></img>
+                            <img src={item} data-testid="img_test" alt="Description when image is not found" style={{ width: "100%"}}></img>
                         </Slide>
                         )
                     })}
@@ -225,10 +225,10 @@ function Room({setBottom}) {
             
             <div className='hotel_descript' id="h_desc">
                 {hotel_dets.name ?
-                     <h3 >Welcome To {hotel_dets.name }</h3>:<></>
+                     <h3 data-testid="hotel-name" >Welcome To {hotel_dets.name }</h3>:<></>
             }
                
-                <p style={{text_align:"justify"}}> {convert(hotel_dets.description)}</p>
+                <p style={{text_align:"justify"}} data-testid="hotel-description" > {convert(hotel_dets.description)}</p>
             
             {/* <span id="dots">...<button onClick={myFunction} id="myBtn"data-testid="myBtn">See More</button></span><span id="more" data-testid="more"></span></p> */}
             </div>
@@ -236,7 +236,7 @@ function Room({setBottom}) {
             <div style={{ background: "#fbfbfb" }} className="rooms">
                 {room_dets.unique ?
                     
-                    <Card_Slider data={room_dets.unique} data2={room_dets.arr2} data3={room_dets.arr3} data5={room_dets.arr5} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4} name={hotel_dets.name} guests="1" rooms="2"></Card_Slider>:<></>
+                    <Card_Slider data={room_dets.unique} data2={room_dets.arr2} data3={room_dets.arr3} data5={room_dets.arr5} id={host} s_d={startDate} e_d={endDate} data4={room_dets.arr4} name={hotel_dets.name} guests="1" rooms="2" data-testid="roombtn"></Card_Slider>:<></>
                 }
                 
             </div>
@@ -257,7 +257,7 @@ function Room({setBottom}) {
                         {hotel_dets.arr4.map((element,idx) => {
                             return (
                                 <Slide index={idx}>
-                                    <div className='holder view_holder'>
+                                    <div className='holder view_holder' data-testid="custom-element">
                                         <HotelRating name={element.name} score={element.score} popularity={element.popularity} img={hotel_dets.arr3}></HotelRating>
                                     </div>
                    

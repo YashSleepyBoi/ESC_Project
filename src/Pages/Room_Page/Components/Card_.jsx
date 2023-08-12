@@ -20,13 +20,14 @@ export default function ActionAreaCard(props) {
   }
   
   return (
-    <Card sx={{ width: 590, maxHeight: 480, margin: 10, display: 'inline-block' }} onClick={roomClickHandler} >
+    <Card sx={{ width: 590, maxHeight: 480, margin: 10, display: 'inline-block' }} data-testid="hotel-room-click" onClick={roomClickHandler} >
       <CardActionArea>
         <CardMedia
           component="img"
           height="0"
+          
           image={props.image}
-          alt="green iguana"
+          alt="no image loaded"
           sx={{height:"100%"}}
         />
         <CardContent>
