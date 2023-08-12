@@ -82,8 +82,18 @@ const Profile = ({setBottom}) => {
     {/* BOOKING HISTORY */}
                 <div className='profileTitle'>Booking History</div>
                     <div className='bookingContainer' id="bookings">
-                    {bookings.length === 0 ? "No History" : bookings.map((booking, index) => (
-                        <div key={index}>{booking}</div>
+                    {bookings.length === 0 ? "No History" : 
+                    // If the bookings not empty, map them
+                    bookings.map(({guests, h_name, r_cost, r_end_d, r_id, r_name, r_start_d, rooms, url})=> (
+                            
+                        <div classname='bookingsDisplay' key={r_id}>
+                            <p>Hotel: {h_name.slice(0,-1)}</p>
+                            <p>Room: {r_name}</p>
+                            <p>Check in date: {r_start_d}</p>
+                            <p>Check out date: {r_end_d}</p>
+                            <p>Number of guests: {guests}</p>
+                            <p>-----------------------------</p>
+                        </div>
                     ))}
                     </div>
     {/* *************************************************************************** */}

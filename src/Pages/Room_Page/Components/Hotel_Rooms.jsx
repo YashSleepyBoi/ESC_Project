@@ -41,7 +41,7 @@ function Hotel_Rooms(props) {
         // });
     
         await updateDoc(doc(db, "Users",id.uid), {
-               booking: arrayUnion(props.obj)
+               bookings: arrayUnion(props.obj)
              });
         
         window.alert("Room Selected")
