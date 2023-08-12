@@ -19,8 +19,18 @@ function Results() {
   const fetchData = () => {
     const cacheBuster = Date.now(); // Generate a random value based on the current timestamp
     fetch(`http://localhost:8000/api?cache=${cacheBuster}`)
-      .then((response) => response.json())
-      .then((data) => {
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+        // return response.json();
+        return response.text();
+      })
+      // .then((response) => response.json())
+      .then((responseText) => {
+        console.log('API Response:', responseText); // Log the response content
+        const data = JSON.parse(responseText);
+        console.log(data);
         if (data && data.hotels) {
         setHotelsData(data);
       } else {
@@ -30,6 +40,8 @@ function Results() {
     })
       .catch((error) => {
         console.error('Error fetching data:', error);
+        setLoading(false);
+        setHotelsData([]);
         // Retry after a delay
       });
   };
@@ -43,7 +55,7 @@ function Results() {
     return (
       <div className="results-page">
         <div className='num-results'>
-          Fetching data... 
+          Loading results...
         </div>
       </div>
     )
@@ -53,8 +65,9 @@ function Results() {
   let startD = hotelsDataList?.startdate;
   let endD = hotelsDataList?.enddate;
 
-    /* Retry block */
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /* Retry block for the event that first search doesn't work due to server overloading, 
+  trouble accessing external hotel API or network connectivity issues. */
+//////////////////////////////////////////////////////////////////////////////////////////////////////
     const handleTryAgain = () => {
       // Increment the retry attempt count
       setRetryAttempt(retryAttempt + 1);
@@ -72,6 +85,7 @@ function Results() {
     function setInputs(input) {
       if (input["dest_id"] == "" || input["check_in"] == "" || input["check_out"] == "" || input["rooms"] == "" || input["guests"] == "") {alert("Please fill all fields with valid inputs");
       } else {
+        setLoading(true);
           navigate('/loading');
           fetch('http://localhost:8000/input', {
             method: 'POST',
@@ -87,6 +101,7 @@ function Results() {
                       .then((response) => response.json())
                       .then((data) => {
                           if (!data.isProcessing) {
+                            setLoading(false);
                             navigate('/results');
                           } else {
                               setTimeout(pollStatus, 2000); // Poll every 2s
@@ -94,34 +109,38 @@ function Results() {
                       })
                       .catch((error) => {
                           console.error('Error checking processing status:', error);
+                          setLoading(false);
                       });
               };
               pollStatus(); // Start polling
           })
           .catch((error) => {
               console.error('Error occurred during fetch /input:', error);
+              setLoading(false);
           });
       }
   }
 
     if (hotelsData.length === 0) {
       if (retryAttempt < 3) {
+        handleTryAgain();
         return (
-          <div className='is-loading'>
-            Your results seem to be taking a while to load.
-            <button className='try-again-button' onClick={handleTryAgain}>
-              Try Again?
-            </button>
+          <div className='num-results'>
+            Trying again...
           </div>
-        );
+        )
       } else {
         return (
           <div className='is-loading'>
             No results found
+            {/* <button className='try-again-button' onClick={handleTryAgain}>
+              Try Again?
+            </button> */}
           </div>
         );
       }
     }
+    
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // Handle button click and navigate to the /hotels route with hotel_id parameter

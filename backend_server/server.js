@@ -72,27 +72,6 @@ app.post('/input', (req, res) => {
         // Call the searchResults function
         searchResults(dest_id, check_in, check_out, curr, guests)
         .then(data => {
-            if (data.hotels.length === 0) {
-                // Clear data in /api by sending a POST request
-                try {
-                    fetch('http://localhost:8000/clear', {
-                        method: 'POST',
-                        mode: 'cors',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    });
-                    console.log('Data cleared in /api');
-                } catch (error) {
-                    console.error('Error clearing data:', error);
-                }
-                // If first attempt returned empty list, try again
-                console.log("SERVER.JS: 2nd attempt is triggered")
-                return searchResults(dest_id, check_in, check_out, curr, guests);
-            }
-            return data;
-        })
-        .then(data => {
             // Update searchdata
             searchData = data;
             console.log("SERVER.JS: DATA POSTED TO /api", data);
@@ -172,6 +151,8 @@ app.get("/room/:id", async (req, res) => {
 
 // Return search results in mapping.hotels
 async function searchResults(destination_id, checkin, checkout, currency, num_guests) {
+
+    try {
     const dest_prices = `https://hotelapi.loyalty.dev/api/hotels/prices?destination_id=${destination_id}&checkin=${checkin}&checkout=${checkout}&lang=en_US&currency=${currency}&landing_page=&partner_id=16&country_code=SG&guests=${num_guests}`;
     const url = dest_prices
     const response = await fetch(url, {
@@ -209,6 +190,14 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
         }
     }
     return mapping;
+    } catch (error) {
+        console.error('Error fetching data from external API:', error);
+        return {
+            startdate: checkin,
+            enddate: checkout,
+            hotels: []
+        };
+    }
 }
 
 async function collateHotelInfo(hotel_id, destination_id, checkin, checkout, currency, num_guests) {
