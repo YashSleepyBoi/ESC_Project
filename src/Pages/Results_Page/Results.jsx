@@ -64,6 +64,7 @@ function Results() {
   let hotelsData = hotelsDataList?.hotels;
   let startD = hotelsDataList?.startdate;
   let endD = hotelsDataList?.enddate;
+  console.log(startD, endD);
 
   /* Retry block for the event that first search doesn't work due to server overloading, 
   trouble accessing external hotel API or network connectivity issues. */
@@ -133,25 +134,13 @@ function Results() {
         return (
           <div className='is-loading'>
             No results found
-            {/* <button className='try-again-button' onClick={handleTryAgain}>
+            <button className='try-again-button' onClick={handleTryAgain}>
               Try Again?
-            </button> */}
+            </button>
           </div>
         );
       }
     }
-
-    // This error message appears if the specific endpoint for the external API(s) are down and not working at all.
-    // if (hotelsData=="API endpoint is down") {
-    //   return (
-    //     <div className='is-loading'>
-    //       Sorry, there appears to be a glitch in our data servers.
-    //       <button className='try-again-button' onClick={handleTryAgain}>
-    //         Try Again?
-    //       </button>
-    //     </div>
-    //   );
-    // }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -201,6 +201,8 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
     }
 }
 
+module.exports = { searchResults };
+
 async function collateHotelInfo(hotel_id, destination_id, checkin, checkout, currency, num_guests) {
     // 3.2 price search for a given hotel
     const hotel_price = `https://hotelapi.loyalty.dev/api/hotels/${hotel_id}/price?destination_id=${destination_id}&checkin=${checkin}&checkout=${checkout}&lang=en_US&currency=${currency}&partner_id=16&country_code=SG&guests=${num_guests}`;
@@ -241,7 +243,8 @@ app.get("/features", async (req, res) => {
 
 // Start the server at the end
 app.listen(port, function () {
-    console.log(`CORS-enabled web server listening on port ${port}`);
 });
+
+console.log(`CORS-enabled web server listening on port ${port}`);
 
 
