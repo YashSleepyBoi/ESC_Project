@@ -140,6 +140,18 @@ function Results() {
         );
       }
     }
+
+    // This error message appears if the specific endpoint for the external API(s) are down and not working at all.
+    // if (hotelsData=="API endpoint is down") {
+    //   return (
+    //     <div className='is-loading'>
+    //       Sorry, there appears to be a glitch in our data servers.
+    //       <button className='try-again-button' onClick={handleTryAgain}>
+    //         Try Again?
+    //       </button>
+    //     </div>
+    //   );
+    // }
     
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

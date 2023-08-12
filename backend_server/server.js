@@ -189,6 +189,7 @@ async function searchResults(destination_id, checkin, checkout, currency, num_gu
             }
         }
     }
+    console.log(url);
     return mapping;
     } catch (error) {
         console.error('Error fetching data from external API:', error);
@@ -242,6 +243,5 @@ app.get("/features", async (req, res) => {
 app.listen(port, function () {
     console.log(`CORS-enabled web server listening on port ${port}`);
 });
-
 
 

@@ -28,10 +28,23 @@ import Counter from "../../Search_Page/Components/Counter"
 
 export default function NavBot() {
 
+  // Get the current date
+  const currentDate = new Date();
+
+  // Create a new date by adding 1 day to the current date
+  const nextDay = new Date(currentDate);
+  nextDay.setDate(currentDate.getDate() + 1);
+
+  // Create a new date by adding 2 days to the nextDay
+  const twoDaysAfter = new Date(nextDay);
+  twoDaysAfter.setDate(nextDay.getDate() + 2);
+
     const isLarge = useMediaQuery('(min-width:1000px)')
     const isSmall = useMediaQuery('(max-width:1000px)')
-    const [startDate, setStartDate] = useState(new Date("2023/08/13"));
-    const [endDate, setEndDate] = useState(new Date("2023/08/15"));
+    // const [startDate, setStartDate] = useState(new Date("2023/08/13"));
+    // const [endDate, setEndDate] = useState(new Date("2023/08/15"));
+    const [startDate, setStartDate] = useState(nextDay);
+    const [endDate, setEndDate] = useState(twoDaysAfter);
     const [open, setOpen] = useState(false);
     const [dest, setDest] = useState("")
     const [room, setRoom] =useState(1)
