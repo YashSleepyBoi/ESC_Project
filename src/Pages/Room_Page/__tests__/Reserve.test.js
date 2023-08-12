@@ -3,7 +3,7 @@ import React from 'react';
 import Hotel_Rooms from '../Components/Hotel_Rooms'; // Make sure to provide the correct import path
 import { render, screen, fireEvent,waitFor } from '@testing-library/react';
 import { updateDoc, arrayUnion } from 'firebase/firestore';
-
+//ROOM RESERVATION TEST
 const mockNavigate = jest.fn();
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"),
