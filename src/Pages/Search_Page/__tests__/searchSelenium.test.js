@@ -51,7 +51,7 @@ describe("selenium Tests", () => {
         await driver.get(home_target);
         // Inpuit "Taipei, Taiwan" to search input
         await driver.findElement(By.id("searchInput")).sendKeys(exactSearch);
-        await driver.findElement(By.id("searchResults")).children[0].click();
+        await driver.find_element_by_xpath('(//div[@className="searchResults"]/a)[1]').click();
         const exactSearchTest = await driver.findElement(By.id("searchInput")).value;
         await sleep(2000);
 
@@ -62,7 +62,7 @@ describe("selenium Tests", () => {
     test("should return when given lowerCase search", async () => {
         await driver.get(home_target);
         await driver.findElement(By.id("searchInput")).sendKeys(lowerCaseSearch);
-        await driver.findElement(By.id("searchResults")).children[0].click();
+        await driver.find_element_by_xpath('(//div[@className="searchResults"]/a)[1]').click();
         const lowerCaseSearchTest = await driver.findElement(By.id("searchInput")).value;
         await sleep(2000);
 
@@ -73,7 +73,7 @@ describe("selenium Tests", () => {
     test("should return when given upperCase search", async () => {
         await driver.get(home_target);
         await driver.findElement(By.id("searchInput")).sendKeys(upperCaseSearch);
-        await driver.findElement(By.id("searchResults")).children[0].click();
+        await driver.find_element_by_xpath('(//div[@className="searchResults"]/a)[1]').click();
         const upperCaseSearchTest = await driver.findElement(By.id("searchInput")).value;
         await sleep(2000);
 

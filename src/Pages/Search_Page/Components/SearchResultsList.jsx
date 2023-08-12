@@ -6,7 +6,7 @@ import "../Stylesheets/SearchResult.css";
 function SearchResultsList ({results, clickHandler}) {
 
   return (
-    <div className="results-list">
+    <div className="results-list" id="searchResults">
       {results.slice(0, 5).map((result, id) => {
         return <div className="search-result"
         key={id}
