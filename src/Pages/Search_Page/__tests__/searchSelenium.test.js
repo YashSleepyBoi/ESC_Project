@@ -2,64 +2,90 @@ import { By, Key, Builder } from "selenium-webdriver";
 import "chromedriver";
 import '@testing-library/jest-dom';
 
-// Give more time to load the websites by allowing jest more timeout
-jest.setTimeout(50000);
+// Before running the test, make sure the app is running
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+// Give more time to load the websites by allowing jest more timeout
+jest.setTimeout(50000);
 
-describe("selenium SearchBar Tests", () => {
-
-    const homepage = "http://localhost:5174/";
-    const destination = "Singapore";
+describe("selenium Tests", () => {
+    // Change the localhost to the correct address before testing
+    var home_target = "http://localhost:5173/";
+    var result_target = "http://localhost:5173/results";
     let driver;
 
+    const exactSearch = "Taipei, Taiwan";
+    const lowerCaseSearch = "taipei, taiwan";
+    const upperCaseSearch = "TAIPEI, TAIWAN";
 
+    // const newPassword = "123456";
+    // const name2 = "seleniumTest2";
+    // const email2 = "seleniumTest2@gmail.com"
 
     beforeAll(async () => {
         // Set up the driver before running all
         driver = await new Builder().forBrowser("chrome").build();
-        await driver.manage().window().maximize();
-        
-        //switch to the window
-        let allWindows = await driver.getAllWindowHandles();
-        await driver.switchTo().window(allWindows[0]);
+        await driver.manage().window().fullscreen();
         
     });
 
     afterAll(async () => {
-        //Tear down 
-        await sleep(10000);
+        //Tear down
         await driver.quit();
 
     });
 
-    test("Should navigate to the search results", async()=>{
-        await driver.get(homepage)
-        await driver.findElement(By.className("dest-input")).sendKeys("Singapore");
+    test("should search", async () => {
+        await driver.get(home_target);
+        // Create an account called SeleniumTest
+        await driver.findElement(By.id("searchInput")).sendKeys(exactSearch);
+        await driver.findElement(By.id("searchResults"));
         await sleep(2000);
-        await driver.findElement(By.xpath('//*[@id="navbar"]/div[2]/div/div[6]/div/div[2]/div[1]')).click();
+    });
+
+
+    test("should return when given exact search", async () => {
+       
+        await driver.get(home_target);
+        // Inpuit "Taipei, Taiwan" to search input
+        await driver.findElement(By.id("searchInput")).sendKeys(exactSearch);
+        await driver.findElement(By.id("searchResults")).children[0].click();
+        const exactSearchTest = await driver.findElement(By.id("searchInput")).value;
         await sleep(2000);
-        //Click twice to be safe
-        await driver.findElement(By.xpath('//*[@id="navbar"]/div[2]/div/div[11]/a/button')).click();
-        await sleep(500);
-        await driver.findElement(By.xpath('//*[@id="navbar"]/div[2]/div/div[11]/a/button')).click();
+
+        expect(exactSearchTest).toBe(exactSearch);
+        
+    });
+
+    test("should return when given lowerCase search", async () => {
+        await driver.get(home_target);
+        await driver.findElement(By.id("searchInput")).sendKeys(lowerCaseSearch);
+        await driver.findElement(By.id("searchResults")).children[0].click();
+        const lowerCaseSearchTest = await driver.findElement(By.id("searchInput")).value;
         await sleep(2000);
-        // Find the button with M hotel
-        let bookNowButton = await driver.findElement(By.xpath("//*[contains(@class, 'hotel-title') and contains(text(), 'M Hotel')]/ancestor::div[contains(@class, 'hotel-container')]//button[contains(@class, 'book-button')]"));
-        await bookNowButton.click();
-        await sleep(8000);
+
+        expect(lowerCaseSearchTest).toBe(lowerCaseSearch);
+    });
 
 
-        async function scrollDown() {
-            return driver.executeScript('window.scrollBy(0, 100)');
-        }
+    test("should return when given upperCase search", async () => {
+        await driver.get(home_target);
+        await driver.findElement(By.id("searchInput")).sendKeys(upperCaseSearch);
+        await driver.findElement(By.id("searchResults")).children[0].click();
+        const upperCaseSearchTest = await driver.findElement(By.id("searchInput")).value;
+        await sleep(2000);
 
-        for(let i = 0; i < 10; i++) {
-            await new Promise(resolve => setTimeout(resolve, 200));
-            await scrollDown();
-        }
-    })
+        expect(upperCaseSearchTest).toBe(upperCaseSearch);
+    });
 
-})
+    test("should close result list on click", async () => {
+        await driver.get(home_target);
+        await driver.findElement(By.id("searchInput")).sendKeys("k");
+        await driver.findElement(By.id("searchResults")).children[1].click();
+        await sleep(2000);
+
+    });
+
+});
