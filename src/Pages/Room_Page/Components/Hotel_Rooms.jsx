@@ -27,11 +27,11 @@ import { Link } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function Hotel_Rooms(props) {
-   
+    const navigate = useNavigate();
     // const id = "1pMbIMFKQ24xAL8PLr8G"
     const id = useAuth()
     const onClickHandler = async () => {
-        const navigate = useNavigate();
+       
         console.log(props)
         
         // const test=await setDoc(doc(db, "Users", "1pMbIMFKQ24xAL8PLr8G"), {
