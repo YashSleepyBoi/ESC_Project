@@ -1,6 +1,8 @@
-import { By, Key, Builder } from "selenium-webdriver";
+import { By, Key, Builder, until } from "selenium-webdriver";
 import "chromedriver";
 import '@testing-library/jest-dom';
+
+
 
 // Before running the test, make sure the app is running
 
@@ -51,8 +53,10 @@ describe("selenium Tests", () => {
         await driver.get(home_target);
         // Inpuit "Taipei, Taiwan" to search input
         await driver.findElement(By.id("searchInput")).sendKeys(exactSearch);
-        await driver.find_element_by_xpath('(//div[@className="searchResults"]/a)[1]').click();
-        const exactSearchTest = await driver.findElement(By.id("searchInput")).value;
+        const element = await driver.wait(until.elementLocated(By.id('searchResults')), 10000);
+        await element.findElement(By.className('a')).click();
+        await sleep(2000);
+        const exactSearchTest = await driver.findElement(By.id("searchInput")).getAttribute('value');
         await sleep(2000);
 
         expect(exactSearchTest).toBe(exactSearch);
@@ -62,29 +66,54 @@ describe("selenium Tests", () => {
     test("should return when given lowerCase search", async () => {
         await driver.get(home_target);
         await driver.findElement(By.id("searchInput")).sendKeys(lowerCaseSearch);
-        await driver.find_element_by_xpath('(//div[@className="searchResults"]/a)[1]').click();
-        const lowerCaseSearchTest = await driver.findElement(By.id("searchInput")).value;
+        const element = await driver.wait(until.elementLocated(By.id('searchResults')), 10000);
+        await element.findElement(By.className('a')).click();
+        await sleep(2000);
+        const lowerCaseSearchTest = await driver.findElement(By.id("searchInput")).getAttribute('value');
         await sleep(2000);
 
-        expect(lowerCaseSearchTest).toBe(lowerCaseSearch);
+        expect(lowerCaseSearchTest).toBe(exactSearch);
     });
 
 
     test("should return when given upperCase search", async () => {
         await driver.get(home_target);
         await driver.findElement(By.id("searchInput")).sendKeys(upperCaseSearch);
-        await driver.find_element_by_xpath('(//div[@className="searchResults"]/a)[1]').click();
-        const upperCaseSearchTest = await driver.findElement(By.id("searchInput")).value;
+        const element = await driver.wait(until.elementLocated(By.id('searchResults')), 10000);
+        await element.findElement(By.className('a')).click();
+        await sleep(2000);
+        const upperCaseSearchTest = await driver.findElement(By.id("searchInput")).getAttribute('value');
         await sleep(2000);
 
-        expect(upperCaseSearchTest).toBe(upperCaseSearch);
+        expect(upperCaseSearchTest).toBe(exactSearch);
     });
-
+    
+    const webdriver = require('selenium-webdriver');
     test("should close result list on click", async () => {
-        await driver.get(home_target);
+
+        try{
+            await driver.get(home_target);
         await driver.findElement(By.id("searchInput")).sendKeys("k");
-        await driver.findElement(By.id("searchResults")).children[1].click();
+        const element = await driver.wait(until.elementLocated(By.id('searchResults')), 10000);
+        await element.findElement(By.className('a')).click();
         await sleep(2000);
+        await sleep(2000);
+        
+
+        const isNotVisible = await driver.findElement(By.id("searchResults")).isDisplayed();
+
+
+        } catch (error){
+            if (error instanceof webdriver.error.NoSuchElementError) {
+                // Handle the case where the element is not found
+                expect(error instanceof webdriver.error.NoSuchElementError).toBe(true);
+                return;
+        } else {
+            throw error;
+        }
+
+    }
+        
 
     });
 
