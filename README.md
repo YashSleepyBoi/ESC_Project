@@ -26,9 +26,13 @@ This repository contains the source code for a hotel booking website.
 To run this project locally, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Install the required dependencies using the package manager for your chosen technology stack.
-3. Set up the database and configure the connection details in the project's configuration files.
-4. Start the server and launch the website on your local development environment.
-5. Access the website through your web browser to begin exploring and using the hotel booking functionalities.
+3. Install the required dependencies using the package manager for your chosen technology stack.
+4. Set up the database and configure the connection details in the project's configuration files.
+5. Start the server and launch the website on your local development environment:
+   <br> cd backend_server
+   <br> npm run dev
+   
+6. Access the website through your web browser to begin exploring and using the hotel booking functionalities.
+   <br> npm run dev
 
 
